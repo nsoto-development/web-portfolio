@@ -22,7 +22,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-- **Current focus:** [`static-hub-bootstrap`](epics/static-hub-bootstrap.md) epic — landing M1+M2 (P0 #1–#3); ready for `/nudl-start-milestone`
+- **Current focus:** [`static-hub-bootstrap`](epics/static-hub-bootstrap.md) epic — M1+M2 shipped locally; next: M2b Apps hub or M3 deploy
 
 - **v1 launch path:** static landing (epic) → Apps hub (P0 #5) → M3 deploy (P0 #4) — see [`mvp-scope.md`](mvp-scope.md)
 
@@ -30,7 +30,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Pre-launch / MVP:** see [`mvp-scope.md`](mvp-scope.md)
 
-- **Done recently:** PR #1 merged — foundation on `main` (design-system, product docs, epic, README); published to GitHub. Next.js app not started.
+- **Done recently:** static hub bootstrap (M1+M2) — Next.js app, token wiring, full static landing; `npm run lint` + `npm run build` pass
 
 
 

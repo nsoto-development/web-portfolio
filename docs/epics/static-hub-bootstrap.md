@@ -51,8 +51,8 @@ Each row = one logical slice; **M1 + M2 may ship in a single** `/nudl-start-mile
 
 | # | Milestone | Status | Deliverables |
 |---|-----------|--------|--------------|
-| M1 | Scaffold + hero | Planned | `package.json`; `app/layout.tsx`, `app/page.tsx`, `app/globals.css` (token imports); `tailwind.config.ts`; verify commands in `nudl.json`; `public/logo/`; `lib/portfolio-data.ts`; `components/ui/Button.tsx`; `components/landing/Hero.tsx`; hero matches ui-kit baseline |
-| M2 | Full static landing | Planned | Remaining `components/ui/*` (Input, Textarea, Toast); `components/landing/Nav`, `Experience`, `Skills`, `About`, `Contact`, `Footer`; `app/page.tsx` composed; `npm run build` passes |
+| M1 | Scaffold + hero | Done | `package.json`; `app/layout.tsx`, `app/page.tsx`, `app/globals.css` (token imports); `tailwind.config.ts`; verify commands in `nudl.json`; `public/logo/`; `lib/portfolio-data.ts`; `components/ui/Button.tsx`; `components/landing/Hero.tsx`; hero matches ui-kit baseline |
+| M2 | Full static landing | Done | Remaining `components/ui/*` (Input, Textarea, Toast); `components/landing/Nav`, `Experience`, `Skills`, `About`, `Contact`, `Footer`; `app/page.tsx` composed; `npm run build` passes |
 
 ### M2 section checklist
 

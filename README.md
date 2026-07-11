@@ -9,11 +9,11 @@ Personal **hub** for my portfolio on [**nsoto.dev**](https://nsoto.dev). Built i
 - A draft **design-system** — tokens, React components, and a click-through portfolio ui-kit
 - **Product docs** — roadmap, MVP scope, landing feature spec, and an active implementation epic
 
-The **Next.js app is not scaffolded yet.** Active work: [`docs/epics/static-hub-bootstrap.md`](docs/epics/static-hub-bootstrap.md) (landing M1+M2 — static page from the design-system).
+The **Next.js app** is scaffolded with a static landing (M1+M2). Active work: [`docs/epics/static-hub-bootstrap.md`](docs/epics/static-hub-bootstrap.md) — next slices: M2b Apps hub, M3 deploy.
 
 | Milestone | What |
 |-----------|------|
-| **M1 + M2** (next) | Next.js scaffold + static landing (nav, hero, work, skills, about, contact, footer) |
+| **M1 + M2** (done) | Next.js scaffold + static landing (nav, hero, work, skills, about, contact, footer) |
 | **M2b** | Apps hub section (`</ APPS >`, coming soon cards) |
 | **M3** | Deploy to `nsoto.dev` |
 | **M4 / M5** | Framer Motion polish; WebGL hero (post-v1) |
