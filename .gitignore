@@ -36,14 +36,15 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# NUDL / Cursor process tooling (local workflow only, not part of the public repo)
-.cursor
-.cursorrules
+# AI assistants & local dev workflow (nudl is private — not for public repo)
+*_template.md
+.cursor/
 .cursorignore
+.claude/
 AGENTS.md
+CLAUDE.md
+docs/process/
 docs/how-to-use.md
-docs/process
-docs/features/_template.md
 
 # Claude Code (local agent config/state)
 .claude
