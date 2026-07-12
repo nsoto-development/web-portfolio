@@ -4,18 +4,16 @@ Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.
 
 ## Status
 
-Static landing **M1 + M2** is implemented locally (nav, hero, work, skills, about, contact, footer). 
-
+Static landing **M1 + M2** is shipped locally (nav, hero, work, skills, about, contact, footer). M3 pre-deploy assets (favicon, OG meta) are in repo; production deploy is next after M2b Apps hub.
 
 | Milestone          | What                                              |
 | ------------------ | ------------------------------------------------- |
 | **M1 + M2** (done) | Next.js scaffold + static landing                 |
 | **M2b**            | Apps hub section (`</ APPS >`, coming soon cards) |
-| **M3**             | Deploy to `nsoto.dev`                             |
+| **M3**             | Deploy to `nsoto.dev` — [runbook](docs/features/landing.md#m3--deploy-nsotodev) |
 | **M4 / M5**        | Framer Motion polish; WebGL hero (post-v1)        |
 
-
-Implementation detail: `[docs/epics/static-hub-bootstrap.md](docs/epics/static-hub-bootstrap.md)` · product spec: `[docs/features/landing.md](docs/features/landing.md)`
+Product spec: [`docs/features/landing.md`](docs/features/landing.md)
 
 ## Quick start
 
@@ -43,7 +41,13 @@ npm run build   # production build
 npm run start   # serve production build
 ```
 
+### Deploy (M3)
 
+See [`docs/features/landing.md` — M3 runbook](docs/features/landing.md#m3--deploy-nsotodev). Summary:
+
+1. Ship M2b Apps hub first (v1 launch bar).
+2. Import repo to Vercel; set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
+3. Point `nsoto.dev` DNS to Vercel; verify HTTPS, OG preview, and contact delivery.
 
 ## Stack
 
@@ -68,6 +72,8 @@ Subdomain apps are **separate repos** and may use other stacks.
 | `[components/](components/)`                                                     | Landing sections + ported UI primitives                 |
 | `[lib/portfolio-data.ts](lib/portfolio-data.ts)`                                 | Copy and site content (SSOT)                            |
 | `[public/logo/](public/logo/)`                                                   | Brand mark served by the app                            |
+| `[public/favicon/](public/favicon/)`                                             | Favicon pack + web manifest                             |
+| `[public/og/](public/og/)`                                                       | Open Graph preview image                                |
 | `[design-system/](design-system/readme.md)`                                      | Draft SSOT — tokens, components, ui-kit prototype       |
 | `[design-system/ui_kits/portfolio/](design-system/ui_kits/portfolio/index.html)` | Click-through layout reference                          |
 | `[docs/roadmap.md](docs/roadmap.md)`                                             | Backlog and priority tiers                              |

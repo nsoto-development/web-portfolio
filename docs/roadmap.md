@@ -10,7 +10,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-**Feature & design:** [`docs/features/landing.md`](features/landing.md) · [`design-system/readme.md`](../design-system/readme.md) · **Active epic:** [`docs/epics/static-hub-bootstrap.md`](epics/static-hub-bootstrap.md)
+**Feature & design:** [`docs/features/landing.md`](features/landing.md) · [`design-system/readme.md`](../design-system/readme.md)
 
 
 
@@ -22,15 +22,15 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-- **Current focus:** [`static-hub-bootstrap`](epics/static-hub-bootstrap.md) epic — M1+M2 shipped locally; next: M2b Apps hub or M3 deploy
+- **Current focus:** P0 #5 Apps hub (M2b), then P0 #4 production deploy (M3) — see [`landing.md` M3 runbook](features/landing.md#m3--deploy-nsotodev)
 
-- **v1 launch path:** static landing (epic) → Apps hub (P0 #5) → M3 deploy (P0 #4) — see [`mvp-scope.md`](mvp-scope.md)
+- **v1 launch path:** static landing (M1+M2, Done) → Apps hub (P0 #5) → M3 deploy (P0 #4) — see [`mvp-scope.md`](mvp-scope.md)
 
 - **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3)
 
 - **Pre-launch / MVP:** see [`mvp-scope.md`](mvp-scope.md)
 
-- **Done recently:** Web3Forms contact delivery (post-M2); static hub bootstrap (M1+M2) — Next.js app, token wiring, full static landing; `npm run lint` + `npm run build` pass
+- **Done recently:** P0 #1–#3 (M1+M2 static landing); M3 pre-deploy in repo (favicon, OG meta, Web3Forms); `static-hub-bootstrap` epic closed
 
 
 
@@ -66,13 +66,13 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-1. `[chore]` **App scaffold** — Next.js + Tailwind; map `design-system/tokens/` into theme; verify commands in `nudl.json`. → landing **M1** ([`static-hub-bootstrap`](epics/static-hub-bootstrap.md))
+1. ~~`[chore]` **App scaffold**~~ — **Done** — Next.js + Tailwind; map `design-system/tokens/` into theme; verify commands in `nudl.json`. → landing **M1**
 
-2. `[feature]` **Hero / static landing shell** — match visual baseline; logo, wordmark, terminal eyebrow, headline. → landing **M1** ([`landing.md`](features/landing.md) · epic)
+2. ~~`[feature]` **Hero / static landing shell**~~ — **Done** — match visual baseline; logo, wordmark, terminal eyebrow, headline. → landing **M1** ([`landing.md`](features/landing.md))
 
-3. `[feature]` **Portfolio sections** — nav, work, skills, about, contact, footer. → landing **M2** (epic)
+3. ~~`[feature]` **Portfolio sections**~~ — **Done** — nav, work, skills, about, contact, footer. → landing **M2**
 
-4. `[chore]` **Deploy `nsoto.dev`** — production deploy, domain, OG image from brand lockup; `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env. → landing **M3**
+4. `[chore]` **Deploy `nsoto.dev`** — Vercel project, domain/DNS, HTTPS; pre-deploy assets shipped (favicon, OG, meta). Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env; production contact smoke test. → landing **M3** ([runbook](features/landing.md#m3--deploy-nsotodev))
 
 5. `[feature]` **Apps hub section** — `</ APPS >` eyebrow; `chess.nsoto.dev`, `budget.nsoto.dev` coming soon (no live links). → landing **M2b** (after static bootstrap)
 

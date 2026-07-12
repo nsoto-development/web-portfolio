@@ -20,9 +20,7 @@
 
 - **Features:** `docs/features/` — SSOT for product capabilities (usually tied to `[feature]` work items).
 
-- **Hub implementation:** [`docs/features/landing.md`](features/landing.md) — stack, code paths, M5 spec.
-
-- **Active execution:** [`docs/epics/static-hub-bootstrap.md`](epics/static-hub-bootstrap.md) — M1+M2 implementation detail (ephemeral).
+- **Hub implementation:** [`docs/features/landing.md`](features/landing.md) — stack, code paths, M3 deploy runbook, M5 spec.
 
 - **Milestones:** shippable slices — see [`docs/process/cursor-workflow.md`](process/cursor-workflow.md).
 
@@ -38,7 +36,7 @@
 
 | **0 — Design system** | Now | Tokens, components, ui-kit prototype ([`design-system/`](../design-system/)) |
 
-| **1 — Static landing** | M1+M2 ([epic](epics/static-hub-bootstrap.md)) | Next.js page matching ui-kit; CSS-only motion |
+| **1 — Static landing** | M1+M2 (Done) | Next.js page matching ui-kit; CSS-only motion |
 
 | **2 — UI motion** | M4 | Framer Motion fades/hovers |
 
