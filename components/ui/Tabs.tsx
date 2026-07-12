@@ -12,11 +12,13 @@ type TabsProps = {
   value: string;
   onChange: (value: string) => void;
   style?: React.CSSProperties;
+  className?: string;
 };
 
-export function Tabs({ items, value, onChange, style }: TabsProps) {
+export function Tabs({ items, value, onChange, style, className }: TabsProps) {
   return (
     <div
+      className={className}
       style={{
         display: "inline-flex",
         gap: "var(--space-1)",

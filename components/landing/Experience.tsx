@@ -90,6 +90,7 @@ export function Experience() {
   return (
     <section
       id="work"
+      className="landing-section"
       style={{
         maxWidth: "var(--content-max)",
         margin: "0 auto",
@@ -119,6 +120,7 @@ export function Experience() {
         <Tabs
           value={filter}
           onChange={setFilter}
+          className="landing-tabs-scroll"
           items={[
             { label: "All", value: "all" },
             { label: "Cloud", value: "cloud" },

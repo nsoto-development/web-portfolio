@@ -9,6 +9,7 @@ export function Footer() {
 
   return (
     <footer
+      className="landing-footer"
       style={{
         borderTop: "1px solid var(--border-subtle)",
         padding: "var(--space-6) max(24px, calc((100% - 1120px) / 2))",

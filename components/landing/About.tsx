@@ -7,20 +7,14 @@ export function About() {
   return (
     <section
       id="about"
+      className="landing-section"
       style={{
         maxWidth: "var(--content-max)",
         margin: "0 auto",
         padding: "var(--space-16) var(--space-6)",
       }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "auto 1fr",
-          gap: "var(--space-10)",
-          alignItems: "flex-start",
-        }}
-      >
+      <div className="landing-about-grid">
         <div
           style={{
             width: 112,

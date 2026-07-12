@@ -12,6 +12,7 @@ export function Hero() {
   return (
     <section
       id="top"
+      className="landing-hero"
       style={{
         position: "relative",
         maxWidth: "var(--content-max)",
@@ -19,16 +20,7 @@ export function Hero() {
         padding: "var(--space-24) var(--space-6) var(--space-20)",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 24,
-          right: "max(24px, calc((100% - 1120px) / 2 - 40px))",
-          width: 120,
-          opacity: 0.9,
-          pointerEvents: "none",
-        }}
-      >
+      <div className="landing-hero-mark">
         <Image
           src="/logo/nsoto-mark-cyan.png"
           alt=""
@@ -42,6 +34,7 @@ export function Hero() {
         />
       </div>
       <div
+        className="landing-hero-eyebrow"
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-xs)",
@@ -98,7 +91,7 @@ export function Hero() {
       >
         {sub}
       </p>
-      <div style={{ display: "flex", gap: "var(--space-4)" }}>
+      <div className="landing-hero-ctas">
         <Button
           variant="primary"
           size="lg"

@@ -7,6 +7,7 @@ export function Skills() {
   return (
     <section
       id="skills"
+      className="landing-section"
       style={{
         maxWidth: "var(--content-max)",
         margin: "0 auto",
