@@ -71,7 +71,7 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 | R3F scene (M5) | `components/hero/webgl/` |
 | Probe util (M5) | Co-located with tier gate or `lib/hero-tier/` |
 | Theme tokens | `app/globals.css` `@import` → `design-system/tokens/`; `tailwind.config.ts` extends CSS vars |
-| Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`) |
+| Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`); `public/og/` (OG preview image) |
 | Design reference | `design-system/` |
 | **M1+M2 implementation detail** | [`docs/epics/static-hub-bootstrap.md`](../epics/static-hub-bootstrap.md) |
 
