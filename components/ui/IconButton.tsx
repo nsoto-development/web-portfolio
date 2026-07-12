@@ -40,7 +40,7 @@ export function IconButton({
     !disabled && hover
       ? {
           background: "var(--bg-surface-hover)",
-          borderColor: "var(--border-default)",
+          border: "1px solid var(--border-default)",
           color: "var(--brand)",
         }
       : {};

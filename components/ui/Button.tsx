@@ -79,9 +79,9 @@ export function Button({
   const hoverAdjust =
     !disabled && hover
       ? variant === "primary"
-        ? { background: "var(--brand-strong)", borderColor: "var(--brand-strong)" }
+        ? { background: "var(--brand-strong)", border: "1px solid var(--brand-strong)" }
         : variant === "secondary"
-          ? { background: "var(--bg-surface-hover)", borderColor: "var(--border-strong)" }
+          ? { background: "var(--bg-surface-hover)", border: "1px solid var(--border-strong)" }
           : variant === "ghost"
             ? { background: "var(--bg-surface-hover)", color: "var(--text-primary)" }
             : variant === "danger"
