@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { SiteNav } from "@/components/SiteNav";
 import { Footer } from "@/components/landing/Footer";
 import { CaseStudySectionBlock } from "@/components/case-studies/CaseStudySection";
 import { CaseStudyStatus } from "@/components/case-studies/CaseStudyStatus";
@@ -13,23 +11,7 @@ type CaseStudyLayoutProps = {
 export function CaseStudyLayout({ study }: CaseStudyLayoutProps) {
   return (
     <>
-      <header className="case-study-nav">
-        <div className="case-study-nav-bar">
-          <Link href="/" className="case-study-back">
-            <ArrowLeft size={16} aria-hidden />
-            <span>nsoto.dev</span>
-          </Link>
-          <Link href="/" className="case-study-brand" aria-label="nsoto.dev home">
-            <Image
-              src="/logo/nsoto-mark-cyan.png"
-              alt=""
-              width={22}
-              height={22}
-              style={{ height: 22, width: "auto" }}
-            />
-          </Link>
-        </div>
-      </header>
+      <SiteNav />
       <main className="case-study-main">
         <article className="case-study-article">
           <header className="case-study-header">

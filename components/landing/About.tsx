@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
+import { Card } from "@/components/ui/Card";
 
 export function About() {
-  const { paragraph } = portfolioData.about;
+  const { paragraph, caseStudyCallout } = portfolioData.about;
 
   return (
     <section
@@ -60,6 +63,58 @@ export function About() {
           >
             {paragraph}
           </p>
+          <Link href={caseStudyCallout.href} style={{ textDecoration: "none", display: "block" }}>
+            <Card
+              interactive
+              style={{ marginTop: "var(--space-8)", maxWidth: "640px" }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-xs)",
+                  color: "var(--brand)",
+                  letterSpacing: "var(--tracking-wide)",
+                  margin: "0 0 var(--space-3)",
+                }}
+              >
+                {caseStudyCallout.eyebrow}
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-md)",
+                  color: "var(--text-primary)",
+                  margin: "0 0 var(--space-2)",
+                }}
+              >
+                {caseStudyCallout.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "var(--text-sm)",
+                  color: "var(--text-secondary)",
+                  lineHeight: "var(--leading-normal)",
+                  margin: "0 0 var(--space-4)",
+                }}
+              >
+                {caseStudyCallout.description}
+              </p>
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "var(--space-2)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-xs)",
+                  color: "var(--brand)",
+                }}
+              >
+                Read case study
+                <ArrowRight size={14} aria-hidden />
+              </span>
+            </Card>
+          </Link>
         </div>
       </div>
     </section>

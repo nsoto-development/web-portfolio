@@ -3,6 +3,23 @@ export type NavItem = {
   href: string;
 };
 
+export type CaseStudyIndexEntry = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  href: string;
+  lifecycle: "architecture" | "planned" | "in-progress" | "implemented";
+};
+
+export type AppsStubEntry = {
+  name: string;
+  domain: string;
+  status: string;
+  description?: string;
+  href?: string;
+  repo?: string;
+};
+
 export type ExperienceJob = {
   id: string;
   company: string;
@@ -27,7 +44,18 @@ export const portfolioData = {
     { label: "Skills", href: "#skills" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Apps", href: "/apps" },
   ] satisfies NavItem[],
+  caseStudies: [
+    {
+      slug: "design-system-consumption",
+      title: "Architecture at a crossroads",
+      subtitle: "From deliberate bootstrap to a single consumption model",
+      href: "/case-studies/design-system-consumption",
+      lifecycle: "architecture",
+    },
+  ] satisfies CaseStudyIndexEntry[],
   links: {
     github: "https://github.com/nsoto-development",
     linkedin: "https://linkedin.com/in/nsoto-development",
@@ -112,7 +140,31 @@ export const portfolioData = {
   about: {
     paragraph:
       "I've built centralized cloud platforms, federal data-visualization tools, and the ERP/CRM pipelines that keep operations stable. At Sedgwick I maintain .NET ingestion between XactAnalysis, Cotality, and Salesforce, and configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect retired. Before that I led an Azure migration that cut hosting costs 15–20% and improved performance. I mentor when I can and care about software teams can actually maintain.",
+    caseStudyCallout: {
+      eyebrow: "</ CASE STUDY >",
+      title: "Architecture at a crossroads",
+      description:
+        "How bootstrap vendoring across nsoto.dev and ns-chess led to a scoped evaluation of design-system consumption — and why a public canonical repo won.",
+      href: "/case-studies/design-system-consumption",
+    },
   },
-  // Future hook: apps list for M2b Apps hub section
+  appsStub: {
+    eyebrow: "</ APPS >",
+    headline: "Side projects",
+    sub: "Each app ships on its own domain and stack. Open what's live — more are on the way.",
+    entries: [
+      {
+        name: "Chess",
+        domain: "chess.nsoto.dev",
+        status: "Live",
+        description:
+          "Browser chess with a hand-built board — click-to-move, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen; Stockfish opponent planned.",
+        href: "https://chess.nsoto.dev",
+        repo: "https://github.com/nsoto-development/ns-chess",
+      },
+      { name: "Budget", domain: "budget.nsoto.dev", status: "Coming soon" },
+    ] satisfies AppsStubEntry[],
+  },
+  // Future hook: live apps list for M2b Apps hub section
   apps: [] as { name: string; href: string; status: string }[],
 };
