@@ -34,6 +34,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy. **Copy:** keep ui-kit draft (`</ COMING SOON. STAY TUNED >`) until post-M1 side-by-side with brand lockup, then refine.
 - Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by [`design-system/ui_kits/portfolio/`](../../design-system/ui_kits/portfolio/).
 - **Apps hub (M2b / P0 #5):** dedicated section (`</ APPS >` eyebrow) listing WIP subdomain apps — coming soon, no live outbound links. Initial entries: `chess.nsoto.dev`, `budget.nsoto.dev`. **Not in the static-bootstrap epic** — ships after M1+M2.
+- **Apps nav stub (interim):** case-studies **M3** may add top-level **Apps** → `/apps` with coming-soon copy only. That satisfies nav wiring; **M2b** still owns the full landing section and app cards.
 - **Contact:** ui-kit form UI; submissions delivered via [Web3Forms](https://web3forms.com) (`POST https://api.web3forms.com/submit`) using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (client-side; key aliases inbox email).
 - **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts` (migrated from ui-kit `data.js`); app list added when Apps hub ships.
 - **Tokens:** `@import` [`design-system/tokens/`](../../design-system/tokens/) in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
@@ -61,6 +62,8 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 |------|----------|
 | App | `app/` (`layout.tsx`, `page.tsx`, `globals.css`) |
 | Landing sections | `components/landing/` — Hero, Nav, Experience, Skills, About, Contact, Footer; Apps (M2b) |
+| Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/case-studies/*` (case-studies M3) |
+| Apps stub (interim) | `app/apps/page.tsx` — coming soon (case-studies M3); replaced/extended by M2b section |
 | Shared UI | `components/ui/` — ported from `design-system/components/` |
 | Content | `lib/portfolio-data.ts` |
 | Contact delivery | `components/landing/Contact.tsx` → Web3Forms; env `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) |
@@ -128,7 +131,7 @@ Two tiers only:
 |---|-----------|--------|--------------|
 | M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
-| M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) — **next** |
+| M2b | Apps hub | Planned | `</ APPS >` landing section; chess/budget coming soon cards (P0 #5) — **after** case-studies M3 nav stub if desired |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
