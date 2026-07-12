@@ -92,6 +92,8 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 4. `[debt]` **Design-system harvest** — reconcile app theme with `design-system/tokens/` after M1 ship; resolve any draft/ui-kit drift. → landing **M4**
 
+5. ~~`[chore]` **Web Analytics + Speed Insights**~~ — **Done** — `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enable in Vercel project.
+
 
 
 **Post-v1 polish (landing milestones):** M4 a11y + Framer Motion; M5 WebGL.

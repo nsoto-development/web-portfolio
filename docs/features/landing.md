@@ -149,6 +149,7 @@ Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (s
 | Favicon pack + web manifest | `public/favicon/`; wired in `layout.tsx` |
 | Contact delivery | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env |
 | Verify pipeline | `.cursor/nudl.json` — `npm run lint`, `npm run build` |
+| Web Analytics + Speed Insights | `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enabled in Vercel project |
 
 ## Tests / verify
 
