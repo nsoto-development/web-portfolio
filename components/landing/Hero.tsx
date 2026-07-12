@@ -29,7 +29,7 @@ export function Hero() {
           style={{
             width: "100%",
             height: "auto",
-            filter: "drop-shadow(0 0 32px rgba(34,211,238,0.25))",
+            filter: "drop-shadow(0 0 32px rgba(10, 158, 250, 0.25))",
           }}
         />
       </div>

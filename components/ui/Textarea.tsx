@@ -16,13 +16,18 @@ export function Textarea({
   error,
   disabled = false,
   style,
+  id: idProp,
   ...rest
 }: TextareaProps) {
+  const generatedId = React.useId();
+  const textareaId = idProp ?? generatedId;
+  const errorId = error ? `${textareaId}-error` : undefined;
   const [focused, setFocused] = React.useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "6px", ...style }}>
       {label && (
         <label
+          htmlFor={textareaId}
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "var(--text-2xs)",
@@ -35,6 +40,7 @@ export function Textarea({
         </label>
       )}
       <textarea
+        id={textareaId}
         placeholder={placeholder}
         value={value}
         rows={rows}
@@ -42,6 +48,8 @@ export function Textarea({
         onChange={onChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={errorId}
         style={{
           width: "100%",
           resize: "vertical",
@@ -60,7 +68,11 @@ export function Textarea({
         }}
         {...rest}
       />
-      {error && <span style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>{error}</span>}
+      {error && (
+        <span id={errorId} style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>
+          {error}
+        </span>
+      )}
     </div>
   );
 }
