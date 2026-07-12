@@ -7,11 +7,29 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 html,
 body {
   margin: 0;
   background: var(--bg-canvas);
   color: var(--text-primary);
+  overflow-x: clip;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --text-5xl: 2.75rem;
+    --text-3xl: 1.75rem;
+    --text-2xl: 1.5rem;
+    --text-md: 1rem;
+    --space-24: 4rem;
+    --space-20: 3rem;
+    --space-16: 3rem;
+    --gutter: var(--space-4);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -51,4 +69,183 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
+}
+
+/* Landing — responsive layout helpers */
+.landing-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.landing-main {
+  min-width: 0;
+}
+
+.landing-hero-mark {
+  position: absolute;
+  top: 24px;
+  right: max(24px, calc((100% - 1120px) / 2 - 40px));
+  width: 120px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.landing-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.landing-about-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-10);
+  align-items: flex-start;
+}
+
+.landing-contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.landing-tabs-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.landing-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.landing-nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.landing-nav-menu-btn {
+  display: none;
+}
+
+.landing-nav-mobile-panel {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .landing-hero {
+    padding-top: var(--space-16) !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  .landing-section,
+  .landing-hero,
+  .landing-contact {
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  .landing-nav-bar {
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  .landing-footer {
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+    padding-bottom: max(var(--space-6), env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .landing-hero-eyebrow {
+    letter-spacing: var(--tracking-wide);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .landing-hero-mark {
+    display: none;
+  }
+
+  .landing-hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .landing-hero-ctas > button {
+    width: 100%;
+  }
+
+  .landing-about-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-6);
+  }
+
+  .landing-contact-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-nav-desktop {
+    display: none;
+  }
+
+  .landing-nav-menu-btn {
+    display: inline-flex;
+  }
+
+  .landing-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }
+
+  .landing-main {
+    padding-top: calc(62px + env(safe-area-inset-top, 0px));
+  }
+
+  .landing-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+  }
+
+  .landing-nav-mobile-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+    z-index: 51;
+  }
+
+  .landing-nav-brand-subtitle {
+    display: none;
+  }
+
+  .landing-footer {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+}
+
+.landing-safe-bottom {
+  bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  right: max(24px, env(safe-area-inset-right, 0px));
 }

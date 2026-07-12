@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="landing-main">
         <Hero />
         <Experience />
         <Skills />

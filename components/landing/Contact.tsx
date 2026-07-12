@@ -21,6 +21,7 @@ export function Contact() {
   return (
     <section
       id="contact"
+      className="landing-contact"
       style={{
         maxWidth: "var(--content-narrow)",
         margin: "0 auto",
@@ -49,7 +50,7 @@ export function Contact() {
         <a href={`mailto:${portfolioData.links.email}`}>{portfolioData.links.email}</a>.
       </p>
       <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-5)" }}>
+        <div className="landing-contact-fields">
           <Input
             label="Name"
             placeholder="Your name"
@@ -77,7 +78,7 @@ export function Contact() {
           </Button>
         </div>
       </form>
-      <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 60 }}>
+      <div className="landing-safe-bottom" style={{ position: "fixed", zIndex: 60 }}>
         {sent && (
           <Toast
             tone="success"
