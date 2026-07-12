@@ -1,7 +1,7 @@
 import React from "react";
 
 const toneStyle = {
-  brand: { color: "var(--brand)", background: "var(--brand-wash)", border: "1px solid rgba(34,211,238,0.3)" },
+  brand: { color: "var(--brand)", background: "var(--brand-wash)", border: "1px solid var(--border-brand-subtle)" },
   neutral: { color: "var(--text-secondary)", background: "var(--bg-surface-raised)", border: "1px solid var(--border-default)" },
   success: { color: "var(--status-success)", background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)" },
   warning: { color: "var(--status-warning)", background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)" },

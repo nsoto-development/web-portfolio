@@ -3,12 +3,24 @@ import React from "react";
 /**
  * Select — native-backed dropdown, styled to match Input.
  */
-export function Select({ label, value, onChange, options = [], disabled = false, style, ...rest }) {
+export function Select({
+  label,
+  value,
+  onChange,
+  options = [],
+  disabled = false,
+  style,
+  id: idProp,
+  ...rest
+}) {
+  const generatedId = React.useId();
+  const selectId = idProp ?? generatedId;
   const [focused, setFocused] = React.useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "6px", ...style }}>
       {label && (
         <label
+          htmlFor={selectId}
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "var(--text-2xs)",
@@ -22,6 +34,7 @@ export function Select({ label, value, onChange, options = [], disabled = false,
       )}
       <div style={{ position: "relative" }}>
         <select
+          id={selectId}
           value={value}
           disabled={disabled}
           onChange={onChange}

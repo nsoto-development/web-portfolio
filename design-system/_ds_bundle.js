@@ -71,7 +71,7 @@ const toneStyle = {
   brand: {
     color: "var(--brand)",
     background: "var(--brand-wash)",
-    border: "1px solid rgba(34,211,238,0.3)"
+    border: "1px solid var(--border-brand-subtle)"
   },
   neutral: {
     color: "var(--text-secondary)",
@@ -431,6 +431,43 @@ function Dialog({
   children,
   footer
 }) {
+  const titleId = React.useId();
+  const panelRef = React.useRef(null);
+  const previousFocusRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!open) return undefined;
+    previousFocusRef.current = document.activeElement;
+    const panel = panelRef.current;
+    const focusable = panel?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    focusable?.focus();
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        onClose?.();
+        return;
+      }
+      if (e.key !== "Tab" || !panel) return;
+      const nodes = panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const focusables = Array.from(nodes).filter(el => !el.disabled);
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      const previous = previousFocusRef.current;
+      if (previous && typeof previous.focus === "function") {
+        previous.focus();
+      }
+    };
+  }, [open, onClose]);
   if (!open) return null;
   return /*#__PURE__*/React.createElement("div", {
     onClick: onClose,
@@ -446,6 +483,10 @@ function Dialog({
       animation: "dcFadeIn var(--duration-base) var(--ease-out)"
     }
   }, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-labelledby": titleId,
     onClick: e => e.stopPropagation(),
     style: {
       width: "min(480px, 90vw)",
@@ -466,12 +507,14 @@ function Dialog({
       borderBottom: "1px solid var(--border-subtle)"
     }
   }, /*#__PURE__*/React.createElement("span", {
+    id: titleId,
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-md)",
       color: "var(--text-primary)"
     }
   }, title), /*#__PURE__*/React.createElement("button", {
+    type: "button",
     onClick: onClose,
     "aria-label": "Close",
     style: {
@@ -718,8 +761,12 @@ function Input({
   disabled = false,
   icon = null,
   style,
+  id: idProp,
   ...rest
 }) {
+  const generatedId = React.useId();
+  const inputId = idProp ?? generatedId;
+  const errorId = error ? `${inputId}-error` : undefined;
   const [focused, setFocused] = React.useState(false);
   return /*#__PURE__*/React.createElement("div", {
     style: {
@@ -729,6 +776,7 @@ function Input({
       ...style
     }
   }, label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: inputId,
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-2xs)",
@@ -750,6 +798,7 @@ function Input({
       color: "var(--text-tertiary)"
     }
   }, icon), /*#__PURE__*/React.createElement("input", _extends({
+    id: inputId,
     type: type,
     placeholder: placeholder,
     value: value,
@@ -757,6 +806,8 @@ function Input({
     onChange: onChange,
     onFocus: () => setFocused(true),
     onBlur: () => setFocused(false),
+    "aria-invalid": error ? true : undefined,
+    "aria-describedby": errorId,
     style: {
       width: "100%",
       fontFamily: "var(--font-sans)",
@@ -772,6 +823,7 @@ function Input({
       opacity: disabled ? 0.5 : 1
     }
   }, rest))), error && /*#__PURE__*/React.createElement("span", {
+    id: errorId,
     style: {
       fontSize: "var(--text-xs)",
       color: "var(--status-danger)"
@@ -794,8 +846,11 @@ function Select({
   options = [],
   disabled = false,
   style,
+  id: idProp,
   ...rest
 }) {
+  const generatedId = React.useId();
+  const selectId = idProp ?? generatedId;
   const [focused, setFocused] = React.useState(false);
   return /*#__PURE__*/React.createElement("div", {
     style: {
@@ -805,6 +860,7 @@ function Select({
       ...style
     }
   }, label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: selectId,
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-2xs)",
@@ -817,6 +873,7 @@ function Select({
       position: "relative"
     }
   }, /*#__PURE__*/React.createElement("select", _extends({
+    id: selectId,
     value: value,
     disabled: disabled,
     onChange: onChange,
@@ -872,8 +929,12 @@ function Textarea({
   error,
   disabled = false,
   style,
+  id: idProp,
   ...rest
 }) {
+  const generatedId = React.useId();
+  const textareaId = idProp ?? generatedId;
+  const errorId = error ? `${textareaId}-error` : undefined;
   const [focused, setFocused] = React.useState(false);
   return /*#__PURE__*/React.createElement("div", {
     style: {
@@ -883,6 +944,7 @@ function Textarea({
       ...style
     }
   }, label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: textareaId,
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-2xs)",
@@ -891,6 +953,7 @@ function Textarea({
       color: "var(--text-tertiary)"
     }
   }, label), /*#__PURE__*/React.createElement("textarea", _extends({
+    id: textareaId,
     placeholder: placeholder,
     value: value,
     rows: rows,
@@ -898,6 +961,8 @@ function Textarea({
     onChange: onChange,
     onFocus: () => setFocused(true),
     onBlur: () => setFocused(false),
+    "aria-invalid": error ? true : undefined,
+    "aria-describedby": errorId,
     style: {
       width: "100%",
       resize: "vertical",
@@ -915,6 +980,7 @@ function Textarea({
       opacity: disabled ? 0.5 : 1
     }
   }, rest)), error && /*#__PURE__*/React.createElement("span", {
+    id: errorId,
     style: {
       fontSize: "var(--text-xs)",
       color: "var(--status-danger)"
@@ -1417,7 +1483,7 @@ function Hero() {
     style: {
       width: "100%",
       height: "auto",
-      filter: "drop-shadow(0 0 32px rgba(34,211,238,0.25))"
+      filter: "drop-shadow(0 0 32px rgba(10, 158, 250, 0.25))"
     }
   })), /*#__PURE__*/React.createElement("div", {
     style: {

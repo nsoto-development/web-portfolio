@@ -14,13 +14,18 @@ export function Input({
   disabled = false,
   icon = null,
   style,
+  id: idProp,
   ...rest
 }) {
+  const generatedId = React.useId();
+  const inputId = idProp ?? generatedId;
+  const errorId = error ? `${inputId}-error` : undefined;
   const [focused, setFocused] = React.useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "6px", ...style }}>
       {label && (
         <label
+          htmlFor={inputId}
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "var(--text-2xs)",
@@ -39,6 +44,7 @@ export function Input({
           </span>
         )}
         <input
+          id={inputId}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -46,6 +52,8 @@ export function Input({
           onChange={onChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={errorId}
           style={{
             width: "100%",
             fontFamily: "var(--font-sans)",
@@ -64,7 +72,9 @@ export function Input({
         />
       </div>
       {error && (
-        <span style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>{error}</span>
+        <span id={errorId} style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>
+          {error}
+        </span>
       )}
     </div>
   );

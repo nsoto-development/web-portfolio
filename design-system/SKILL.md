@@ -10,7 +10,7 @@ If the user invokes this skill without any other guidance, ask them what they wa
 
 ## Quick facts
 - Brand: nsoto.dev — a solo developer's personal portfolio site (dark-only, code/terminal-forward).
-- Primary accent: cyan (`--brand`, `#22d3ee`). One accent color — don't introduce others.
+- Primary accent: cyan (`--brand`, `#0a9efa`). One accent color — don't introduce others.
 - Type: JetBrains Mono (headings/labels/wordmark) + Space Grotesk (body). Both are Google Fonts substitutions — no real brand font files exist yet.
 - No emoji, ever. Voice is terse, first-person, engineer-to-engineer.
 - No existing product UI was provided — components and the portfolio UI kit here are originated, not cloned. Treat as a strong opinionated starting point, not sacred ground truth.

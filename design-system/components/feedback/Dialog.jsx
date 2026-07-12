@@ -5,6 +5,54 @@ import React from "react";
  * Dims backdrop with blur, panel slides up + fades in.
  */
 export function Dialog({ open, onClose, title, children, footer }) {
+  const titleId = React.useId();
+  const panelRef = React.useRef(null);
+  const previousFocusRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!open) return undefined;
+
+    previousFocusRef.current = document.activeElement;
+    const panel = panelRef.current;
+    const focusable = panel?.querySelector(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    focusable?.focus();
+
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        onClose?.();
+        return;
+      }
+      if (e.key !== "Tab" || !panel) return;
+
+      const nodes = panel.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const focusables = Array.from(nodes).filter((el) => !el.disabled);
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      const previous = previousFocusRef.current;
+      if (previous && typeof previous.focus === "function") {
+        previous.focus();
+      }
+    };
+  }, [open, onClose]);
+
   if (!open) return null;
   return (
     <div
@@ -22,6 +70,10 @@ export function Dialog({ open, onClose, title, children, footer }) {
       }}
     >
       <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         onClick={(e) => e.stopPropagation()}
         style={{
           width: "min(480px, 90vw)",
@@ -43,10 +95,14 @@ export function Dialog({ open, onClose, title, children, footer }) {
             borderBottom: "1px solid var(--border-subtle)",
           }}
         >
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-md)", color: "var(--text-primary)" }}>
+          <span
+            id={titleId}
+            style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-md)", color: "var(--text-primary)" }}
+          >
             {title}
           </span>
           <button
+            type="button"
             onClick={onClose}
             aria-label="Close"
             style={{

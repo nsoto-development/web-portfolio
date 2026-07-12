@@ -1,18 +1,26 @@
-<!-- @dsCard group="Brand" viewport="700x260" name="Logo Lockups" subtitle="Primary mark + coming-soon color variants" -->
+<!-- @dsCard group="Brand" viewport="1200x520" name="Logo Lockups" subtitle="Primary mark + coming-soon color variants" -->
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  body { margin: 0; padding: 20px; background: var(--bg-canvas); display: flex; gap: 16px; align-items: center; }
-  img { height: 200px; object-fit: contain; }
+  body { margin: 0; padding: 20px; background: var(--bg-canvas); display: flex; flex-direction: column; gap: 20px; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+  img { height: 180px; object-fit: contain; }
   .cap { font-family: var(--font-mono); font-size: 10px; color: var(--text-tertiary); text-align: center; margin-top: 6px; }
   .col { display: flex; flex-direction: column; align-items: center; }
 </style>
 </head>
 <body>
-  <div class="col"><img src="../../assets/logo/nsoto-logo-primary.png"><div class="cap">primary lockup</div></div>
-  <div class="col"><img src="../../assets/logo/nsoto-logo-cyan.png"><div class="cap">cyan (site accent)</div></div>
-  <div class="col"><img src="../../assets/logo/nsoto-mark-cyan.png" style="background:none"><div class="cap">icon-only mark (transparent)</div></div>
+  <div class="row">
+    <div class="col"><img src="../../assets/logo/nsoto-logo-primary.png"><div class="cap">primary lockup</div></div>
+    <div class="col"><img src="../../assets/logo/nsoto-logo-cyan.png"><div class="cap">cyan (site accent)</div></div>
+    <div class="col"><img src="../../assets/logo/nsoto-mark-cyan.png" style="background:none"><div class="cap">icon-only mark (transparent)</div></div>
+  </div>
+  <div class="row">
+    <div class="col"><img src="../../assets/logo/nsoto-coming-soon-cyan-pad.png"><div class="cap">coming soon (cyan padded)</div></div>
+    <div class="col"><img src="../../assets/logo/nsoto-panel.png"><div class="cap">8-up variant sheet</div></div>
+    <div class="col"><img src="../../assets/logo/icon-mark-transparent.png" style="background:none"><div class="cap">icon mark (transparent)</div></div>
+  </div>
 </body>
 </html>
