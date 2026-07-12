@@ -165,6 +165,7 @@ Add lint/build/test commands to [`.cursor/nudl.json`](../../.cursor/nudl.json) `
 
 - `npm run lint` and `npm run build` pass before merge.
 - Production ([nsoto.dev](https://nsoto.dev)): HTTPS, OG image, contact form with Vercel env set.
+- Vercel project: Web Analytics and Speed Insights enabled; page views and Web Vitals appear in dashboard after traffic.
 
 **M5 (manual until verify pipeline exists):**
 
