@@ -10,7 +10,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-**Feature & design:** [`docs/features/landing.md`](features/landing.md) · [`design-system/readme.md`](../design-system/readme.md)
+**Feature & design:** [`docs/features/landing.md`](features/landing.md) · [`docs/features/case-studies.md`](features/case-studies.md) · [`design-system/readme.md`](../design-system/readme.md)
 
 
 
@@ -93,6 +93,8 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 4. `[debt]` **Design-system harvest** — reconcile app theme with `design-system/tokens/` after M1 ship; resolve any draft/ui-kit drift. → landing **M4**
 
 5. ~~`[chore]` **Web Analytics + Speed Insights**~~ — **Done** — `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enable in Vercel project.
+
+6. `[feature]` **Case studies — design system consumption** — architecture crossroads narrative at `/case-studies/design-system-consumption`; living doc updated when P1 #4 migration is planned/shipped. → case-studies **M2**–**M3** ([`case-studies.md`](features/case-studies.md); M1 docs Done)
 
 
 
