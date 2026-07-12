@@ -83,7 +83,7 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 | # | Milestone | Status | Deliverables |
 |---|-----------|--------|--------------|
 | M1 | Docs + roadmap | **Done** | This feature doc; P1 #6 on roadmap; copy appendix for M2 |
-| M2 | Case study page | Planned | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
+| M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
 | M3 | Discovery + polish | Planned | Landing callout; `portfolio-data` caseStudies; README blurb |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
