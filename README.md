@@ -4,16 +4,17 @@ Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.
 
 ## Status
 
-**[nsoto.dev](https://nsoto.dev) is live** — deployed on **Vercel** (static landing: nav, hero, work, skills, about, contact, footer). Production uses **Vercel Web Analytics** and **Speed Insights** for page views and Core Web Vitals. Apps hub (M2b) is next.
+**[nsoto.dev](https://nsoto.dev) is live** — deployed on **Vercel** (static landing: nav, hero, work, skills, about, contact, footer). Production uses **Vercel Web Analytics** and **Speed Insights** for page views and Core Web Vitals. Case studies at [`/case-studies`](https://nsoto.dev/case-studies) with the first story on design-system consumption; Apps hub stub at `/apps` until M2b.
 
 | Milestone          | What                                              |
 | ------------------ | ------------------------------------------------- |
 | **M1 + M2** (done) | Next.js scaffold + static landing                 |
 | **M3** (done)      | Deployed to `nsoto.dev` on Vercel (HTTPS, Web Analytics, Speed Insights) |
+| **case-studies M3** (done) | Top-level nav, `/case-studies` index, `/apps` stub, landing callout |
 | **M2b**            | Apps hub section (`</ APPS >`, coming soon cards) |
 | **M4 / M5**        | Framer Motion polish; WebGL hero (post-v1)        |
 
-Product spec: [`docs/features/landing.md`](docs/features/landing.md)
+Product spec: [`docs/features/landing.md`](docs/features/landing.md) · [`docs/features/case-studies.md`](docs/features/case-studies.md)
 
 ## Quick start
 
@@ -68,6 +69,10 @@ Subdomain apps are **separate repos** and may use other stacks.
 | `[app/](app/)`                                                                   | Next.js shell — `layout.tsx`, `page.tsx`, `globals.css` |
 | `[components/](components/)`                                                     | Landing sections + ported UI primitives                 |
 | `[lib/portfolio-data.ts](lib/portfolio-data.ts)`                                 | Copy and site content (SSOT)                            |
+| `[lib/case-studies/](lib/case-studies/)`                                         | Case study content + registry                           |
+| `[app/case-studies/](app/case-studies/)`                                         | Case studies index + story routes                       |
+| `[app/apps/](app/apps/)`                                                         | Apps coming-soon stub (until landing M2b)               |
+| `[components/SiteNav.tsx](components/SiteNav.tsx)`                               | Shared header on hub routes                             |
 | `[public/logo/](public/logo/)`                                                   | Brand mark served by the app                            |
 | `[public/favicon/](public/favicon/)`                                             | Favicon pack + web manifest                             |
 | `[public/og/](public/og/)`                                                       | Open Graph preview image                                |

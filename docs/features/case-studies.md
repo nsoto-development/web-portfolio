@@ -53,10 +53,11 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 | Layout + sections | `components/case-studies/CaseStudyLayout.tsx`, `CaseStudySection.tsx`, `OptionsTable.tsx`, `CaseStudyStatus.tsx` |
 | Route | `app/case-studies/design-system-consumption/page.tsx` |
 | Prose styles | `app/globals.css` (`.case-study-prose`) |
-| Site nav (M3) | `lib/portfolio-data.ts` (`nav`, `caseStudies`); shared header component; `components/landing/Nav.tsx` or extracted `SiteNav` |
+| Site nav (M3) | `lib/portfolio-data.ts` (`nav`, `caseStudies`); `components/SiteNav.tsx` (re-exported as `components/landing/Nav.tsx` on landing) |
+| Case studies registry (M3) | `lib/case-studies/registry.ts` |
 | Case studies index (M3) | `app/case-studies/page.tsx` — lists published studies |
 | Apps stub (M3) | `app/apps/page.tsx` — coming soon; satisfies Apps nav target until landing M2b |
-| Discovery callout (M3) | `components/landing/About.tsx` or `Experience.tsx` |
+| Discovery callout (M3) | `components/landing/About.tsx` |
 | Related debt | P1 #4 design-system harvest → landing M4 |
 
 ## Content contract (M2)
@@ -88,7 +89,7 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 |---|-----------|--------|--------------|
 | M1 | Docs + roadmap | **Done** | This feature doc; P1 #6 on roadmap; copy appendix for M2 |
 | M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
-| M3 | Discovery + nav | Planned | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
+| M3 | Discovery + nav | **Done** | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
 

@@ -24,9 +24,9 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **Current focus:** P1 #6 case-studies **M3** (top-level nav, `/case-studies` index, `/apps` stub, landing callout). P0 #5 Apps hub **M2b** (full landing section) deferred — stub route acceptable in M3.
+- **Current focus:** P1 #6 case-studies **M3** Done — next: P0 #5 Apps hub **M2b** (full landing section). `/apps` stub satisfies nav until then.
 
-- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2 page at `/case-studies/design-system-consumption`
+- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2 page + case-studies M3 discovery (nav, index, apps stub, callout)
 
 - **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3)
 
@@ -94,7 +94,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 5. ~~`[chore]` **Web Analytics + Speed Insights**~~ — **Done** — `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enable in Vercel project.
 
-6. `[feature]` **Case studies — design system consumption** — architecture crossroads narrative at `/case-studies/design-system-consumption`; living doc updated when P1 #4 migration is planned/shipped. → case-studies **M2** Done; **M3** nav + discovery next ([`case-studies.md`](features/case-studies.md))
+6. `[feature]` **Case studies — design system consumption** — architecture crossroads narrative at `/case-studies/design-system-consumption`; living doc updated when P1 #4 migration is planned/shipped. → case-studies **M2** + **M3** Done ([`case-studies.md`](features/case-studies.md))
 
 
 
