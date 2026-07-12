@@ -47,7 +47,12 @@ export function Nav() {
         }}
       >
         <Image src="/logo/nsoto-mark-cyan.png" alt="" width={26} height={26} style={{ height: 26, width: "auto" }} />
-        nsoto<span style={{ color: "var(--brand)" }}>.dev</span>
+        <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
+          <span>{portfolioData.name}</span>
+          <span style={{ fontSize: "var(--text-xs)", fontWeight: "var(--weight-regular)", color: "var(--text-tertiary)" }}>
+            nsoto<span style={{ color: "var(--brand)" }}>.dev</span>
+          </span>
+        </span>
       </a>
       <nav style={{ display: "flex", alignItems: "center", gap: "var(--space-8)" }}>
         {portfolioData.nav.map((item) => (

@@ -37,7 +37,7 @@ export function About() {
         >
           <Image
             src="/logo/nsoto-mark-cyan.png"
-            alt="nsoto.dev"
+            alt=""
             width={69}
             height={69}
             style={{ width: "62%", height: "auto" }}
@@ -52,7 +52,7 @@ export function About() {
               margin: "0 0 var(--space-5)",
             }}
           >
-            About
+            About me
           </h2>
           <p
             style={{

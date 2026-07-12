@@ -21,6 +21,7 @@ export type SkillGroup = {
 };
 
 export const portfolioData = {
+  name: "Nelson Soto",
   nav: [
     { label: "Work", href: "#work" },
     { label: "Skills", href: "#skills" },
@@ -33,9 +34,9 @@ export const portfolioData = {
     email: "nsoto.development@gmail.com",
   },
   hero: {
-    eyebrow: "</ COMING SOON. STAY TUNED >",
+    eyebrow: "</ MORE TO COME. STAY TUNED >",
     headline: "20 years of full-stack engineering.",
-    sub: "Senior software engineer based in Jacksonville, FL. Cloud migrations, legacy modernization, and enterprise integrations across C#, JavaScript, and SQL.",
+    sub: "I'm a senior software engineer based in Jacksonville, FL. I work on cloud migrations, legacy modernization, and enterprise integrations across C#, JavaScript, and SQL.",
   },
   experience: [
     {
@@ -110,7 +111,7 @@ export const portfolioData = {
   },
   about: {
     paragraph:
-      "Senior software engineer with 20 years of full-stack development, systems integration, and cloud infrastructure experience. I've led an Azure migration that cut hosting costs, modernized legacy .NET systems, and built Node.js/Node-RED data pipelines and enterprise integrations across ERP, CRM, and GIS systems — with a growing focus on applying AI-assisted workflows to modernize legacy systems and preserve institutional knowledge.",
+      "I'm a senior software engineer with 20 years of full-stack development, systems integration, and cloud infrastructure experience. I've led an Azure migration that cut hosting costs, modernized legacy .NET systems, and built Node.js/Node-RED data pipelines and enterprise integrations across ERP, CRM, and GIS systems — with a growing focus on applying AI-assisted workflows to modernize legacy systems and preserve institutional knowledge.",
   },
   // Future hook: apps list for M2b Apps hub section
   apps: [] as { name: string; href: string; status: string }[],

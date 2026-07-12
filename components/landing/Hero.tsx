@@ -6,6 +6,7 @@ import { portfolioData } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/Button";
 
 export function Hero() {
+  const { name } = portfolioData;
   const { eyebrow, headline, sub } = portfolioData.hero;
 
   return (
@@ -64,14 +65,27 @@ export function Hero() {
           letterSpacing: "var(--tracking-tight)",
           color: "var(--text-primary)",
           maxWidth: "820px",
-          margin: "0 0 var(--space-6)",
+          margin: "0 0 var(--space-4)",
         }}
       >
-        {headline}
+        {name}
         <span className="dc-cursor" style={{ color: "var(--brand)" }}>
           _
         </span>
       </h1>
+      <p
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "var(--text-3xl)",
+          lineHeight: "var(--leading-tight)",
+          letterSpacing: "var(--tracking-tight)",
+          color: "var(--text-primary)",
+          maxWidth: "820px",
+          margin: "0 0 var(--space-6)",
+        }}
+      >
+        {headline}
+      </p>
       <p
         style={{
           fontFamily: "var(--font-sans)",
