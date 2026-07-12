@@ -4,12 +4,12 @@ Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.
 
 ## Status
 
-**[nsoto.dev](https://nsoto.dev) is live** — static landing (nav, hero, work, skills, about, contact, footer). Apps hub (M2b) is next.
+**[nsoto.dev](https://nsoto.dev) is live** — deployed on **Vercel** (static landing: nav, hero, work, skills, about, contact, footer). Production uses **Vercel Web Analytics** and **Speed Insights** for page views and Core Web Vitals. Apps hub (M2b) is next.
 
 | Milestone          | What                                              |
 | ------------------ | ------------------------------------------------- |
 | **M1 + M2** (done) | Next.js scaffold + static landing                 |
-| **M3** (done)      | Deployed to `nsoto.dev` (Vercel, HTTPS)          |
+| **M3** (done)      | Deployed to `nsoto.dev` on Vercel (HTTPS, Web Analytics, Speed Insights) |
 | **M2b**            | Apps hub section (`</ APPS >`, coming soon cards) |
 | **M4 / M5**        | Framer Motion polish; WebGL hero (post-v1)        |
 
@@ -41,6 +41,10 @@ npm run build   # production build
 npm run start   # serve production build
 ```
 
+### Deploy & analytics
+
+Production deploys to **Vercel** at [nsoto.dev](https://nsoto.dev). [`app/layout.tsx`](app/layout.tsx) includes `@vercel/analytics` and `@vercel/speed-insights` — they collect data on Vercel only (inert locally). Enable **Web Analytics** and **Speed Insights** in the Vercel project dashboard after deploy.
+
 ## Stack
 
 
@@ -51,6 +55,7 @@ npm run start   # serve production build
 | Icons     | Lucide (`lucide-react`) + inline SVGs for brand icons   |
 | Motion    | CSS → Framer Motion (M4) → R3F WebGL hero (M5)          |
 | Deploy    | Vercel at [nsoto.dev](https://nsoto.dev) (live)         |
+| Analytics | Vercel Web Analytics + Speed Insights (`app/layout.tsx`) |
 
 
 Subdomain apps are **separate repos** and may use other stacks.
