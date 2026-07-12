@@ -69,9 +69,6 @@ export function Hero() {
         }}
       >
         {name}
-        <span className="dc-cursor" style={{ color: "var(--brand)" }}>
-          _
-        </span>
       </h1>
       <p
         style={{
@@ -85,6 +82,9 @@ export function Hero() {
         }}
       >
         {headline}
+        <span className="dc-cursor" style={{ color: "var(--brand)" }}>
+          _
+        </span>
       </p>
       <p
         style={{
