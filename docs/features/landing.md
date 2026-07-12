@@ -36,7 +36,7 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 - Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy. **Copy:** keep ui-kit draft (`</ COMING SOON. STAY TUNED >`) until post-M1 side-by-side with brand lockup, then refine.
 - Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by [`design-system/ui_kits/portfolio/`](../../design-system/ui_kits/portfolio/).
 - **Apps hub (M2b / P0 #5):** dedicated section (`</ APPS >` eyebrow) listing WIP subdomain apps — coming soon, no live outbound links. Initial entries: `chess.nsoto.dev`, `budget.nsoto.dev`. **Not in the static-bootstrap epic** — ships after M1+M2.
-- **Contact:** port ui-kit form UI; client-only success toast on submit (placeholder — no backend, no third-party form service).
+- **Contact:** ui-kit form UI; submissions delivered via [Web3Forms](https://web3forms.com) (`POST https://api.web3forms.com/submit`) using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (client-side; key aliases inbox email).
 - **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts` (migrated from ui-kit `data.js`); app list added when Apps hub ships.
 - **Tokens:** `@import` [`design-system/tokens/`](../../design-system/tokens/) in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
 - Accessible defaults: focus rings, semantic HTML, `prefers-reduced-motion` respected before/without WebGL.
@@ -47,7 +47,6 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 - Framer Motion on first static ship (M4).
 - Light theme or alternate colorways.
 - CMS / admin for content — copy lives in repo.
-- Real contact form delivery (email API, Formspree, etc.) — placeholder UI only until a later pass.
 - Live subdomain apps linked from the hub — all WIP at v1.
 - Treating the design-system ui kit as immutable — it is a **draft** starting point.
 
@@ -56,7 +55,6 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 - R3F cursor-reactive background (M5).
 - Live subdomain links when child apps ship (P1 #2).
 - Per-subdomain cards with OG previews.
-- Real contact delivery (third-party or API).
 - Blog or writing section (P2).
 
 ## Code paths
@@ -67,6 +65,7 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 | Landing sections | `components/landing/` — Hero, Nav, Experience, Skills, About, Contact, Footer; Apps (M2b) |
 | Shared UI | `components/ui/` — ported from `design-system/components/` |
 | Content | `lib/portfolio-data.ts` |
+| Contact delivery | `components/landing/Contact.tsx` → Web3Forms; env `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) |
 | Hero shell + tier gate (M5) | `components/hero/` |
 | R3F scene (M5) | `components/hero/webgl/` |
 | Probe util (M5) | Co-located with tier gate or `lib/hero-tier/` |

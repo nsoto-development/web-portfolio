@@ -4,7 +4,7 @@ Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.
 
 ## Status
 
-Static landing **M1 + M2** is implemented locally (nav, hero, work, skills, about, contact, footer). Not deployed yet.
+Static landing **M1 + M2** is implemented locally (nav, hero, work, skills, about, contact, footer). 
 
 
 | Milestone          | What                                              |
@@ -25,6 +25,17 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Environment
+
+Contact form delivery uses [Web3Forms](https://web3forms.com). Copy the example env file and set your access key:
+
+```bash
+cp .env.example .env.local
+# edit .env.local — set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+```
+
+Restart `npm run dev` after changing env vars.
 
 ```bash
 npm run lint    # ESLint
