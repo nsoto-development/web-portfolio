@@ -129,8 +129,8 @@ Two tiers only:
 
 | # | Milestone | Status | Deliverables |
 |---|-----------|--------|--------------|
-| M1 | Static hero shell | Planned | Scaffold + hero — detail in [`static-hub-bootstrap` epic](../epics/static-hub-bootstrap.md) |
-| M2 | Portfolio sections | Planned | Nav, work, skills, about, contact, footer — detail in epic |
+| M1 | Static hero shell | Done | Scaffold + hero — detail in [`static-hub-bootstrap` epic](../epics/static-hub-bootstrap.md) |
+| M2 | Portfolio sections | Done | Nav, work, skills, about, contact, footer — detail in epic |
 | M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) |
 | M3 | Deploy `nsoto.dev` | Planned | Vercel (or equivalent), domain, HTTPS, OG from brand lockup (P0 #4) — **v1 launch** |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
