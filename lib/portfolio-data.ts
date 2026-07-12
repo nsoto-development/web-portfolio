@@ -34,9 +34,9 @@ export const portfolioData = {
     email: "nsoto.development@gmail.com",
   },
   hero: {
-    eyebrow: "</ MORE TO COME. STAY TUNED >",
-    headline: "20 years of full-stack engineering.",
-    sub: "I'm a senior software engineer based in Jacksonville, FL. I work on cloud migrations, legacy modernization, and enterprise integrations across C#, JavaScript, and SQL.",
+    eyebrow: "</ APPS COMING SOON. STAY TUNED >",
+    headline: "I modernize legacy systems and keep mission-critical integrations running.",
+    sub: "Senior software engineer in Jacksonville, FL — 20 years across C#, JavaScript, and SQL Server. Cloud migrations, enterprise integrations, and the inherited codebases teams still depend on.",
   },
   experience: [
     {
@@ -111,7 +111,7 @@ export const portfolioData = {
   },
   about: {
     paragraph:
-      "I'm a senior software engineer with 20 years of full-stack development, systems integration, and cloud infrastructure experience. I've led an Azure migration that cut hosting costs, modernized legacy .NET systems, and built Node.js/Node-RED data pipelines and enterprise integrations across ERP, CRM, and GIS systems — with a growing focus on applying AI-assisted workflows to modernize legacy systems and preserve institutional knowledge.",
+      "I've built centralized cloud platforms, federal data-visualization tools, and the ERP/CRM pipelines that keep operations stable. At Sedgwick I maintain .NET ingestion between XactAnalysis, Cotality, and Salesforce, and configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect retired. Before that I led an Azure migration that cut hosting costs 15–20% and improved performance. I mentor when I can and care about software teams can actually maintain.",
   },
   // Future hook: apps list for M2b Apps hub section
   apps: [] as { name: string; href: string; status: string }[],

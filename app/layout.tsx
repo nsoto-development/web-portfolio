@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nsoto.dev"),
   title: "Nelson Soto — nsoto.dev",
   description:
-    "My portfolio hub — full-stack engineering, cloud migrations, and enterprise integrations.",
+    "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
   icons: {
     icon: [
       { url: "/favicon/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nelson Soto — nsoto.dev",
     description:
-      "My portfolio hub — full-stack engineering, cloud migrations, and enterprise integrations.",
+      "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
     url: "https://nsoto.dev",
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nelson Soto — nsoto.dev",
     description:
-      "My portfolio hub — full-stack engineering, cloud migrations, and enterprise integrations.",
+      "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };
