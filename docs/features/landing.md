@@ -8,9 +8,7 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps hub). P1 **[feature] #1** WebGL → **M5**; **[debt] #4** design harvest → **M4**.
 
-**Active epic (execution SSOT):** [`docs/epics/static-hub-bootstrap.md`](../epics/static-hub-bootstrap.md) — M1+M2 implementation detail until P0 #1–#3 are Done.
-
-**v1 launch path:** static landing (M1+M2 epic) → Apps hub (M2b) → M3 deploy. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). Apps hub (M2b / P0 #5) is next on the live site. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3).
 
@@ -28,7 +26,7 @@ Hub repo only — subdomain apps (e.g. `chess.nsoto.dev`) are separate repos; do
 
 Production code references **semantic tokens** (`--brand`, `--bg-canvas`, etc.) — do not duplicate palette values. When the app diverges from the draft system, update tokens in one place and note here.
 
-Deploy target: Vercel (or equivalent) at `nsoto.dev`.
+Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 
 ## v1 scope (agreed)
 
@@ -72,7 +70,7 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 | Theme tokens | `app/globals.css` `@import` → `design-system/tokens/`; `tailwind.config.ts` extends CSS vars |
 | Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`); `public/og/` (OG preview image) |
 | Design reference | `design-system/` |
-| **M1+M2 implementation detail** | [`docs/epics/static-hub-bootstrap.md`](../epics/static-hub-bootstrap.md) |
+| Meta / OG / favicon | `app/layout.tsx`; `public/favicon/`; `public/og/nsoto-dev-og.png` |
 
 ## Visual / motion spec
 
@@ -128,14 +126,29 @@ Two tiers only:
 
 | # | Milestone | Status | Deliverables |
 |---|-----------|--------|--------------|
-| M1 | Static hero shell | Done | Scaffold + hero — detail in [`static-hub-bootstrap` epic](../epics/static-hub-bootstrap.md) |
-| M2 | Portfolio sections | Done | Nav, work, skills, about, contact, footer — detail in epic |
-| M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) |
-| M3 | Deploy `nsoto.dev` | Planned | Vercel (or equivalent), domain, HTTPS, favicon wired, OG from brand lockup; `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in deploy env (P0 #4) — **v1 launch** |
+| M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
+| M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
+| M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) — **next** |
+| M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
 **Quick gate:** each implementation thread names **one milestone** only. M5 does not pull M4 polish.
+
+## M3 — Deploy nsoto.dev
+
+Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (static landing; Apps hub is M2b / P0 #5).
+
+### Shipped
+
+| Item | Location |
+|------|----------|
+| Production deploy | Vercel → `nsoto.dev` (HTTPS) |
+| `metadataBase`, title, description | `app/layout.tsx` |
+| Open Graph + Twitter cards | `app/layout.tsx` → `public/og/nsoto-dev-og.png` |
+| Favicon pack + web manifest | `public/favicon/`; wired in `layout.tsx` |
+| Contact delivery | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env |
+| Verify pipeline | `.cursor/nudl.json` — `npm run lint`, `npm run build` |
 
 ## Tests / verify
 
@@ -146,6 +159,11 @@ Add lint/build/test commands to [`.cursor/nudl.json`](../../.cursor/nudl.json) `
 - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` set in `.env.local` (local) or Vercel env (deploy).
 - Submit form → success toast, form clears, message arrives in inbox.
 - Missing/invalid key → danger toast; form data retained.
+
+**M3 deploy (manual):**
+
+- `npm run lint` and `npm run build` pass before merge.
+- Production ([nsoto.dev](https://nsoto.dev)): HTTPS, OG image, contact form with Vercel env set.
 
 **M5 (manual until verify pipeline exists):**
 
