@@ -7,10 +7,10 @@ const path = "/case-studies/design-system-consumption";
 export const metadata: Metadata = {
   title: "Architecture at a crossroads — nsoto.dev",
   description:
-    "How I audited design-system drift across web-portfolio and ns-chess, mapped consumption options, and chose a path toward versioned shared UI without copy-paste.",
+    "Bootstrap vendoring, consolidation options, and the private-vs-public design-system evaluation that led to a public canonical repo with versioned @nsoto packages.",
   openGraph: {
     title: "Architecture at a crossroads",
-    description: "Design system consumption across public repos — constraints, options, and direction.",
+    description: "Bootstrap, consolidation, and the evaluation that chose a public design-system repo.",
     url: `https://nsoto.dev${path}`,
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Architecture at a crossroads",
-    description: "Design system consumption across public repos — constraints, options, and direction.",
+    description: "Bootstrap, consolidation, and the evaluation that chose a public design-system repo.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };

@@ -23,9 +23,10 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 
 - Feature doc SSOT (this file) + roadmap line.
 - First case study at `/case-studies/design-system-consumption` — self-contained narrative (no dependency on private DS repo links).
-- Sections: hook, problem, constraints, options matrix, decision direction, evidence, learnings, status (lifecycle callout).
+- Sections: hook, problem, constraints, options matrix, **evaluation** (private vs public repo), decision, evidence, learnings, status (lifecycle callout).
 - `lifecycle: 'architecture'` on v1 publish; status explains planned revisions.
-- Discovery from landing (M3) — light touch; no top-level nav item before Apps hub ships.
+- **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, apps stub). Case Studies links to `/case-studies` index; Apps links to `/apps` coming-soon stub until P0 #5 M2b ships properly.
+- **Landing callout (M3):** secondary discovery in About or Work — complements nav, does not replace it.
 - Content SSOT for page body: `lib/case-studies/design-system-consumption.ts` (ported from [Appendix A](#appendix-a--case-study-copy-v1)).
 
 ## Non-goals (v1)
@@ -33,7 +34,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - DS consumption migration implementation (P1 #4 — separate thread).
 - MDX / blog engine / CMS.
 - Additional case studies beyond design-system consumption.
-- Changing P0 #5 Apps hub.
+- **Full** P0 #5 Apps hub (landing `</ APPS >` section, app cards) — M3 may ship a **stub** `/apps` page only; proper M2b is a separate thread.
 - Publishing or restructuring the design-system repo.
 
 ## Future hooks
@@ -52,7 +53,10 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 | Layout + sections | `components/case-studies/CaseStudyLayout.tsx`, `CaseStudySection.tsx`, `OptionsTable.tsx`, `CaseStudyStatus.tsx` |
 | Route | `app/case-studies/design-system-consumption/page.tsx` |
 | Prose styles | `app/globals.css` (`.case-study-prose`) |
-| Discovery (M3) | `lib/portfolio-data.ts` (`caseStudies`); callout in `components/landing/About.tsx` or `Experience.tsx` |
+| Site nav (M3) | `lib/portfolio-data.ts` (`nav`, `caseStudies`); shared header component; `components/landing/Nav.tsx` or extracted `SiteNav` |
+| Case studies index (M3) | `app/case-studies/page.tsx` — lists published studies |
+| Apps stub (M3) | `app/apps/page.tsx` — coming soon; satisfies Apps nav target until landing M2b |
+| Discovery callout (M3) | `components/landing/About.tsx` or `Experience.tsx` |
 | Related debt | P1 #4 design-system harvest → landing M4 |
 
 ## Content contract (M2)
@@ -84,7 +88,7 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 |---|-----------|--------|--------------|
 | M1 | Docs + roadmap | **Done** | This feature doc; P1 #6 on roadmap; copy appendix for M2 |
 | M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
-| M3 | Discovery + polish | Planned | Landing callout; `portfolio-data` caseStudies; README blurb |
+| M3 | Discovery + nav | Planned | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
 
@@ -92,6 +96,7 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 
 - `npm run lint` and `npm run build` pass after M2.
 - Manual: `/case-studies/design-system-consumption` readable at mobile width; status callout visible; external links work.
+- Manual (M3): Case Studies and Apps visible in header on `/`, `/case-studies/*`, `/apps`; mobile nav includes both; callout on landing links to first case study.
 
 ---
 
@@ -103,43 +108,43 @@ Port into `lib/case-studies/design-system-consumption.ts`. Eyebrows use mono `</
 
 - **slug:** `design-system-consumption`
 - **title:** Architecture at a crossroads
-- **subtitle:** Shared UI across public repos without the copy-paste tax
+- **subtitle:** From deliberate bootstrap to a single consumption model
 - **lifecycle:** `architecture`
 - **lastUpdated:** set at M2 ship date (ISO string)
 
 ### Status callout (render prominently)
 
 - **phase label:** Architecture
-- **headline:** Decision recorded — implementation tracked separately
-- **body:** This case study documents the problem, constraints, and options for consuming a design system across multiple public apps. Consumption migration is planned and will be executed in a separate effort; this page will be updated as that work is specified and shipped.
+- **headline:** Evaluation complete — public design-system repo chosen
+- **body:** Bootstrap vendoring served its purpose; consolidation into versioned `@nsoto/*` packages is the direction. After scoping two repo-visibility architectures under the same constraints, the choice is a public canonical design-system repo — the private-workshop alternative was viable but costlier to operate. Implementation and repo prep ship separately; this page updates as milestones land.
 
 ### Section: Hook
 
 **Eyebrow:** `</ CONTEXT >`
 
-**Heading:** One design system. Three copies.
+**Heading:** Bootstrap first, consolidate next
 
 **Body:**
 
 nsoto.dev is a portfolio hub built in Next.js. ns-chess is a public Vite app — a hand-built React board with a chess.js rules engine. Both share one visual language: true-black canvas, azure brand accent, monospace headings, terminal voice.
 
-Both started by copy-pasting an entire `design-system/` folder from a canonical repo. That felt fast. It did not scale. I had one source of truth and two stale snapshots — plus drift between what the apps actually run and what the vendored folder claims to be.
+To ship each app quickly on a different stack, I deliberately vendored the full `design-system/` tree into each public repo. That was a conscious bootstrap tactic — shared tokens and components on day one, package infrastructure deferred. Consolidation into a single consumption model was always the next step; this case study documents that transition while the repos still carry the interim copies.
 
 ### Section: Problem
 
 **Eyebrow:** `</ AUDIT >`
 
-**Heading:** Vendoring the whole repo is not consuming it
+**Heading:** What the bootstrap phase surfaces
 
 **Body:**
 
-The audit surfaced three structural problems.
+The interim model did its job — both apps launched with a coherent brand and a shared component baseline. As each codebase matured, three gaps clarified why consolidation is the right next move. These are not oversights; they are the expected cost of optimizing for speed first.
 
-**Full-tree copy-paste.** Each public app carried guidelines, ui_kits, component sources, and tooling artifacts — most of it never imported at build time. Dead weight and a second source of truth.
+**Full-tree vendoring.** Each public app still carries guidelines, ui_kits, component sources, and tooling artifacts — most of it never imported at build time. Acceptable for bootstrap; costly to maintain across repos long term.
 
-**Two integration models, one brand.** web-portfolio imports **tokens only** in `globals.css` and hand-ports components into `components/ui/` and `components/landing/`. ns-chess imports `styles.css` and runs design-system `.jsx` through a `@ds` alias and thin wrappers in `src/components/ui/`. Same primitives; different wiring.
+**Diverging integration paths.** web-portfolio imports **tokens only** in `globals.css` and hand-ports components into `components/ui/` and `components/landing/`. ns-chess imports `styles.css` and runs design-system `.jsx` through a `@ds` alias and thin wrappers in `src/components/ui/`. Same primitives; different wiring — natural when apps evolve on separate timelines.
 
-**Silent drift.** The live portfolio `Nav.tsx` shipped responsive mobile nav. The vendored `ui_kits/portfolio/Nav.jsx` in both app repos did not. Copy in `lib/portfolio-data.ts` moved forward; vendored `data.js` did not. Nothing pinned a version — no way to answer which design-system commit an app was on.
+**Unpinned snapshots.** The live portfolio `Nav.tsx` shipped responsive mobile nav while vendored `ui_kits/portfolio/Nav.jsx` lagged. Copy in `lib/portfolio-data.ts` moved forward; vendored `data.js` did not. Without version pins, there is no authoritative answer for which design-system revision an app reflects — fine during bootstrap, blocking for a single source of truth.
 
 ### Section: Constraints
 
@@ -155,23 +160,30 @@ The audit surfaced three structural problems.
 
 **Heading:** Five paths, one requirement
 
-**Body:** Public app repos must support `git clone` → `npm install` → `npm run dev` with **no private registry auth**. The full design-system repo can stay private; the **runtime dependency** must be publicly resolvable. See options matrix (Appendix D).
+**Body:** Public app repos must support `git clone` → `npm install` → `npm run dev` with **no private registry auth**. That requirement narrows **runtime** distribution — but a second question remained: should the design-system **repo** itself stay private or become a public portfolio artifact? The matrix below covers runtime paths; the evaluation section documents how repo visibility was weighed.
+
+### Section: Evaluation
+
+**Eyebrow:** `</ EVALUATION >`
+
+**Heading:** Two architectures, fully scoped
+
+**Body:** Opens with 3-line executive summary (verdict / what was compared / why public won); Path A and Path B specs; operating-cost table; see `lib/case-studies/design-system-consumption.ts`
 
 ### Section: Decision
 
 **Eyebrow:** `</ DIRECTION >`
 
-**Heading:** Private workshop, public runtime
+**Heading:** What ships next
 
 **Body:**
 
-**Leading direction:** keep the design-system repo private as the workshop (guidelines, ui_kits, prompts, prototypes). Publish or vendor a **runtime slice** — `@nsoto/tokens` and `@nsoto/ui` on public npm, or a committed vendor directory — so public apps declare versioned dependencies like any other package.
+1. Prep canonical repo (scrub `uploads/`, secrets audit, presentable workshop content)
+2. Extract and publish `@nsoto/tokens` + `@nsoto/ui` (CI on tag)
+3. Migrate consumers — ns-chess, then web-portfolio; delete vendored trees
+4. README cross-links; update this case study per phase
 
-**Alternative under evaluation:** make the design-system repo public as its own portfolio project; same package consumption model, but guidelines and ui_kits become part of what is showcased.
-
-**App ownership unchanged:** Next.js adapters and landing sections stay in web-portfolio. Game UI stays in ns-chess. Content stays in `lib/portfolio-data.ts` — not in the design system.
-
-This is an architecture-phase decision. Migration phases, package setup, and consumer refactors are tracked under design-system harvest (P1 #4).
+App boundaries unchanged. Migration execution = design-system harvest (product backlog); lifecycle moves to `planned` when phases are scheduled.
 
 ### Section: Evidence
 
@@ -181,22 +193,22 @@ This is an architecture-phase decision. Migration phases, package setup, and con
 
 **Body:**
 
-- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via `globals.css`; manual TSX ports.
+- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via `globals.css`; manual TSX ports; vendored tree still present pre-migration.
 - [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; `@ds` wrappers; oxlint `no-restricted-imports`; integration doc at `docs/design/system-integration.md`.
-
-ns-chess is further along on consumption discipline. web-portfolio carries more dead vendored weight. Both need to converge on versioned runtime deps — not folder copies.
+- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with `packages/tokens` and `packages/ui` published as `@nsoto/*`.
 
 ### Section: Learnings
 
 **Eyebrow:** `</ TAKEAWAYS >`
 
-**Heading:** What I would do differently from day one
+**Heading:** Principles for consolidation
 
 **Bullets:**
 
-1. **Vendoring a folder ≠ consuming a design system.** Ship tokens and built primitives; keep specs and ui_kits in the workshop repo.
-2. **Public apps need publicly resolvable runtime.** Private-only packages fail the clone-and-run bar unless every reader has registry auth.
-3. **Framework adapters belong in apps; primitives belong in packages.** Next.js `"use client"` and `next/image` stay in web-portfolio — not in shared component source.
+1. **Spec both paths before you choose.** Viable architectures can differ mainly in operational cost — document each fully, then decide what you are willing to maintain.
+2. **One repo, many consumers.** Folder vendoring was bootstrap; package consumption is the target. With a public canonical repo, guidelines and ui_kits are showcase assets — not runtime imports in apps.
+3. **Public apps need publicly resolvable runtime.** Private-only packages fail the clone-and-run bar unless every reader has registry auth.
+4. **Framework adapters belong in apps; primitives belong in packages.** Next.js `"use client"` and `next/image` stay in web-portfolio — not in shared component source.
 
 ---
 
@@ -258,9 +270,9 @@ export type CaseStudy = CaseStudyMeta & {
 |-------|-------|
 | **Route** | `/case-studies/design-system-consumption` |
 | **title** | Architecture at a crossroads — nsoto.dev |
-| **description** | How I audited design-system drift across web-portfolio and ns-chess, mapped consumption options, and chose a path toward versioned shared UI without copy-paste. |
+| **description** | Bootstrap vendoring, consolidation options, and the private-vs-public design-system evaluation that led to a public canonical repo with versioned @nsoto packages. |
 | **og:title** | Architecture at a crossroads |
-| **og:description** | Design system consumption across public repos — constraints, options, and direction. |
+| **og:description** | Bootstrap, consolidation, and the evaluation that chose a public design-system repo. |
 | **og:url** | `https://nsoto.dev/case-studies/design-system-consumption` |
 
 ## Appendix D — Tables (constraints + options matrix)
@@ -269,19 +281,19 @@ export type CaseStudy = CaseStudyMeta & {
 
 | Constraint | Implication |
 |------------|-------------|
-| `design-system` is private | Guidelines, ui_kits, prompts stay in workshop repo |
-| `web-portfolio` and `ns-chess` are public | Anyone can clone; narrative must be self-contained on site |
-| Readers must run apps without DS access | Runtime deps: public npm or committed vendor slice — not private registry only |
+| Consumer repos are public | Anyone can clone apps; dependencies must resolve without private auth |
+| Runtime deps publicly reachable | Public `@nsoto/*` on npm — not private registry or submodule-only access |
+| DS repo visibility is a product choice | Private workshop vs public portfolio repo — same consumer end state, different showcase depth |
 | Next.js ≠ Vite | Shared primitives; framework adapters stay per app |
-| Sites are live | Shipped CSS/JS is inspectable; private DS protects process, not deployed aesthetic |
+| Sites are live | Shipped CSS/JS is inspectable; repo privacy does not hide deployed aesthetics |
 
 ### Options matrix
 
 | Option | Pros | Cons | Verdict |
 |--------|------|------|---------|
-| Keep copy-pasting full repo | Zero setup | Guaranteed drift; dead files in public repos | Retire |
+| Keep copy-pasting full repo | Fastest path to a shared baseline | Drift across repos; workshop artifacts in public trees | Bootstrap complete — migrate |
 | Private npm packages only | Corporate-clean versioning | `npm install` fails for readers without auth | Fails clone-and-run bar |
-| Public `@nsoto/tokens` + `@nsoto/ui` | Versioned; reviewer-friendly | Component source on public npm | Leading direction |
-| Committed vendor slice | No registry; works offline in git | Manual sync until packages exist | Valid interim |
+| Public `@nsoto/tokens` + `@nsoto/ui` | Versioned; reviewer-friendly; works with public or private DS source | Component source on public npm | Chosen consumption model |
+| Committed vendor slice | No registry; works offline in git | Manual sync; weaker fit once DS repo is public | Valid interim only |
 | Private monorepo | Simplest internal workflow | Loses separate public app repos | Optional if repo model changes |
-| Public design-system repo | Full system showcase; same npm model | All workshop content public | Alternative under evaluation |
+| Public design-system repo | Full system showcase; one SSOT; same npm model | Must scrub sensitive files; all workshop content public | Chosen repo model |

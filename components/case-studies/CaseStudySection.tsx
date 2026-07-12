@@ -48,6 +48,52 @@ function CaseStudyProse({ body }: { body: string }) {
             </ul>
           );
         }
+        if (trimmed === "---") {
+          return <hr key={i} className="case-study-hr" />;
+        }
+        if (trimmed.startsWith("|")) {
+          const rows = trimmed
+            .split("\n")
+            .map((line) => line.trim())
+            .filter((line) => line.startsWith("|") && !/^\|[\s\-:|]+\|$/.test(line));
+          if (rows.length > 0) {
+            const [header, ...bodyRows] = rows;
+            const parseRow = (row: string) =>
+              row
+                .split("|")
+                .slice(1, -1)
+                .map((cell) => cell.trim());
+            const headers = parseRow(header);
+            return (
+              <div key={i} className="case-study-table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      {headers.map((h) => (
+                        <th key={h} scope="col">
+                          {parseInline(h)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bodyRows.map((row) => {
+                      const cells = parseRow(row);
+                      return (
+                        <tr key={row}>
+                          <th scope="row">{parseInline(cells[0] ?? "")}</th>
+                          {cells.slice(1).map((cell) => (
+                            <td key={cell}>{parseInline(cell)}</td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+        }
         return <p key={i}>{parseInline(trimmed)}</p>;
       })}
     </div>
