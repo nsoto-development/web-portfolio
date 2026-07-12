@@ -8,7 +8,7 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps hub). P1 **[feature] #1** WebGL → **M5**; **[debt] #4** design harvest → **M4**.
 
-**v1 launch path:** static landing (M1+M2 epic) → Apps hub (M2b) → M3 deploy. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). Apps hub (M2b / P0 #5) is next on the live site. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3).
 
@@ -26,7 +26,7 @@ Hub repo only — subdomain apps (e.g. `chess.nsoto.dev`) are separate repos; do
 
 Production code references **semantic tokens** (`--brand`, `--bg-canvas`, etc.) — do not duplicate palette values. When the app diverges from the draft system, update tokens in one place and note here.
 
-Deploy target: Vercel (or equivalent) at `nsoto.dev`.
+Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 
 ## v1 scope (agreed)
 
@@ -128,8 +128,8 @@ Two tiers only:
 |---|-----------|--------|--------------|
 | M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
-| M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) |
-| M3 | Deploy `nsoto.dev` | In progress | Pre-deploy shipped: favicon, OG, meta in `layout.tsx`. Remaining: Vercel, domain/DNS, env, production smoke test — [M3 runbook](#m3--deploy-nsotodev) (P0 #4) — **v1 launch** |
+| M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) — **next** |
+| M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
@@ -137,28 +137,18 @@ Two tiers only:
 
 ## M3 — Deploy nsoto.dev
 
-Tracks P0 **[chore] #4**. **v1 launch** requires M2b (Apps hub) plus this deploy pass.
+Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (static landing; Apps hub is M2b / P0 #5).
 
-### In repo (shipped)
+### Shipped
 
 | Item | Location |
 |------|----------|
+| Production deploy | Vercel → `nsoto.dev` (HTTPS) |
 | `metadataBase`, title, description | `app/layout.tsx` |
 | Open Graph + Twitter cards | `app/layout.tsx` → `public/og/nsoto-dev-og.png` |
 | Favicon pack + web manifest | `public/favicon/`; wired in `layout.tsx` |
-| Contact env contract | `.env.example` → `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` |
+| Contact delivery | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env |
 | Verify pipeline | `.cursor/nudl.json` — `npm run lint`, `npm run build` |
-
-### Operator checklist (production)
-
-1. **Prerequisite:** M2b Apps hub merged (v1 launch bar per [`mvp-scope.md`](../mvp-scope.md)).
-2. Create a **Vercel** project; import this repo; use default Next.js settings.
-3. Set **`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`** in Vercel env (Production; Preview optional for form smoke tests).
-4. Add custom domain **`nsoto.dev`** (and `www` → apex redirect if desired).
-5. Configure **DNS** at registrar per Vercel instructions; wait for HTTPS cert.
-6. **Smoke test on production:** landing loads; favicon; OG preview (iMessage or [opengraph.xyz](https://www.opengraph.xyz/)); contact form delivers to inbox.
-
-**Non-goals for M3:** Framer Motion (M4), WebGL hero (M5), live subdomain app links.
 
 ## Tests / verify
 
@@ -172,8 +162,8 @@ Add lint/build/test commands to [`.cursor/nudl.json`](../../.cursor/nudl.json) `
 
 **M3 deploy (manual):**
 
-- `npm run lint` and `npm run build` pass locally before merge.
-- Production: HTTPS at `https://nsoto.dev`; OG image resolves; contact form delivers with Vercel env set.
+- `npm run lint` and `npm run build` pass before merge.
+- Production ([nsoto.dev](https://nsoto.dev)): HTTPS, OG image, contact form with Vercel env set.
 
 **M5 (manual until verify pipeline exists):**
 

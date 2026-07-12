@@ -22,15 +22,13 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 
 
-- **Current focus:** P0 #5 Apps hub (M2b), then P0 #4 production deploy (M3) — see [`landing.md` M3 runbook](features/landing.md#m3--deploy-nsotodev)
+- **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **v1 launch path:** static landing (M1+M2, Done) → Apps hub (P0 #5) → M3 deploy (P0 #4) — see [`mvp-scope.md`](mvp-scope.md)
+- **Current focus:** P0 #5 Apps hub (M2b) — `</ APPS >` section not yet on site
+
+- **Shipped:** M1+M2 static landing + M3 deploy (Vercel, HTTPS, favicon, OG, Web3Forms)
 
 - **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3)
-
-- **Pre-launch / MVP:** see [`mvp-scope.md`](mvp-scope.md)
-
-- **Done recently:** P0 #1–#3 (M1+M2 static landing); M3 pre-deploy in repo (favicon, OG meta, Web3Forms); `static-hub-bootstrap` epic closed
 
 
 
@@ -72,9 +70,9 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 3. ~~`[feature]` **Portfolio sections**~~ — **Done** — nav, work, skills, about, contact, footer. → landing **M2**
 
-4. `[chore]` **Deploy `nsoto.dev`** — Vercel project, domain/DNS, HTTPS; pre-deploy assets shipped (favicon, OG, meta). Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env; production contact smoke test. → landing **M3** ([runbook](features/landing.md#m3--deploy-nsotodev))
+4. ~~`[chore]` **Deploy `nsoto.dev`**~~ — **Done** — live at [nsoto.dev](https://nsoto.dev) (Vercel, HTTPS, favicon, OG, Web3Forms). → landing **M3**
 
-5. `[feature]` **Apps hub section** — `</ APPS >` eyebrow; `chess.nsoto.dev`, `budget.nsoto.dev` coming soon (no live links). → landing **M2b** (after static bootstrap)
+5. `[feature]` **Apps hub section** — `</ APPS >` eyebrow; `chess.nsoto.dev`, `budget.nsoto.dev` coming soon (no live links). → landing **M2b** (**next**)
 
 
 

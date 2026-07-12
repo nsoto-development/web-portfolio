@@ -6,7 +6,7 @@
 
 
 
-**nsoto.dev** is a portfolio **hub** linking to subdomain projects (e.g. `chess.nsoto.dev`). The hub is built in **Next.js** with [`design-system/`](../design-system/) as the aesthetic baseline: true-black canvas, azure brand accent, terminal voice. **Static landing ships first**; UI motion (Framer) and WebGL hero layer on later. **v1 launch** = full static page (including Apps hub) **deployed** at `nsoto.dev` with HTTPS and sane meta/OG.
+**nsoto.dev** is a portfolio **hub** linking to subdomain projects (e.g. `chess.nsoto.dev`). The hub is built in **Next.js** with [`design-system/`](../design-system/) as the aesthetic baseline: true-black canvas, azure brand accent, terminal voice. **Static landing is live** at [nsoto.dev](https://nsoto.dev); Apps hub and UI/WebGL layers ship next.
 
 
 
@@ -36,7 +36,7 @@
 
 | **0 — Design system** | Now | Tokens, components, ui-kit prototype ([`design-system/`](../design-system/)) |
 
-| **1 — Static landing** | M1+M2 (Done) | Next.js page matching ui-kit; CSS-only motion |
+| **1 — Static landing** | M1+M2+M3 (Done, live) | Next.js page at [nsoto.dev](https://nsoto.dev); CSS-only motion |
 
 | **2 — UI motion** | M4 | Framer Motion fades/hovers |
 
@@ -52,17 +52,17 @@
 
 
 
-1. **Live at `nsoto.dev`** — deployed hub site with sane meta/OG and HTTPS.
+1. **Live at `nsoto.dev`** — **Done** — static landing deployed with HTTPS, meta/OG, and favicon.
 
 2. **Visual match** — dark landing consistent with brand lockup and [`design-system/`](../design-system/) tokens (see Visual baseline below).
 
 3. **Hero** — logo mark, `nsoto.dev`, terminal eyebrow, headline + subcopy; static-first (WebGL may follow in M5).
 
-4. **Portfolio content** — work/experience, skills, about, contact (copy from resume; layout guided by design-system ui kit). Contact form delivers to inbox via [Web3Forms](https://web3forms.com) (`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`). Required for first static ship (M1+M2 epic); delivery wired post-M2.
+4. **Portfolio content** — work/experience, skills, about, contact (copy from resume; layout guided by design-system ui kit). Contact form delivers to inbox via [Web3Forms](https://web3forms.com) (`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`).
 
-5. **Apps hub** — `</ APPS >` section listing WIP subdomain apps (coming soon, no live links). Required for **v1 launch** (P0 #5 / landing M2b) — not in the static-bootstrap epic.
+5. **Apps hub** — `</ APPS >` section listing WIP subdomain apps (coming soon, no live links). **Not yet shipped** (P0 #5 / landing M2b).
 
-6. **Subdomain hub** — coming soon cards at v1 launch; live outbound links when child apps ship (P1).
+6. **Subdomain hub** — coming soon cards when Apps hub ships; live outbound links when child apps ship (P1).
 
 7. **Motion / accessibility** — `prefers-reduced-motion` honored; CSS motion OK for first static ship; no motion-only critical content.
 
