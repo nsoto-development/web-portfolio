@@ -28,7 +28,7 @@ Tracks P0 **[chore] #1**, **[feature] #2**, **[feature] #3** on [`docs/roadmap.m
 - Port ui-kit sections → `components/landing/`: Nav, Hero, Experience, Skills, About, Contact, Footer
 - `lucide-react` for icons (replaces ui-kit `icons.jsx`)
 - Logo assets → `public/logo/` from `design-system/assets/logo/`
-- Contact: client-only success toast on submit — no backend, no third-party form service
+- Contact: M2 shipped placeholder UI (success toast only); **post-M2** wired to [Web3Forms](https://web3forms.com) — see [`landing.md`](../features/landing.md#code-paths)
 - [`.cursor/nudl.json`](../../.cursor/nudl.json) `verify.commands`: `npm run lint`, `npm run build`
 - Light a11y: semantic landmarks (`header`, `main`, `footer`, `section`); focus rings via DS tokens; `prefers-reduced-motion` disables CSS animations (e.g. blinking cursor)
 
@@ -40,7 +40,6 @@ Tracks P0 **[chore] #1**, **[feature] #2**, **[feature] #3** on [`docs/roadmap.m
 - Apps hub section (P0 #5 / landing M2b — separate pass)
 - Framer Motion dependency (landing M4)
 - WebGL / React Three Fiber (landing M5)
-- Real contact form delivery
 - Rewriting inline styles to Tailwind utility classes
 - Updating the ui-kit HTML prototype (read-only reference)
 - Light theme or rebrand

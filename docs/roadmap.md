@@ -30,7 +30,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Pre-launch / MVP:** see [`mvp-scope.md`](mvp-scope.md)
 
-- **Done recently:** static hub bootstrap (M1+M2) — Next.js app, token wiring, full static landing; `npm run lint` + `npm run build` pass
+- **Done recently:** Web3Forms contact delivery (post-M2); static hub bootstrap (M1+M2) — Next.js app, token wiring, full static landing; `npm run lint` + `npm run build` pass
 
 
 
@@ -72,7 +72,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 3. `[feature]` **Portfolio sections** — nav, work, skills, about, contact, footer. → landing **M2** (epic)
 
-4. `[chore]` **Deploy `nsoto.dev`** — production deploy, domain, OG image from brand lockup. → landing **M3**
+4. `[chore]` **Deploy `nsoto.dev`** — production deploy, domain, OG image from brand lockup; `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel env. → landing **M3**
 
 5. `[feature]` **Apps hub section** — `</ APPS >` eyebrow; `chess.nsoto.dev`, `budget.nsoto.dev` coming soon (no live links). → landing **M2b** (after static bootstrap)
 
