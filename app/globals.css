@@ -249,3 +249,34 @@ a:hover {
   bottom: max(24px, env(safe-area-inset-bottom, 0px));
   right: max(24px, env(safe-area-inset-right, 0px));
 }
+
+.ui-tabs {
+  display: inline-flex;
+  gap: var(--space-1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+
+.ui-tabs__tab {
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  transition: background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.ui-tabs__tab--active {
+  background-color: var(--brand);
+  color: var(--text-on-brand);
+}

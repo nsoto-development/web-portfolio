@@ -4,7 +4,7 @@ const toneStyle = {
   brand: {
     color: "var(--brand)",
     background: "var(--brand-wash)",
-    border: "1px solid rgba(34,211,238,0.3)",
+    border: "1px solid var(--border-brand-subtle)",
   },
   neutral: {
     color: "var(--text-secondary)",

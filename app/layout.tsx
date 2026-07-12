@@ -5,12 +5,21 @@ export const metadata: Metadata = {
   title: "Nelson Soto — nsoto.dev",
   description:
     "My portfolio hub — full-stack engineering, cloud migrations, and enterprise integrations.",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

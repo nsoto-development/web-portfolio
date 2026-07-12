@@ -57,6 +57,7 @@
   --border-default: rgba(247, 250, 251, 0.14);
   --border-strong: rgba(247, 250, 251, 0.24);
   --border-brand: rgba(10, 158, 250, 0.5);
+  --border-brand-subtle: rgba(10, 158, 250, 0.3);
 
   --text-primary: var(--white);
   --text-secondary: var(--gray-300);

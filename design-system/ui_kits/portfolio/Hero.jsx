@@ -22,7 +22,7 @@ function Hero() {
           pointerEvents: "none",
         }}
       >
-        <img src="../../assets/logo/nsoto-mark-cyan.png" alt="" style={{ width: "100%", height: "auto", filter: "drop-shadow(0 0 32px rgba(34,211,238,0.25))" }} />
+        <img src="../../assets/logo/nsoto-mark-cyan.png" alt="" style={{ width: "100%", height: "auto", filter: "drop-shadow(0 0 32px rgba(10, 158, 250, 0.25))" }} />
       </div>
       <div
         style={{

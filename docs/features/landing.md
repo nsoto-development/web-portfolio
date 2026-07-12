@@ -71,7 +71,7 @@ Deploy target: Vercel (or equivalent) at `nsoto.dev`.
 | R3F scene (M5) | `components/hero/webgl/` |
 | Probe util (M5) | Co-located with tier gate or `lib/hero-tier/` |
 | Theme tokens | `app/globals.css` `@import` → `design-system/tokens/`; `tailwind.config.ts` extends CSS vars |
-| Brand assets | `public/logo/` (from `design-system/assets/logo/`) |
+| Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`) |
 | Design reference | `design-system/` |
 | **M1+M2 implementation detail** | [`docs/epics/static-hub-bootstrap.md`](../epics/static-hub-bootstrap.md) |
 
@@ -132,7 +132,7 @@ Two tiers only:
 | M1 | Static hero shell | Done | Scaffold + hero — detail in [`static-hub-bootstrap` epic](../epics/static-hub-bootstrap.md) |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact, footer — detail in epic |
 | M2b | Apps hub | Planned | `</ APPS >` section; chess/budget coming soon (P0 #5) |
-| M3 | Deploy `nsoto.dev` | Planned | Vercel (or equivalent), domain, HTTPS, OG from brand lockup (P0 #4) — **v1 launch** |
+| M3 | Deploy `nsoto.dev` | Planned | Vercel (or equivalent), domain, HTTPS, favicon wired, OG from brand lockup (P0 #4) — **v1 launch** |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 

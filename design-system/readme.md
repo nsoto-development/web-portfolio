@@ -4,7 +4,7 @@ A dark-mode, code-forward design system for **nsoto.dev** — the personal portf
 
 ## Sources
 
-- `logo/` — a locally mounted folder containing the brand logo pack: one primary lockup (`07657924-....png`) with the real tagline "SOLO DEV. ENGINEERING.", plus a "coming soon" splash set in 8 color variants (`nsoto-coming-soon*.png`, `62b9ff8d-....png` / `nsoto-panel.png` — same 8-up contact sheet).
+- `logo/` — a locally mounted folder containing the brand logo pack: one primary lockup (`nsoto-logo-primary.png`) with the real tagline "SOLO DEV. ENGINEERING.", plus a "coming soon" splash set in color variants (`nsoto-coming-soon*.png`, `nsoto-panel.png` — 8-up contact sheet).
 - `uploads/Nelson Soto Resume 7-5-26 B.pdf` — real career content (20 years, full-stack/systems/cloud engineering) powering the Experience, Skills, and About copy in the portfolio UI kit.
 - Profile links: `github.com/nsoto-development`, `linkedin.com/in/nsoto-development`, `nsoto.development@gmail.com`.
 - No codebase or Figma file was attached. There is no existing product UI to recreate — this system's tokens/components/UI-kit visuals are originated from the logo pack plus the answers below; the portfolio's *content* (experience, skills, bio) is real, pulled from the resume.
@@ -53,7 +53,7 @@ A dark-mode, code-forward design system for **nsoto.dev** — the personal portf
 
 **Press states:** buttons scale to 0.97 on mousedown — a small, snappy shrink, not an opacity change.
 
-**Borders:** hairline, low-opacity white (`rgba(255,255,255,.08–.14)`) on dark surfaces; brand-cyan border (`rgba(34,211,238,.5)`) only on focus/hover of interactive elements, never as a static decoration.
+**Borders:** hairline, low-opacity white (`rgba(255,255,255,.08–.14)`) on dark surfaces; brand-cyan border (`var(--border-brand)`) only on focus/hover of interactive elements, never as a static decoration.
 
 **Shadows:** minimal by default (dark UIs don't need much separation). Cards get a faint inset top highlight + soft outer shadow (`--shadow-card`). The one deliberate elevation flourish is the cyan glow (`--glow-brand-*`) reserved for primary CTAs and focus rings — never used decoratively on static content.
 

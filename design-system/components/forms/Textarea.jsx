@@ -3,12 +3,27 @@ import React from "react";
 /**
  * Textarea — multi-line field, e.g. project inquiry / message body.
  */
-export function Textarea({ label, placeholder, value, onChange, rows = 4, error, disabled = false, style, ...rest }) {
+export function Textarea({
+  label,
+  placeholder,
+  value,
+  onChange,
+  rows = 4,
+  error,
+  disabled = false,
+  style,
+  id: idProp,
+  ...rest
+}) {
+  const generatedId = React.useId();
+  const textareaId = idProp ?? generatedId;
+  const errorId = error ? `${textareaId}-error` : undefined;
   const [focused, setFocused] = React.useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "6px", ...style }}>
       {label && (
         <label
+          htmlFor={textareaId}
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "var(--text-2xs)",
@@ -21,6 +36,7 @@ export function Textarea({ label, placeholder, value, onChange, rows = 4, error,
         </label>
       )}
       <textarea
+        id={textareaId}
         placeholder={placeholder}
         value={value}
         rows={rows}
@@ -28,6 +44,8 @@ export function Textarea({ label, placeholder, value, onChange, rows = 4, error,
         onChange={onChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={errorId}
         style={{
           width: "100%",
           resize: "vertical",
@@ -46,7 +64,11 @@ export function Textarea({ label, placeholder, value, onChange, rows = 4, error,
         }}
         {...rest}
       />
-      {error && <span style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>{error}</span>}
+      {error && (
+        <span id={errorId} style={{ fontSize: "var(--text-xs)", color: "var(--status-danger)" }}>
+          {error}
+        </span>
+      )}
     </div>
   );
 }
