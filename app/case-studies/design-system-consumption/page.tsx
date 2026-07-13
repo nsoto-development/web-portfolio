@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/seo/site";
 const path = "/case-studies/design-system-consumption";
 
 export const metadata: Metadata = {
-  title: "Architecture at a crossroads — nsoto.dev",
+  title: "Architecture at a crossroads",
   description:
     "Bootstrap vendoring, consolidation options, and the private-vs-public design-system evaluation that led to a public canonical repo with versioned @nsoto packages.",
   openGraph: {

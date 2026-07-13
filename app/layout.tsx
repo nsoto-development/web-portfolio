@@ -7,7 +7,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Nelson Soto — nsoto.dev",
+  title: {
+    default: "Nelson Soto — Senior Software Engineer — nsoto.dev",
+    template: "%s — nsoto.dev",
+  },
   description:
     "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
   icons: {
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon/site.webmanifest",
   openGraph: {
-    title: "Nelson Soto — nsoto.dev",
+    title: "Nelson Soto — Senior Software Engineer",
     description:
       "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
     url: SITE_URL,
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nelson Soto — nsoto.dev",
+    title: "Nelson Soto — Senior Software Engineer",
     description:
       "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
     images: ["/og/nsoto-dev-og.png"],

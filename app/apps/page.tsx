@@ -9,11 +9,11 @@ import { portfolioData, type AppsStubEntry } from "@/lib/portfolio-data";
 import { SITE_URL } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
-  title: "Apps — nsoto.dev",
+  title: "Side Projects",
   description:
     "Side projects on nsoto.dev — chess.nsoto.dev is live; more apps ship over time.",
   openGraph: {
-    title: "Apps",
+    title: "Side Projects",
     description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
     url: `${SITE_URL}/apps`,
     siteName: "nsoto.dev",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apps",
+    title: "Side Projects",
     description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
     images: ["/og/nsoto-dev-og.png"],
   },
