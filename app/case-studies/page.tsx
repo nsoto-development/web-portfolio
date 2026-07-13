@@ -9,11 +9,11 @@ import { publishedCaseStudies } from "@/lib/case-studies/registry";
 import { SITE_URL } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
-  title: "Case studies — nsoto.dev",
+  title: "Engineering Case Studies",
   description:
     "Engineering case studies on nsoto.dev — systems thinking, architectural decisions, and shipped work beyond the landing page.",
   openGraph: {
-    title: "Case studies",
+    title: "Engineering Case Studies",
     description: "Engineering narratives on architecture, consolidation, and portfolio engineering.",
     url: `${SITE_URL}/case-studies`,
     siteName: "nsoto.dev",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case studies",
+    title: "Engineering Case Studies",
     description: "Engineering narratives on architecture, consolidation, and portfolio engineering.",
     images: ["/og/nsoto-dev-og.png"],
   },
