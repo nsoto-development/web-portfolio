@@ -74,6 +74,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 | Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`); `public/og/` (OG preview image) |
 | Design reference | `design-system/` |
 | Meta / OG / favicon | `app/layout.tsx`; `public/favicon/`; `public/og/nsoto-dev-og.png` |
+| SEO / discoverability | `app/sitemap.ts`, `app/robots.ts`, `lib/seo/`, `components/seo/JsonLd.tsx` |
 
 ## Visual / motion spec
 
@@ -154,6 +155,24 @@ Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (s
 | Verify pipeline | `.cursor/nudl.json` — `npm run lint`, `npm run build` |
 | Web Analytics + Speed Insights | `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enabled in Vercel project |
 | Google Analytics | `components/GoogleAnalytics.tsx` → `app/layout.tsx`; `NEXT_PUBLIC_GA_MEASUREMENT_ID` (production only) |
+| Sitemap + robots | `app/sitemap.ts`, `app/robots.ts` — URLs derived from `publishedCaseStudies` |
+| JSON-LD structured data | `components/seo/JsonLd.tsx`, `lib/seo/jsonld.ts` — Person/WebSite on `/`, Article on case studies |
+
+### SEO / discoverability
+
+**Code paths:** `app/sitemap.ts`, `app/robots.ts`, `lib/seo/site.ts`, `lib/seo/jsonld.ts`, `components/seo/JsonLd.tsx`.
+
+- Sitemap lists `/`, `/apps`, `/case-studies`, and each entry in `publishedCaseStudies` (`lib/case-studies/registry.ts`). Hash anchors (`#work`, etc.) are not separate URLs.
+- Case studies may set optional `updatedAt` in `lib/portfolio-data.ts` for accurate `lastModified` in the sitemap.
+- New routes: add page `metadata`, ensure the URL is in the sitemap source (registry or static list), then re-submit in Search Console after deploy.
+
+**Manual ops (post-deploy):**
+
+1. [Google Search Console](https://search.google.com/search-console) — add property `https://nsoto.dev`, verify via DNS (Vercel) or HTML tag.
+2. Submit sitemap: `https://nsoto.dev/sitemap.xml`.
+3. Request indexing for `/` and new case studies when published.
+4. Optional: [Bing Webmaster Tools](https://www.bing.com/webmasters) — same sitemap URL.
+5. Validate: view page source for JSON-LD on `/` and case study pages; test share previews (LinkedIn Post Inspector, Twitter/X card validator).
 
 ## Tests / verify
 
@@ -171,6 +190,7 @@ Add lint/build/test commands to [`.cursor/nudl.json`](../../.cursor/nudl.json) `
 - Production ([nsoto.dev](https://nsoto.dev)): HTTPS, OG image, contact form with Vercel env set.
 - Vercel project: Web Analytics and Speed Insights enabled; page views and Web Vitals appear in dashboard after traffic.
 - Vercel env: `NEXT_PUBLIC_GA_MEASUREMENT_ID` set for Google Analytics (production only; no GA on local dev).
+- `https://nsoto.dev/sitemap.xml` and `https://nsoto.dev/robots.txt` return expected content after deploy.
 
 **M5 (manual until verify pipeline exists):**
 

@@ -2,10 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { SITE_URL } from "@/lib/seo/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nsoto.dev"),
+  metadataBase: new URL(SITE_URL),
   title: "Nelson Soto — nsoto.dev",
   description:
     "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: "Nelson Soto — nsoto.dev",
     description:
       "Nelson Soto — senior software engineer with 20 years in full-stack development, cloud migrations, enterprise integrations, and legacy modernization. Jacksonville, FL.",
-    url: "https://nsoto.dev",
+    url: SITE_URL,
     siteName: "nsoto.dev",
     locale: "en_US",
     type: "website",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
         url: "/og/nsoto-dev-og.png",
         width: 1731,
         height: 909,
-        alt: "nsoto.dev — coming soon",
+        alt: "Nelson Soto — nsoto.dev",
       },
     ],
   },

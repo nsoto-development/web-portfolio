@@ -6,6 +6,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { publishedCaseStudies } from "@/lib/case-studies/registry";
+import { SITE_URL } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "Case studies — nsoto.dev",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Case studies",
     description: "Engineering narratives on architecture, consolidation, and portfolio engineering.",
-    url: "https://nsoto.dev/case-studies",
+    url: `${SITE_URL}/case-studies`,
     siteName: "nsoto.dev",
     locale: "en_US",
     type: "website",
@@ -26,6 +27,12 @@ export const metadata: Metadata = {
         alt: "nsoto.dev",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Case studies",
+    description: "Engineering narratives on architecture, consolidation, and portfolio engineering.",
+    images: ["/og/nsoto-dev-og.png"],
   },
 };
 
