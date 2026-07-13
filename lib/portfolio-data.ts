@@ -9,6 +9,7 @@ export type CaseStudyIndexEntry = {
   subtitle: string;
   href: string;
   lifecycle: "architecture" | "planned" | "in-progress" | "implemented";
+  updatedAt?: string;
 };
 
 export type AppsStubEntry = {
@@ -54,6 +55,7 @@ export const portfolioData = {
       subtitle: "From deliberate bootstrap to a single consumption model",
       href: "/case-studies/design-system-consumption",
       lifecycle: "architecture",
+      updatedAt: "2026-03-01",
     },
   ] satisfies CaseStudyIndexEntry[],
   links: {

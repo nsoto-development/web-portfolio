@@ -6,6 +6,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { portfolioData, type AppsStubEntry } from "@/lib/portfolio-data";
+import { SITE_URL } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "Apps — nsoto.dev",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Apps",
     description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
-    url: "https://nsoto.dev/apps",
+    url: `${SITE_URL}/apps`,
     siteName: "nsoto.dev",
     locale: "en_US",
     type: "website",
@@ -26,6 +27,12 @@ export const metadata: Metadata = {
         alt: "nsoto.dev",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Apps",
+    description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
+    images: ["/og/nsoto-dev-og.png"],
   },
 };
 
