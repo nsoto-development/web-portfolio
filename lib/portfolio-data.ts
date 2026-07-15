@@ -164,6 +164,14 @@ export const portfolioData = {
         href: "https://chess.nsoto.dev",
         repo: "https://github.com/nsoto-development/ns-chess",
       },
+      {
+        name: "Portfolio",
+        domain: "github.com/nsoto-development/web-portfolio",
+        status: "Live",
+        description:
+          "This site — Next.js hub for nsoto.dev: landing, case studies, and shared design-system consumption across public apps.",
+        href: "https://github.com/nsoto-development/web-portfolio",
+      },
       { name: "Budget", domain: "budget.nsoto.dev", status: "Coming soon" },
     ] satisfies AppsStubEntry[],
   },
