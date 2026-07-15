@@ -4,12 +4,12 @@ export const designSystemConsumption: CaseStudy = {
   slug: "design-system-consumption",
   title: "Architecture at a crossroads",
   subtitle: "From deliberate bootstrap to a single consumption model",
-  lifecycle: "planned",
+  lifecycle: "in-progress",
   lastUpdated: "2026-07-15",
   status: {
-    phaseLabel: "Planned",
-    headline: "Migration phased — `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui`",
-    body: "Public design-system repo remains the target. Package names and execution phases are locked in the design-system migration SSOT (`guidelines/migration-to-portfolio-packages.md`): naming + scrub → package scaffold → publish `0.1.0` → ns-chess → web-portfolio. This page moves to `in-progress` when packages publish or the first consumer migrates.",
+    phaseLabel: "In progress",
+    headline: "`@nsoto/portfolio-*@0.1.0` published — consumers migrating next",
+    body: "`@nsoto/portfolio-tokens@0.1.0` and `@nsoto/portfolio-ui@0.1.0` are on the public npm registry. Design-system package scaffold and scrub are done. Next: migrate ns-chess off the vendored `design-system/` tree, then web-portfolio. This page moves to `implemented` when both apps consume packages and vendored folders are gone.",
   },
   sections: [
     {
@@ -117,25 +117,25 @@ Corporate teams with registry auth, compliance requirements, or a hard mandate t
       id: "decision",
       eyebrow: "</ DIRECTION >",
       heading: "What ships next",
-      body: `**1. Prep the canonical repo** — omit private authoring aids (\`SKILL.md\`, \`*.prompt.md\`); audit for secrets; keep the public README portfolio-facing.
+      body: `**Done — prep the canonical repo** — private authoring aids omitted (\`SKILL.md\`, \`*.prompt.md\` → local \`_private/\`); secrets audited; public README is portfolio-facing.
 
-**2. Scaffold and publish packages** — \`packages/portfolio-tokens\` + \`packages/portfolio-ui\`; first publish \`@nsoto/portfolio-tokens@0.1.0\` and \`@nsoto/portfolio-ui@0.1.0\` (CI on tag later).
+**Done — scaffold and publish packages** — \`@nsoto/portfolio-tokens@0.1.0\` and \`@nsoto/portfolio-ui@0.1.0\` are on public npm ([tokens](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [ui](https://www.npmjs.com/package/@nsoto/portfolio-ui)).
 
-**3. Migrate consumers** — ns-chess first, then web-portfolio. Delete vendored \`design-system/\` trees; drop the \`@ds\` alias; declare semver deps.
+**In progress — migrate consumers** — ns-chess first, then web-portfolio. Delete vendored \`design-system/\` trees; drop the \`@ds\` alias; declare semver deps.
 
-**4. Wire the portfolio story** — README cross-links across all three public repos; move this case study to \`in-progress\` / \`implemented\` as gates land.
+**Pending — wire the portfolio story** — README cross-links across public repos; move this case study to \`implemented\` when cutover finishes.
 
 App boundaries stay fixed: Next.js adapters and landing sections in web-portfolio; game UI in ns-chess; copy in \`lib/portfolio-data.ts\`. ui_kits remain design references — ported into app code, not imported at runtime.
 
-Execution SSOT: design-system \`guidelines/migration-to-portfolio-packages.md\` (product backlog P1 **[debt] #4**). Lifecycle is \`planned\`; next bump is \`in-progress\` when publish or ns-chess migration starts.`,
+Execution SSOT: design-system \`guidelines/migration-to-portfolio-packages.md\` (product backlog P1 **[debt] #4**). Lifecycle is \`in-progress\`.`,
     },
     {
       id: "evidence",
       eyebrow: "</ REPOS >",
       heading: "Where to look",
-      body: `- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via \`globals.css\`; manual TSX ports; vendored tree still present pre-migration.
-- [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; \`@ds\` wrappers; oxlint \`no-restricted-imports\`; integration doc at \`docs/design/system-integration.md\`.
-- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with \`packages/portfolio-tokens\` and \`packages/portfolio-ui\` published as \`@nsoto/*\`.
+      body: `- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via \`globals.css\`; manual TSX ports; vendored tree still present (consumer migration pending).
+- [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; \`@ds\` wrappers; oxlint \`no-restricted-imports\`; first consumer to migrate (Phase B).
+- [design-system](https://github.com/nsoto-development/design-system) — packages published: [\`@nsoto/portfolio-tokens@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [\`@nsoto/portfolio-ui@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-ui).
 
 ns-chess moved earlier toward consumption discipline during bootstrap. web-portfolio prioritized tokens-first shipping on Next.js. Both patterns inform the migration target: versioned deps from one public canonical repo, no folder copies in consumers.`,
     },
