@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: evaluation shipped in `architecture`; current phase is **`planned`** (phases + `@nsoto/portfolio-*` packages locked in the DS migration SSOT); revise again when migration executes (see [Follow-on updates](#follow-on-updates)).
+Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: evaluation → planned → current phase **`in-progress`** (`@nsoto/portfolio-*@0.1.0` on npm; consumers migrating); revise to `implemented` when cutover finishes (see [Follow-on updates](#follow-on-updates)).
 
 ## Roadmap
 
@@ -24,7 +24,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - Feature doc SSOT (this file) + roadmap line.
 - First case study at `/case-studies/design-system-consumption` — self-contained narrative (no dependency on private DS repo links).
 - Sections: hook, problem, constraints, options matrix, **evaluation** (private vs public repo), decision, evidence, learnings, status (lifecycle callout).
-- `lifecycle: 'planned'` (2026-07-15) — naming locked to `@nsoto/portfolio-tokens` / `@nsoto/portfolio-ui`; phases scheduled in DS migration SSOT. Earlier v1 ship used `architecture`.
+- `lifecycle: 'in-progress'` (2026-07-15) — `@nsoto/portfolio-tokens@0.1.0` + `@nsoto/portfolio-ui@0.1.0` published; consumer migration next. Prior: `planned` (naming + phases locked), `architecture` (v1 ship).
 - **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, apps stub). Case Studies links to `/case-studies` index; Apps links to `/apps` coming-soon stub until P0 #5 M2b ships properly.
 - **Landing callout (M3):** secondary discovery in About or Work — complements nav, does not replace it.
 - Content SSOT for page body: `lib/case-studies/design-system-consumption.ts` (ported from [Appendix A](#appendix-a--case-study-copy-v1)).
@@ -71,14 +71,14 @@ Living document tied to P1 #4 consumption migration.
 | Lifecycle | When | Case study changes |
 |-----------|------|-------------------|
 | `architecture` | **v1 (M2)** | Problem, constraints, matrix, directional decision, evidence, open migration work |
-| `planned` | **Current** — migration SSOT + package names locked | Chosen path, phase outline, `@nsoto/portfolio-*` end state |
-| `in-progress` | Migration milestones shipping | Status banner, before/after deps, PR/commit links |
+| `planned` | Migration SSOT + package names locked | Chosen path, phase outline, `@nsoto/portfolio-*` end state |
+| `in-progress` | **Current** — packages on npm; consumers migrating | Status banner, npm evidence links; ns-chess then web-portfolio |
 | `implemented` | P1 #4 done bar met | Outcomes, version pins, validated learnings |
 
 **Revision triggers:**
 
 1. ~~Migration plan finalized → `planned`.~~ **Done** (2026-07-15).
-2. First migration milestone ships → `in-progress`.
+2. ~~First migration milestone ships → `in-progress`.~~ **Done** (2026-07-15) — packages published to npm.
 3. Migration complete → `implemented`.
 
 Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in `design-system-consumption.ts`. No new routes required per transition.
