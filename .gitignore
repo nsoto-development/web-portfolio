@@ -43,8 +43,9 @@ Thumbs.db
 /public/vercel.svg
 /public/window.svg
 
-# Design system — local-only uploads (resume PDFs, etc.)
-design-system/uploads/
+# Local pre-publish package tarballs (npm pack from design-system)
+.local-pkgs/
+
 
 # NUDL / AI local workflow (not published to GitHub)
 .cursor/

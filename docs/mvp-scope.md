@@ -6,7 +6,7 @@
 
 
 
-**nsoto.dev** is a portfolio **hub** linking to subdomain projects (e.g. `chess.nsoto.dev`). The hub is built in **Next.js** with [`design-system/`](../design-system/) as the aesthetic baseline: true-black canvas, azure brand accent, terminal voice. **Static landing is live** at [nsoto.dev](https://nsoto.dev); Apps hub and UI/WebGL layers ship next.
+**nsoto.dev** is a portfolio **hub** linking to subdomain projects (e.g. `chess.nsoto.dev`). The hub is built in **Next.js** with **`@nsoto/portfolio-tokens` / `@nsoto/portfolio-ui`** as the aesthetic baseline: true-black canvas, azure brand accent, terminal voice. **Static landing is live** at [nsoto.dev](https://nsoto.dev); Apps hub and UI/WebGL layers ship next.
 
 
 
@@ -34,7 +34,7 @@
 
 |-------|------|------|
 
-| **0 — Design system** | Now | Tokens, components, ui-kit prototype ([`design-system/`](../design-system/)) |
+| **0 — Design system** | Now | `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui` (canonical design-system repo) |
 
 | **1 — Static landing** | M1+M2+M3 (Done, live) | Next.js page at [nsoto.dev](https://nsoto.dev); CSS-only motion |
 
@@ -54,7 +54,7 @@
 
 1. **Live at `nsoto.dev`** — **Done** — static landing deployed with HTTPS, meta/OG, and favicon.
 
-2. **Visual match** — dark landing consistent with brand lockup and [`design-system/`](../design-system/) tokens (see Visual baseline below).
+2. **Visual match** — dark landing consistent with brand lockup and `@nsoto/portfolio-tokens` (see Visual baseline below).
 
 3. **Hero** — logo mark, `nsoto.dev`, terminal eyebrow, headline + subcopy; static-first (WebGL may follow in M5).
 
@@ -98,17 +98,15 @@
 
 |-------|------|------|
 
-| **Design system (draft SSOT)** | [`design-system/readme.md`](../design-system/readme.md), [`design-system/tokens/`](../design-system/tokens/) | Tokens, type, motion vocabulary, voice, components |
+| **Design system (SSOT)** | [`@nsoto/portfolio-tokens`](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [`@nsoto/portfolio-ui`](https://www.npmjs.com/package/@nsoto/portfolio-ui) | Tokens, type, motion vocabulary, components |
 
-| **Brand lockup** | `design-system/assets/logo/nsoto-logo-cyan.png` | Accent reference sampled into `--brand` |
+| **Brand lockup** | `public/logo/nsoto-mark-cyan.png` | Accent reference sampled into `--brand` |
 
-| **Splash reference** | `design-system/assets/logo/nsoto-coming-soon-cyan-pad.png` | Still-frame target (or nearest cyan lockup in `assets/logo/`) |
-
-| **Layout prototype** | [`design-system/ui_kits/portfolio/`](../design-system/ui_kits/portfolio/) | Originated click-through — strong starting point, not sacred |
+| **Layout prototype** | Canonical DS repo `ui_kits/portfolio/` | Originated click-through — strong starting point, not sacred |
 
 
 
-**Direction:** true-black canvas, azure brand accent (`--brand`), JetBrains Mono + Space Grotesk, terminal punctuation (`</ … >`), centered minimal layout, engineer-to-engineer voice (see design-system readme).
+**Direction:** true-black canvas, azure brand accent (`--brand`), JetBrains Mono + Space Grotesk, terminal punctuation (`</ … >`), centered minimal layout, engineer-to-engineer voice.
 
 
 

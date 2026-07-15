@@ -12,9 +12,41 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Design-system is read-only reference — not production source
-    "design-system/**",
   ]),
+  {
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "@nsoto/portfolio-ui",
+              message:
+                "Import UI kit only from components/ui/ wrappers (see docs/features/landing.md).",
+            },
+            {
+              name: "@nsoto/portfolio-tokens",
+              message:
+                "Import tokens only via app/globals.css or components/ui/ wrappers (see docs/features/landing.md).",
+            },
+          ],
+          patterns: [
+            {
+              group: ["@nsoto/portfolio-ui/*", "@nsoto/portfolio-tokens/*"],
+              message:
+                "Import @nsoto packages only from components/ui/ wrappers or app/globals.css.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["components/ui/**"],
+    rules: {
+      "no-restricted-imports": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

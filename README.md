@@ -1,6 +1,6 @@
 # web-portfolio
 
-Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.js** app with a draft **[design-system](design-system/readme.md)** as the aesthetic baseline.
+Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.js** app consuming **[`@nsoto/portfolio-tokens`](https://www.npmjs.com/package/@nsoto/portfolio-tokens)** and **[`@nsoto/portfolio-ui`](https://www.npmjs.com/package/@nsoto/portfolio-ui)** for the visual baseline.
 
 ## Status
 
@@ -11,6 +11,7 @@ Personal **hub** for my portfolio on **[nsoto.dev](https://nsoto.dev)**. **Next.
 | **M1 + M2** (done) | Next.js scaffold + static landing                 |
 | **M3** (done)      | Deployed to `nsoto.dev` on Vercel (HTTPS, Web Analytics, Speed Insights) |
 | **case-studies M3** (done) | Top-level nav, `/case-studies` index, `/apps` stub, landing callout |
+| **M4a** (done)     | Package cutover — `@nsoto/portfolio-*`, no vendored `design-system/` |
 | **M2b**            | Apps hub section (`</ APPS >`, coming soon cards) |
 | **M4 / M5**        | Framer Motion polish; WebGL hero (post-v1)        |
 
@@ -52,7 +53,8 @@ Production deploys to **Vercel** at [nsoto.dev](https://nsoto.dev). [`app/layout
 | Layer     | Choice                                                  |
 | --------- | ------------------------------------------------------- |
 | Framework | Next.js 16 (App Router)                                 |
-| Styling   | Tailwind CSS v4 + `design-system/tokens/` CSS variables |
+| Styling   | Tailwind CSS v4 + `@nsoto/portfolio-tokens`             |
+| UI        | `@nsoto/portfolio-ui` via `components/ui/` wrappers     |
 | Icons     | Lucide (`lucide-react`) + inline SVGs for brand icons   |
 | Motion    | CSS → Framer Motion (M4) → R3F WebGL hero (M5)          |
 | Deploy    | Vercel at [nsoto.dev](https://nsoto.dev) (live)         |
@@ -67,7 +69,7 @@ Subdomain apps are **separate repos** and may use other stacks.
 | Path                                                                             | Purpose                                                 |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `[app/](app/)`                                                                   | Next.js shell — `layout.tsx`, `page.tsx`, `globals.css` |
-| `[components/](components/)`                                                     | Landing sections + ported UI primitives                 |
+| `[components/](components/)`                                                     | Landing sections + UI wrappers                          |
 | `[lib/portfolio-data.ts](lib/portfolio-data.ts)`                                 | Copy and site content (SSOT)                            |
 | `[lib/case-studies/](lib/case-studies/)`                                         | Case study content + registry                           |
 | `[app/case-studies/](app/case-studies/)`                                         | Case studies index + story routes                       |
@@ -76,8 +78,6 @@ Subdomain apps are **separate repos** and may use other stacks.
 | `[public/logo/](public/logo/)`                                                   | Brand mark served by the app                            |
 | `[public/favicon/](public/favicon/)`                                             | Favicon pack + web manifest                             |
 | `[public/og/](public/og/)`                                                       | Open Graph preview image                                |
-| `[design-system/](design-system/readme.md)`                                      | Draft SSOT — tokens, components, ui-kit prototype       |
-| `[design-system/ui_kits/portfolio/](design-system/ui_kits/portfolio/index.html)` | Click-through layout reference                          |
 | `[docs/roadmap.md](docs/roadmap.md)`                                             | Backlog and priority tiers                              |
 | `[docs/mvp-scope.md](docs/mvp-scope.md)`                                         | v1 launch bar and visual direction                      |
 | `[docs/features/landing.md](docs/features/landing.md)`                           | Landing hub — product spec, milestones                  |
@@ -87,15 +87,13 @@ Subdomain apps are **separate repos** and may use other stacks.
 
 ## Design reference
 
-The portfolio ui-kit (`design-system/ui_kits/portfolio/index.html`) is a standalone HTML prototype for layout and copy reference. The Next.js app ports those sections into `components/landing/` and `@import`s tokens from `design-system/tokens/` in `app/globals.css`.
+Canonical kit: [`@nsoto/portfolio-tokens`](https://www.npmjs.com/package/@nsoto/portfolio-tokens) + [`@nsoto/portfolio-ui`](https://www.npmjs.com/package/@nsoto/portfolio-ui) ([design-system](https://github.com/nsoto-development/design-system) repo). The hub imports tokens in `app/globals.css` and re-exports UI primitives from `components/ui/` (Next adapters such as `NavLink` stay app-owned). Landing sections live in `components/landing/`.
 
 ## Visual direction
 
 - **Dark only** — true-black canvas, azure `--brand` accent
 - **Voice** — engineer-to-engineer
 - **Motion** — purposeful UI motion on a static baseline
-
-See `[design-system/readme.md](design-system/readme.md)` for tokens, components, and voice guidelines.
 
 ## License
 

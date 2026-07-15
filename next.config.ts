@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Needed when testing unpublished kit builds (file:/tarball deps).
+  transpilePackages: ["@nsoto/portfolio-ui", "@nsoto/portfolio-tokens"],
 };
 
 export default nextConfig;

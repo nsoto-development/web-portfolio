@@ -4,12 +4,12 @@ export const designSystemConsumption: CaseStudy = {
   slug: "design-system-consumption",
   title: "Architecture at a crossroads",
   subtitle: "From deliberate bootstrap to a single consumption model",
-  lifecycle: "in-progress",
+  lifecycle: "implemented",
   lastUpdated: "2026-07-15",
   status: {
-    phaseLabel: "In progress",
-    headline: "`@nsoto/portfolio-*@0.1.0` published — consumers migrating next",
-    body: "`@nsoto/portfolio-tokens@0.1.0` and `@nsoto/portfolio-ui@0.1.0` are on the public npm registry. Design-system package scaffold and scrub are done. Next: migrate ns-chess off the vendored `design-system/` tree, then web-portfolio. This page moves to `implemented` when both apps consume packages and vendored folders are gone.",
+    phaseLabel: "Implemented",
+    headline: "Both apps consume `@nsoto/portfolio-*@0.1.0` — vendored trees gone",
+    body: "`web-portfolio` and `ns-chess` install `@nsoto/portfolio-tokens` and `@nsoto/portfolio-ui` from public npm. Vendored `design-system/` folders are removed. Thin app wrappers (`components/ui/`) and Next adapters stay in the hub; primitives live in the packages.",
   },
   sections: [
     {
@@ -18,7 +18,7 @@ export const designSystemConsumption: CaseStudy = {
       heading: "Bootstrap first, consolidate next",
       body: `nsoto.dev is a portfolio hub built in Next.js. ns-chess is a public Vite app — a hand-built React board with a chess.js rules engine. Both share one visual language: true-black canvas, azure brand accent, monospace headings, terminal voice.
 
-To ship each app quickly on a different stack, I deliberately vendored the full \`design-system/\` tree into each public repo. That was a conscious bootstrap tactic — shared tokens and components on day one, package infrastructure deferred. Consolidation into a single consumption model was always the next step; this case study documents that transition while the repos still carry the interim copies.`,
+To ship each app quickly on a different stack, I deliberately vendored the full \`design-system/\` tree into each public repo. That was a conscious bootstrap tactic — shared tokens and components on day one, package infrastructure deferred. Consolidation into a single consumption model was always the next step; this case study documents that transition through to the shipped package cutover.`,
     },
     {
       id: "problem",
@@ -121,23 +121,21 @@ Corporate teams with registry auth, compliance requirements, or a hard mandate t
 
 **Done — scaffold and publish packages** — \`@nsoto/portfolio-tokens@0.1.0\` and \`@nsoto/portfolio-ui@0.1.0\` are on public npm ([tokens](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [ui](https://www.npmjs.com/package/@nsoto/portfolio-ui)).
 
-**In progress — migrate consumers** — ns-chess first, then web-portfolio. Delete vendored \`design-system/\` trees; drop the \`@ds\` alias; declare semver deps.
+**Done — migrate consumers** — ns-chess (Phase B) then web-portfolio (Phase C): semver deps, no vendored \`design-system/\`, thin \`components/ui/\` wrappers. Hub keeps Next adapters (\`NavLink\` + \`next/link\`, \`"use client"\`).
 
-**Pending — wire the portfolio story** — README cross-links across public repos; move this case study to \`implemented\` when cutover finishes.
+App boundaries stay fixed: Next.js adapters and landing sections in web-portfolio; game UI in ns-chess; copy in \`lib/portfolio-data.ts\`. ui_kits remain design references in the canonical DS repo — not runtime imports in apps.
 
-App boundaries stay fixed: Next.js adapters and landing sections in web-portfolio; game UI in ns-chess; copy in \`lib/portfolio-data.ts\`. ui_kits remain design references — ported into app code, not imported at runtime.
-
-Execution SSOT: design-system \`guidelines/migration-to-portfolio-packages.md\` (product backlog P1 **[debt] #4**). Lifecycle is \`in-progress\`.`,
+Execution SSOT: design-system \`guidelines/migration-to-portfolio-packages.md\` (product backlog P1 **[debt] #4**). Lifecycle is \`implemented\`.`,
     },
     {
       id: "evidence",
       eyebrow: "</ REPOS >",
       heading: "Where to look",
-      body: `- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via \`globals.css\`; manual TSX ports; vendored tree still present (consumer migration pending).
-- [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; \`@ds\` wrappers; oxlint \`no-restricted-imports\`; first consumer to migrate (Phase B).
-- [design-system](https://github.com/nsoto-development/design-system) — packages published: [\`@nsoto/portfolio-tokens@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [\`@nsoto/portfolio-ui@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-ui).
+      body: `- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; \`@import '@nsoto/portfolio-tokens/styles.css'\`; \`components/ui/\` re-exports + Next adapters; no vendored tree.
+- [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; same packages; \`src/components/ui/\` wrappers; oxlint \`no-restricted-imports\`.
+- [design-system](https://github.com/nsoto-development/design-system) — packages: [\`@nsoto/portfolio-tokens@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-tokens), [\`@nsoto/portfolio-ui@0.1.0\`](https://www.npmjs.com/package/@nsoto/portfolio-ui).
 
-ns-chess moved earlier toward consumption discipline during bootstrap. web-portfolio prioritized tokens-first shipping on Next.js. Both patterns inform the migration target: versioned deps from one public canonical repo, no folder copies in consumers.`,
+Both consumers now share one versioned runtime. Shared chrome changes ship in the kit; framework seams stay in each app.`,
     },
     {
       id: "learnings",

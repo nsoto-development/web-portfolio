@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: evaluation → planned → current phase **`in-progress`** (`@nsoto/portfolio-*@0.1.0` on npm; consumers migrating); revise to `implemented` when cutover finishes (see [Follow-on updates](#follow-on-updates)).
+Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: lifecycle is **`implemented`** — both apps consume `@nsoto/portfolio-*@0.1.0`; vendored trees removed (see [Follow-on updates](#follow-on-updates)).
 
 ## Roadmap
 
@@ -24,14 +24,14 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - Feature doc SSOT (this file) + roadmap line.
 - First case study at `/case-studies/design-system-consumption` — self-contained narrative (no dependency on private DS repo links).
 - Sections: hook, problem, constraints, options matrix, **evaluation** (private vs public repo), decision, evidence, learnings, status (lifecycle callout).
-- `lifecycle: 'in-progress'` (2026-07-15) — `@nsoto/portfolio-tokens@0.1.0` + `@nsoto/portfolio-ui@0.1.0` published; consumer migration next. Prior: `planned` (naming + phases locked), `architecture` (v1 ship).
+- `lifecycle: 'implemented'` (2026-07-15) — both consumers on `@nsoto/portfolio-*@0.1.0`; no vendored `design-system/`. Prior: `in-progress` → `planned` → `architecture`.
 - **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, apps stub). Case Studies links to `/case-studies` index; Apps links to `/apps` coming-soon stub until P0 #5 M2b ships properly.
 - **Landing callout (M3):** secondary discovery in About or Work — complements nav, does not replace it.
 - Content SSOT for page body: `lib/case-studies/design-system-consumption.ts` (ported from [Appendix A](#appendix-a--case-study-copy-v1)).
 
 ## Non-goals (v1)
 
-- DS consumption migration implementation (P1 #4 — separate thread).
+- ~~DS consumption migration implementation (P1 #4)~~ — **Done** (cutover in web-portfolio + ns-chess).
 - MDX / blog engine / CMS.
 - Additional case studies beyond design-system consumption.
 - **Full** P0 #5 Apps hub (landing `</ APPS >` section, app cards) — M3 may ship a **stub** `/apps` page only; proper M2b is a separate thread.
@@ -72,14 +72,14 @@ Living document tied to P1 #4 consumption migration.
 |-----------|------|-------------------|
 | `architecture` | **v1 (M2)** | Problem, constraints, matrix, directional decision, evidence, open migration work |
 | `planned` | Migration SSOT + package names locked | Chosen path, phase outline, `@nsoto/portfolio-*` end state |
-| `in-progress` | **Current** — packages on npm; consumers migrating | Status banner, npm evidence links; ns-chess then web-portfolio |
-| `implemented` | P1 #4 done bar met | Outcomes, version pins, validated learnings |
+| `in-progress` | Packages on npm; consumers migrating | Status banner, npm evidence links; ns-chess then web-portfolio |
+| `implemented` | **Current** — P1 #4 done bar met | Outcomes, version pins, no vendored trees |
 
 **Revision triggers:**
 
 1. ~~Migration plan finalized → `planned`.~~ **Done** (2026-07-15).
 2. ~~First migration milestone ships → `in-progress`.~~ **Done** (2026-07-15) — packages published to npm.
-3. Migration complete → `implemented`.
+3. ~~Migration complete → `implemented`.~~ **Done** (2026-07-15) — ns-chess + web-portfolio cut over.
 
 Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in `design-system-consumption.ts`. No new routes required per transition.
 
