@@ -1,40 +1,18 @@
 "use client";
 
-import React from "react";
+import type { CSSProperties } from "react";
+import { Tabs as DSTabs } from "@nsoto/portfolio-ui";
+import type { TabsProps as DSTabsProps } from "@nsoto/portfolio-ui";
 
-type TabItem = {
-  label: string;
-  value: string;
-};
-
-type TabsProps = {
-  items: TabItem[];
-  value: string;
-  onChange: (value: string) => void;
-  style?: React.CSSProperties;
+export type TabsProps = DSTabsProps & {
+  /** App layout helper (e.g. horizontal scroll on small screens). */
   className?: string;
+  style?: CSSProperties;
 };
 
-export function Tabs({ items, value, onChange, style, className }: TabsProps) {
-  const rootClass = ["ui-tabs", className].filter(Boolean).join(" ");
-
-  return (
-    <div className={rootClass} role="tablist" style={style}>
-      {items.map((item) => {
-        const active = item.value === value;
-        return (
-          <button
-            key={item.value}
-            type="button"
-            role="tab"
-            aria-selected={active}
-            className={active ? "ui-tabs__tab ui-tabs__tab--active" : "ui-tabs__tab"}
-            onClick={() => onChange(item.value)}
-          >
-            {item.label}
-          </button>
-        );
-      })}
-    </div>
-  );
+/** Wraps kit Tabs; optional className is hub layout only (not kit chrome). */
+export function Tabs({ className, style, ...props }: TabsProps) {
+  const tabs = <DSTabs {...props} style={style} />;
+  if (!className) return tabs;
+  return <div className={className}>{tabs}</div>;
 }

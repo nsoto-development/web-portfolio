@@ -8,6 +8,10 @@ type NavLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> 
   active?: boolean;
 };
 
+/**
+ * Next.js adapter — kit NavLink is a plain <a>; hub routes use next/link.
+ * Permanent app seam (playbook C), not temporary kit drift.
+ */
 export function NavLink({
   children,
   href = "#",

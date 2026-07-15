@@ -6,7 +6,7 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps hub). P1 **[feature] #1** WebGL → **M5**; **[debt] #4** design harvest → **M4**.
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps hub). P1 **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
 
 **v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). Apps hub (M2b / P0 #5) is next on the live site. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
@@ -19,10 +19,11 @@ Hub repo only — subdomain apps (e.g. `chess.nsoto.dev`) are separate repos; do
 | Layer | Choice | Notes |
 |-------|--------|-------|
 | Framework | **Next.js** (App Router) | Deploy, routing, OG/meta, future subdomain linking |
-| Styling | **Tailwind CSS** | `@import` [`design-system/tokens/`](../../design-system/tokens/) in global CSS; Tailwind extends semantic CSS vars |
+| Styling | **Tailwind CSS** | `@import '@nsoto/portfolio-tokens/styles.css'` in `app/globals.css`; Tailwind extends semantic CSS vars |
+| UI primitives | **`@nsoto/portfolio-ui`** | Via thin `"use client"` wrappers in `components/ui/` (Next adapters stay here) |
 | UI motion | **CSS** (M1–M2) | Static baseline; **Framer Motion** at M4 — not WebGL |
 | 3D / hero motion | **React Three Fiber + drei** | **M5 only** — post-v1; after static baseline ships |
-| Icons | **Lucide** (`lucide-react`) | Per design-system iconography |
+| Icons | **Lucide** (`lucide-react`) | Per kit iconography |
 
 Production code references **semantic tokens** (`--brand`, `--bg-canvas`, etc.) — do not duplicate palette values. When the app diverges from the draft system, update tokens in one place and note here.
 
@@ -30,14 +31,14 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 
 ## v1 scope (agreed)
 
-- Dark-only landing matching [`design-system/`](../../design-system/) tokens and [`docs/mvp-scope.md`](../mvp-scope.md) visual baseline.
+- Dark-only landing matching `@nsoto/portfolio-tokens` and [`docs/mvp-scope.md`](../mvp-scope.md) visual baseline.
 - Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy. **Copy:** keep ui-kit draft (`</ COMING SOON. STAY TUNED >`) until post-M1 side-by-side with brand lockup, then refine.
-- Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by [`design-system/ui_kits/portfolio/`](../../design-system/ui_kits/portfolio/).
+- Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by the canonical DS portfolio ui-kit (reference only).
 - **Apps hub (M2b / P0 #5):** dedicated section (`</ APPS >` eyebrow) listing WIP subdomain apps — coming soon, no live outbound links. Initial entries: `chess.nsoto.dev`, `budget.nsoto.dev`. **Not in the static-bootstrap epic** — ships after M1+M2.
 - **Apps nav stub (interim):** case-studies **M3** may add top-level **Apps** → `/apps` with coming-soon copy only. That satisfies nav wiring; **M2b** still owns the full landing section and app cards.
 - **Contact:** ui-kit form UI; submissions delivered via [Web3Forms](https://web3forms.com) (`POST https://api.web3forms.com/submit`) using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (client-side; key aliases inbox email).
 - **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts` (migrated from ui-kit `data.js`); app list added when Apps hub ships.
-- **Tokens:** `@import` [`design-system/tokens/`](../../design-system/tokens/) in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
+- **Tokens:** `@import '@nsoto/portfolio-tokens/styles.css'` in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
 - Accessible defaults: focus rings, semantic HTML, `prefers-reduced-motion` respected before/without WebGL.
 
 ## Non-goals (v1)
@@ -64,23 +65,23 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 | Landing sections | `components/landing/` — Hero, Nav, Experience, Skills, About, Contact, Footer; Apps (M2b) |
 | Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/case-studies/*` (case-studies M3) |
 | Apps stub (interim) | `app/apps/page.tsx` — coming soon (case-studies M3); replaced/extended by M2b section |
-| Shared UI | `components/ui/` — ported from `design-system/components/` |
+| Shared UI | `components/ui/` — `"use client"` re-exports / wrappers from `@nsoto/portfolio-ui`; Next `NavLink` adapter |
 | Content | `lib/portfolio-data.ts` |
 | Contact delivery | `components/landing/Contact.tsx` → Web3Forms; env `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) |
 | Hero shell + tier gate (M5) | `components/hero/` |
 | R3F scene (M5) | `components/hero/webgl/` |
 | Probe util (M5) | Co-located with tier gate or `lib/hero-tier/` |
-| Theme tokens | `app/globals.css` `@import` → `design-system/tokens/`; `tailwind.config.ts` extends CSS vars |
-| Brand assets | `public/logo/` (from `design-system/assets/logo/`); `public/favicon/` (from `design-system/assets/favicon/`); `public/og/` (OG preview image) |
-| Design reference | `design-system/` |
+| Theme tokens | `app/globals.css` → `@nsoto/portfolio-tokens/styles.css`; `tailwind.config.ts` extends CSS vars |
+| Brand assets | `public/logo/`; `public/favicon/`; `public/og/` (copied at ship; package assets available for future) |
+| Design SSOT | `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui` (canonical design-system repo) |
 | Meta / OG / favicon | `app/layout.tsx`; `public/favicon/`; `public/og/nsoto-dev-og.png` |
 | SEO / discoverability | `app/sitemap.ts`, `app/robots.ts`, `lib/seo/`, `components/seo/JsonLd.tsx` |
 
 ## Visual / motion spec
 
-- **Authority:** [`design-system/readme.md`](../../design-system/readme.md) + [`design-system/tokens/`](../../design-system/tokens/) (draft — refine after M1 side-by-side with brand lockup).
-- **Brand reference:** `design-system/assets/logo/nsoto-logo-cyan.png` (accent lockup); splash still at `design-system/assets/logo/nsoto-coming-soon-cyan-pad.png` (or nearest cyan lockup in `assets/logo/`).
-- **Prototype:** `design-system/ui_kits/portfolio/index.html` — layout/copy guide, not production source. Ui-kit has **no Apps section** — Apps is net-new at M2b.
+- **Authority:** `@nsoto/portfolio-tokens` / `@nsoto/portfolio-ui` (canonical [design-system](https://github.com/nsoto-development/design-system) repo).
+- **Brand assets in app:** `public/logo/nsoto-mark-cyan.png` (accent lockup).
+- **Prototype:** DS repo `ui_kits/portfolio/` — layout/copy guide, not production source. Ui-kit has **no Apps section** — Apps is net-new at M2b.
 - **M1–M2:** static; CSS-only motion (blinking cursor, hovers per DS tokens).
 
 ## M5 — WebGL hero
@@ -134,7 +135,8 @@ Two tiers only:
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
 | M2b | Apps hub | Planned | `</ APPS >` landing section; chess/budget coming soon cards (P0 #5) — **after** case-studies M3 nav stub if desired |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
-| M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion; harvest token tweaks into design-system (P1 #4) |
+| M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
+| M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
 **Quick gate:** each implementation thread names **one milestone** only. M5 does not pull M4 polish.
