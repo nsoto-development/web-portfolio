@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: it ships in `architecture` lifecycle phase and is revised when consumption migration is planned and executed (see [Follow-on updates](#follow-on-updates)).
+Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: evaluation shipped in `architecture`; current phase is **`planned`** (phases + `@nsoto/portfolio-*` packages locked in the DS migration SSOT); revise again when migration executes (see [Follow-on updates](#follow-on-updates)).
 
 ## Roadmap
 
-Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 **[debt] #4** (design-system harvest) — the case study documents the crossroads; harvest owns implementation.
+Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 **[debt] #4** (design-system harvest) — the case study documents the crossroads; harvest owns implementation. Migration how/when: design-system repo `guidelines/migration-to-portfolio-packages.md`.
 
 **Tone:** portfolio value — not "hiring" / "recruiter" language in public copy, titles, or eyebrows.
 
@@ -24,7 +24,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - Feature doc SSOT (this file) + roadmap line.
 - First case study at `/case-studies/design-system-consumption` — self-contained narrative (no dependency on private DS repo links).
 - Sections: hook, problem, constraints, options matrix, **evaluation** (private vs public repo), decision, evidence, learnings, status (lifecycle callout).
-- `lifecycle: 'architecture'` on v1 publish; status explains planned revisions.
+- `lifecycle: 'planned'` (2026-07-15) — naming locked to `@nsoto/portfolio-tokens` / `@nsoto/portfolio-ui`; phases scheduled in DS migration SSOT. Earlier v1 ship used `architecture`.
 - **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, apps stub). Case Studies links to `/case-studies` index; Apps links to `/apps` coming-soon stub until P0 #5 M2b ships properly.
 - **Landing callout (M3):** secondary discovery in About or Work — complements nav, does not replace it.
 - Content SSOT for page body: `lib/case-studies/design-system-consumption.ts` (ported from [Appendix A](#appendix-a--case-study-copy-v1)).
@@ -71,13 +71,13 @@ Living document tied to P1 #4 consumption migration.
 | Lifecycle | When | Case study changes |
 |-----------|------|-------------------|
 | `architecture` | **v1 (M2)** | Problem, constraints, matrix, directional decision, evidence, open migration work |
-| `planned` | Migration approach finalized in dedicated planning thread | Chosen path, phase outline, target end state |
+| `planned` | **Current** — migration SSOT + package names locked | Chosen path, phase outline, `@nsoto/portfolio-*` end state |
 | `in-progress` | Migration milestones shipping | Status banner, before/after deps, PR/commit links |
 | `implemented` | P1 #4 done bar met | Outcomes, version pins, validated learnings |
 
 **Revision triggers:**
 
-1. Migration plan finalized → `planned`.
+1. ~~Migration plan finalized → `planned`.~~ **Done** (2026-07-15).
 2. First migration milestone ships → `in-progress`.
 3. Migration complete → `implemented`.
 
@@ -180,7 +180,7 @@ The interim model did its job — both apps launched with a coherent brand and a
 **Body:**
 
 1. Prep canonical repo (scrub `uploads/`, secrets audit, presentable workshop content)
-2. Extract and publish `@nsoto/tokens` + `@nsoto/ui` (CI on tag)
+2. Extract and publish `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui` (CI on tag)
 3. Migrate consumers — ns-chess, then web-portfolio; delete vendored trees
 4. README cross-links; update this case study per phase
 
@@ -196,7 +196,7 @@ App boundaries unchanged. Migration execution = design-system harvest (product b
 
 - [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via `globals.css`; manual TSX ports; vendored tree still present pre-migration.
 - [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; `@ds` wrappers; oxlint `no-restricted-imports`; integration doc at `docs/design/system-integration.md`.
-- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with `packages/tokens` and `packages/ui` published as `@nsoto/*`.
+- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with `packages/portfolio-tokens` and `packages/portfolio-ui` published as `@nsoto/*`.
 
 ### Section: Learnings
 
@@ -294,7 +294,7 @@ export type CaseStudy = CaseStudyMeta & {
 |--------|------|------|---------|
 | Keep copy-pasting full repo | Fastest path to a shared baseline | Drift across repos; workshop artifacts in public trees | Bootstrap complete — migrate |
 | Private npm packages only | Corporate-clean versioning | `npm install` fails for readers without auth | Fails clone-and-run bar |
-| Public `@nsoto/tokens` + `@nsoto/ui` | Versioned; reviewer-friendly; works with public or private DS source | Component source on public npm | Chosen consumption model |
+| Public `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui` | Versioned; reviewer-friendly; works with public or private DS source | Component source on public npm | Chosen consumption model |
 | Committed vendor slice | No registry; works offline in git | Manual sync; weaker fit once DS repo is public | Valid interim only |
 | Private monorepo | Simplest internal workflow | Loses separate public app repos | Optional if repo model changes |
 | Public design-system repo | Full system showcase; one SSOT; same npm model | Must scrub sensitive files; all workshop content public | Chosen repo model |

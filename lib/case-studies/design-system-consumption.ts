@@ -4,12 +4,12 @@ export const designSystemConsumption: CaseStudy = {
   slug: "design-system-consumption",
   title: "Architecture at a crossroads",
   subtitle: "From deliberate bootstrap to a single consumption model",
-  lifecycle: "architecture",
-  lastUpdated: "2026-07-12",
+  lifecycle: "planned",
+  lastUpdated: "2026-07-15",
   status: {
-    phaseLabel: "Architecture",
-    headline: "Evaluation complete — public design-system repo chosen",
-    body: "Bootstrap vendoring served its purpose; consolidation into versioned `@nsoto/*` packages is the direction. After scoping two repo-visibility architectures under the same constraints, the choice is a public canonical design-system repo — the private-workshop alternative was viable but costlier to operate. Implementation and repo prep ship separately; this page updates as milestones land.",
+    phaseLabel: "Planned",
+    headline: "Migration phased — `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui`",
+    body: "Public design-system repo remains the target. Package names and execution phases are locked in the design-system migration SSOT (`guidelines/migration-to-portfolio-packages.md`): naming + scrub → package scaffold → publish `0.1.0` → ns-chess → web-portfolio. This page moves to `in-progress` when packages publish or the first consumer migrates.",
   },
   sections: [
     {
@@ -55,7 +55,7 @@ To ship each app quickly on a different stack, I deliberately vendored the full 
 
 **Why public won:** lower ongoing operational cost and a complete showcase story for a solo portfolio where the design system is part of the work — not because the private path was incomplete.
 
-Two consumption architectures were scoped to the same end state — no vendored \`design-system/\` folders, versioned \`@nsoto/tokens\` and \`@nsoto/ui\`, app-owned product code. Each covers topology, package layout, responsibility splits, day-to-day workflows, migration phases, and an explicit decision summary. Both are viable; the question is which one to **operate** long term as a solo developer.
+Two consumption architectures were scoped to the same end state — no vendored \`design-system/\` folders, versioned \`@nsoto/portfolio-tokens\` and \`@nsoto/portfolio-ui\`, app-owned product code. Each covers topology, package layout, responsibility splits, day-to-day workflows, migration phases, and an explicit decision summary. Both are viable; the question is which one to **operate** long term as a solo developer.
 
 ---
 
@@ -63,8 +63,8 @@ Two consumption architectures were scoped to the same end state — no vendored 
 
 *The spec:* keep \`design-system\` **private**. Guidelines, ui_kits, prompts, prototypes, and uploads stay in a workshop repo that reviewers never need to clone. Only a **runtime slice** reaches consumers:
 
-- \`packages/tokens\` → \`@nsoto/tokens\` (CSS variables, \`styles.css\`, logo/favicon assets)
-- \`packages/ui\` → \`@nsoto/ui\` (built React primitives + types)
+- \`packages/portfolio-tokens\` → \`@nsoto/portfolio-tokens\` (CSS variables, \`styles.css\`, logo/favicon assets)
+- \`packages/portfolio-ui\` → \`@nsoto/portfolio-ui\` (built React primitives + types)
 
 Apps delete vendored trees and declare semver deps. Workshop content is **never** distributed — not in npm packages, not in consumer repos.
 
@@ -75,7 +75,7 @@ Because apps are public and must support \`git clone\` → \`npm install\` → \
 
 The private spec also documents: Next.js adapter pattern in web-portfolio; oxlint boundaries in ns-chess; a four-phase migration (tokens → UI package → app cleanup → polish); an optional private monorepo escape hatch; and an honest privacy boundary — live sites expose shipped CSS/JS regardless of repo visibility.
 
-*What you gain:* process privacy (drafts, prompts, resume uploads, experiments stay private); a smaller public footprint; a shape familiar from corporate internal design systems.
+*What you gain:* process privacy (drafts, prompts, experiments stay private); a smaller public footprint; a shape familiar from corporate internal design systems.
 
 *What you pay:* **ongoing operational complexity** — detailed below.
 
@@ -83,11 +83,11 @@ The private spec also documents: Next.js adapter pattern in web-portfolio; oxlin
 
 **Path B — Public portfolio repo, same packages**
 
-*The spec:* make \`design-system\` **public** — a portfolio project and library source in one repo. Consumption model is the same at the package layer: publish \`@nsoto/tokens\` and \`@nsoto/ui\` to public npm (or pin via public git tag + path deps). Consumers look identical to Path A.
+*The spec:* make \`design-system\` **public** — a portfolio project and library source in one repo. Consumption model is the same at the package layer: publish \`@nsoto/portfolio-tokens\` and \`@nsoto/portfolio-ui\` to public npm (or pin via public git tag + path deps). Consumers look identical to Path A.
 
 The difference is visibility. Guidelines specimen cards, ui_kit prototypes (\`portfolio/\`, \`app-hub/\`), component source, README philosophy, and optional Storybook or GitHub Pages become **part of what is demonstrated**. Reviewers evaluating apps clone \`web-portfolio\` or \`ns-chess\`; reviewers evaluating systems craft clone \`design-system\` directly. No auth, no submodules, no split narrative.
 
-The public spec includes: pre-publish scrub checklist (\`uploads/\` resume PDF, secrets audit, draft cleanup); the same consumer folder layouts and responsibility split; a migration plan (Phase 0 visibility prep → package structure → per-app cutover → README cross-links); and a side-by-side decision table against the private path.
+The public spec includes: pre-publish scrub (omit authoring prompts/\`SKILL.md\`, secrets audit, public-facing README); the same consumer folder layouts and responsibility split; a migration plan (Phase 0 prep → package structure → per-app cutover → README cross-links); and a side-by-side decision table against the private path.
 
 *What you gain:* one source of truth; showcase depth; simpler day-to-day (merge → publish → bump — no sync scripts); alignment with how public design systems are consumed.
 
@@ -117,17 +117,17 @@ Corporate teams with registry auth, compliance requirements, or a hard mandate t
       id: "decision",
       eyebrow: "</ DIRECTION >",
       heading: "What ships next",
-      body: `**1. Prep the canonical repo** — scrub \`uploads/\` and sensitive files; audit for secrets; make workshop content presentable.
+      body: `**1. Prep the canonical repo** — omit private authoring aids (\`SKILL.md\`, \`*.prompt.md\`); audit for secrets; keep the public README portfolio-facing.
 
-**2. Extract and publish packages** — add \`packages/tokens\` and \`packages/ui\`; CI publishes \`@nsoto/tokens\` and \`@nsoto/ui\` to public npm on tag.
+**2. Scaffold and publish packages** — \`packages/portfolio-tokens\` + \`packages/portfolio-ui\`; first publish \`@nsoto/portfolio-tokens@0.1.0\` and \`@nsoto/portfolio-ui@0.1.0\` (CI on tag later).
 
-**3. Migrate consumers** — ns-chess first (closer to package consumption today), then web-portfolio. Delete vendored \`design-system/\` trees; drop the \`@ds\` alias; declare semver deps.
+**3. Migrate consumers** — ns-chess first, then web-portfolio. Delete vendored \`design-system/\` trees; drop the \`@ds\` alias; declare semver deps.
 
-**4. Wire the portfolio story** — README cross-links across all three public repos; update this case study as each phase lands.
+**4. Wire the portfolio story** — README cross-links across all three public repos; move this case study to \`in-progress\` / \`implemented\` as gates land.
 
 App boundaries stay fixed: Next.js adapters and landing sections in web-portfolio; game UI in ns-chess; copy in \`lib/portfolio-data.ts\`. ui_kits remain design references — ported into app code, not imported at runtime.
 
-Migration execution is tracked as design-system harvest work in the product backlog. This page will move from architecture to planned once phases are scheduled, and again as implementation ships.`,
+Execution SSOT: design-system \`guidelines/migration-to-portfolio-packages.md\` (product backlog P1 **[debt] #4**). Lifecycle is \`planned\`; next bump is \`in-progress\` when publish or ns-chess migration starts.`,
     },
     {
       id: "evidence",
@@ -135,7 +135,7 @@ Migration execution is tracked as design-system harvest work in the product back
       heading: "Where to look",
       body: `- [web-portfolio](https://github.com/nsoto-development/web-portfolio) — Next.js hub; tokens via \`globals.css\`; manual TSX ports; vendored tree still present pre-migration.
 - [ns-chess](https://github.com/nsoto-development/ns-chess) — Vite app; \`@ds\` wrappers; oxlint \`no-restricted-imports\`; integration doc at \`docs/design/system-integration.md\`.
-- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with \`packages/tokens\` and \`packages/ui\` published as \`@nsoto/*\`.
+- **design-system** (canonical, currently private) — guidelines, ui_kits, tokens, components; target state is public repo with \`packages/portfolio-tokens\` and \`packages/portfolio-ui\` published as \`@nsoto/*\`.
 
 ns-chess moved earlier toward consumption discipline during bootstrap. web-portfolio prioritized tokens-first shipping on Next.js. Both patterns inform the migration target: versioned deps from one public canonical repo, no folder copies in consumers.`,
     },
@@ -187,7 +187,7 @@ ns-chess moved earlier toward consumption discipline during bootstrap. web-portf
       verdict: "Fails clone-and-run bar",
     },
     {
-      option: "Public `@nsoto/tokens` + `@nsoto/ui`",
+      option: "Public `@nsoto/portfolio-tokens` + `@nsoto/portfolio-ui`",
       pros: "Versioned; reviewer-friendly; works with public or private DS source",
       cons: "Component source on public npm",
       verdict: "Chosen consumption model",
