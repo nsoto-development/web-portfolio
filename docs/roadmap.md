@@ -24,9 +24,9 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **Current focus:** P1 #6 case-studies **M3** Done — next: P0 #5 Apps hub **M2b** (full landing section). `/apps` stub satisfies nav until then.
+- **Current focus:** P0 #5 Apps hub **M2b** — compact Apps strip on landing (apps are first-class; `/apps` stays the detail page). Spec: [`landing.md`](features/landing.md#m2b--apps-strip-on-landing).
 
-- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2 page + case-studies M3 discovery (nav, index, apps stub, callout)
+- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2 page + case-studies M3 discovery (nav, index, `/apps` hub, callout)
 
 - **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3)
 
@@ -72,7 +72,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 4. ~~`[chore]` **Deploy `nsoto.dev`**~~ — **Done** — live at [nsoto.dev](https://nsoto.dev) (Vercel, HTTPS, favicon, OG, Web3Forms). → landing **M3**
 
-5. `[feature]` **Apps hub section** — `</ APPS >` eyebrow; `chess.nsoto.dev`, `budget.nsoto.dev` coming soon (no live links). → landing **M2b**. Interim `/apps` stub may ship in case-studies **M3**; full section is still this work item.
+5. `[feature]` **Apps on landing** — apps-first portfolio: compact `</ APPS >` strip early on the home page (after hero); live outbound links; shared data with `/apps`. **Not** a duplicate card grid. → landing **M2b** ([`landing.md`](features/landing.md#m2b--apps-strip-on-landing)). `/apps` (case-studies M3) remains the detail hub.
 
 
 
@@ -95,6 +95,8 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 5. ~~`[chore]` **Web Analytics + Speed Insights**~~ — **Done** — `@vercel/analytics`, `@vercel/speed-insights` in `app/layout.tsx`; enable in Vercel project.
 
 6. `[feature]` **Case studies — design system consumption** — architecture crossroads narrative at `/case-studies/design-system-consumption`; living doc updated when P1 #4 migration is planned/shipped. → case-studies **M2** + **M3** Done ([`case-studies.md`](features/case-studies.md))
+
+7. `[feature]` **Recently shipped** — curated milestone outcomes (date + product + one line); surface on `/apps` (and optional reuse later). **After** P0 #5 M2b. No GitHub API / commit charts. → feature doc at implement ([`landing.md` future hook](features/landing.md#after-m2b--recently-shipped))
 
 
 
