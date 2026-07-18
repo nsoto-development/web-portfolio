@@ -12,9 +12,9 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **Current focus:** P1 #8 **Landing funnel restructure** **M2c** — `/experience` depth page (then M2d condense + P0 #5 Apps teaser). Spec: [`landing.md`](features/landing.md#m2c--experience-depth-page).
+- **Current focus:** P1 #8 **Landing funnel restructure** **M2d** — condense landing + P0 #5 Apps teaser. Spec: [`landing.md`](features/landing.md#m2d--fast-landing-funnel).
 
-- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2 page + case-studies M3 discovery (nav, index, `/apps` hub, callout)
+- **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2/M3 + landing **M2c** `/experience`
 
 - **Unmerged WIP:** `feature/apps-strip-m2b` (four-row strip) — **not** merging; Apps teaser is redefined under P0 #5 / M2b.
 
@@ -64,7 +64,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 7. `[feature]` **Recently shipped** — curated milestone outcomes (date + product + one line); surface on `/apps` (and optional reuse later). **After** P0 #5 M2b. No GitHub API / commit charts. → feature doc at implement ([`landing.md` future hook](features/landing.md#after-m2b--recently-shipped))
 
-8. `[feature]` **Landing funnel restructure** — tighter home page for recruiter scan speed: depth on `/experience` + `/apps`; condensed Experience/Skills/About on `/`. → landing **M2c** then **M2d** ([`landing.md`](features/landing.md#m2c--experience-depth-page)). Does **not** change `/apps` or Case Studies pages.
+8. `[feature]` **Landing funnel restructure** — tighter home page for recruiter scan speed: depth on `/experience` + `/apps`; condensed Experience/Skills/About on `/`. → landing **M2c** Done; **M2d** Planned ([`landing.md`](features/landing.md#m2d--fast-landing-funnel)). Does **not** change `/apps` or Case Studies pages.
 
 **Post-v1 polish (landing milestones):** M4 a11y + Framer Motion; M5 WebGL.
 
