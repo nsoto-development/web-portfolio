@@ -11,10 +11,11 @@ import { SITE_URL } from "@/lib/seo/site";
 export const metadata: Metadata = {
   title: "Side Projects",
   description:
-    "Side projects on nsoto.dev — chess.nsoto.dev is live; more apps ship over time.",
+    "Side projects on nsoto.dev — chess and budget apps, plus published @nsoto design-system packages.",
   openGraph: {
     title: "Side Projects",
-    description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
+    description:
+      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, and @nsoto npm packages.",
     url: `${SITE_URL}/apps`,
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Side Projects",
-    description: "Side projects linked from the nsoto.dev hub — chess.nsoto.dev and more.",
+    description:
+      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, and @nsoto npm packages.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };
@@ -122,6 +124,18 @@ function AppCard({ app }: { app: AppsStubEntry }) {
             {app.domain}
           </span>
         )}
+        {app.links?.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            style={externalLinkStyle}
+          >
+            {link.label}
+            <ArrowUpRight size={14} aria-hidden />
+          </a>
+        ))}
         {app.repo && (
           <a
             href={app.repo}
