@@ -25,7 +25,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - First case study at `/case-studies/design-system-consumption` — self-contained narrative (no dependency on private DS repo links).
 - Sections: hook, problem, constraints, options matrix, **evaluation** (private vs public repo), decision, evidence, learnings, status (lifecycle callout).
 - `lifecycle: 'implemented'` (2026-07-15) — both consumers on `@nsoto/portfolio-*@0.1.0`; no vendored `design-system/`. Prior: `in-progress` → `planned` → `architecture`.
-- **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, apps stub). Case Studies links to `/case-studies` index; Apps links to `/apps` coming-soon stub until P0 #5 M2b ships properly.
+- **Top-level nav (M3):** **Case Studies** and **Apps** in site header (landing, case-study pages, `/apps`). Case Studies → `/case-studies` index; Apps → `/apps` detail hub. Landing Apps strip is separate (P0 #5 / landing **M2b**).
 - **Landing callout (M3):** secondary discovery in About or Work — complements nav, does not replace it.
 - Content SSOT for page body: `lib/case-studies/design-system-consumption.ts` (ported from [Appendix A](#appendix-a--case-study-copy-v1)).
 
@@ -34,7 +34,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 - ~~DS consumption migration implementation (P1 #4)~~ — **Done** (cutover in web-portfolio + ns-chess).
 - MDX / blog engine / CMS.
 - Additional case studies beyond design-system consumption.
-- **Full** P0 #5 Apps hub (landing `</ APPS >` section, app cards) — M3 may ship a **stub** `/apps` page only; proper M2b is a separate thread.
+- **Landing** Apps strip (P0 #5 / M2b) — compact home-page discovery; `/apps` remains the full card catalog.
 - Publishing or restructuring the design-system repo.
 
 ## Future hooks
@@ -56,7 +56,7 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 | Site nav (M3) | `lib/portfolio-data.ts` (`nav`, `caseStudies`); `components/SiteNav.tsx` (re-exported as `components/landing/Nav.tsx` on landing) |
 | Case studies registry (M3) | `lib/case-studies/registry.ts` |
 | Case studies index (M3) | `app/case-studies/page.tsx` — lists published studies |
-| Apps stub (M3) | `app/apps/page.tsx` — coming soon; satisfies Apps nav target until landing M2b |
+| Apps hub (M3) | `app/apps/page.tsx` — full cards; landing strip is M2b / P0 #5 |
 | Discovery callout (M3) | `components/landing/About.tsx` |
 | Related debt | P1 #4 design-system harvest → landing M4 |
 

@@ -60,9 +60,9 @@
 
 4. **Portfolio content** — work/experience, skills, about, contact (copy from resume; layout guided by design-system ui kit). Contact form delivers to inbox via [Web3Forms](https://web3forms.com) (`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`).
 
-5. **Apps hub** — `</ APPS >` section listing WIP subdomain apps (coming soon, no live links). **Not yet shipped** (P0 #5 / landing M2b).
+5. **Apps hub** — `/apps` detail page **shipped** (live cards + nav). Landing still needs the compact Apps strip early on the home page (P0 #5 / landing **M2b**) — apps are first-class; not a second full card grid. Spec: [`landing.md`](features/landing.md#m2b--apps-strip-on-landing).
 
-6. **Subdomain hub** — coming soon cards when Apps hub ships; live outbound links when child apps ship (P1).
+6. **Subdomain hub** — live outbound links from `/apps` (and M2b strip when it ships); child apps may use separate stacks/deploys.
 
 7. **Motion / accessibility** — `prefers-reduced-motion` honored; CSS motion OK for first static ship; no motion-only critical content.
 
