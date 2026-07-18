@@ -6,9 +6,11 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps hub). P1 **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). **Next:** Apps strip on landing (**M2b** / P0 #5) — apps are first-class citizens of this portfolio. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md). After M2b: roadmap P1 **Recently shipped**.
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). **Next:** funnel **M2c** (`/experience`), then **M2d** (condense landing) + **M2b** Apps teaser (P0 #5). WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md). After M2b: roadmap P1 **Recently shipped**.
+
+**Branch note:** `feature/apps-strip-m2b` (four-row strip) stays **unmerged**; M2b is the 2-project screenshot teaser instead.
 
 **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3).
 
@@ -34,10 +36,11 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - Dark-only landing matching `@nsoto/portfolio-tokens` and [`docs/mvp-scope.md`](../mvp-scope.md) visual baseline.
 - Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy. **Copy:** keep ui-kit draft (`</ COMING SOON. STAY TUNED >`) until post-M1 side-by-side with brand lockup, then refine.
 - Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by the canonical DS portfolio ui-kit (reference only).
-- **Apps on landing (M2b / P0 #5):** compact `</ APPS >` strip **early** on the home page (after hero, before Work/experience). Apps are first-class; employment history supports the story. See [M2b spec](#m2b--apps-strip-on-landing).
-- **`/apps` detail hub:** case-studies **M3** shipped top-level **Apps** → `/apps` with live cards. That page stays the full catalog; M2b does **not** duplicate it as a second card grid.
+- **Apps on landing (M2b / P0 #5):** 2-project visual **teaser** early on the home page (after hero; Chess + Budget + screenshots). Apps are first-class; employment history supports the story. See [M2b spec](#m2b--apps-teaser-on-landing).
+- **Landing funnel (M2c / M2d / P1 #8):** `/experience` holds full work history; landing shows highlights + condensed skills/about with clear depth CTAs. See [M2c](#m2c--experience-depth-page) / [M2d](#m2d--fast-landing-funnel).
+- **`/apps` detail hub:** case-studies **M3** shipped top-level **Apps** → `/apps` with live cards. That page stays the full catalog; M2b does **not** duplicate it as a four-card grid.
 - **Contact:** ui-kit form UI; submissions delivered via [Web3Forms](https://web3forms.com) (`POST https://api.web3forms.com/submit`) using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (client-side; key aliases inbox email).
-- **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts`; app entries shared between `/apps` and the M2b landing strip.
+- **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts`; app entries shared between `/apps` and the M2b landing teaser.
 - **Tokens:** `@import '@nsoto/portfolio-tokens/styles.css'` in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
 - Accessible defaults: focus rings, semantic HTML, `prefers-reduced-motion` respected before/without WebGL.
 
@@ -47,7 +50,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - Framer Motion on first static ship (M4).
 - Light theme or alternate colorways.
 - CMS / admin for content — copy lives in repo.
-- Full card grid on the landing page (that lives on `/apps`).
+- Full card grid or four-row text strip of all apps on the landing page (full catalog lives on `/apps`; teaser is two projects only).
 - Treating the design-system ui kit as immutable — it is a **draft** starting point.
 
 ## Future hooks
@@ -62,9 +65,11 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 | Area | Location |
 |------|----------|
 | App | `app/` (`layout.tsx`, `page.tsx`, `globals.css`) |
-| Landing sections | `components/landing/` — Hero, Nav, **Apps (M2b)**, Experience, Skills, About, Contact, Footer |
-| Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/case-studies/*` |
-| Apps detail page | `app/apps/page.tsx` — full cards (case-studies M3); SSOT entries shared with M2b strip |
+| Landing sections | `components/landing/` — Hero, Nav, **Apps teaser (M2b)**, Experience highlights, Skills, About, Contact, Footer |
+| Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/experience`, `/case-studies/*` |
+| Experience depth | `app/experience/page.tsx` (M2c) — full history + filters; landing keeps `#work` highlights + CTA |
+| Apps detail page | `app/apps/page.tsx` — full cards (case-studies M3); SSOT entries shared with M2b teaser |
+| App preview assets | `public/apps/` — static screenshots for M2b teaser (`next/image`) |
 | Shared UI | `components/ui/` — `"use client"` re-exports / wrappers from `@nsoto/portfolio-ui`; Next `NavLink` adapter |
 | Content | `lib/portfolio-data.ts` (`appsStub` / app entries) |
 | Contact delivery | `components/landing/Contact.tsx` → Web3Forms; env `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) |
@@ -84,43 +89,108 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - **Prototype:** DS repo `ui_kits/portfolio/` — layout/copy guide, not production source. Ui-kit has **no Apps section** — Apps is net-new at M2b.
 - **M1–M2:** static; CSS-only motion (blinking cursor, hovers per DS tokens).
 
-## M2b — Apps strip on landing
+## M2b — Apps teaser on landing
 
-Tracks P0 **[feature] #5**. Apps are first-class on this portfolio hub: the home page should surface what you ship **before** résumé Work.
+Tracks P0 **[feature] #5**. Apps are first-class on this portfolio hub: the home page should prove capability quickly, then hand off to `/apps`. Ships with funnel **M2d** (same implementation pass is fine).
 
 ### Intent
 
 | Surface | Role |
 |---------|------|
-| Landing `#apps` strip | Early, compact discovery — name, one short line, Live/WIP, link |
-| `/apps` | Full catalog — descriptions, badges, domain + repo links |
+| Landing `#apps` teaser | Two visual project cards (Chess first, Budget second) + `See all apps → /apps` |
+| `/apps` | Full catalog — all entries, fuller descriptions, badges, domain + repo links |
 
 ### Layout / hierarchy
 
 1. **Hero** — brand + positioning (may mention building apps on nsoto.dev; no app cards in the hero).
-2. **Apps strip** — immediately after hero (before Experience).
-3. **Work / skills / about / contact** — proof and contact; unchanged otherwise.
+2. **Apps teaser** — immediately after hero (before Experience highlights).
+3. **Work / skills / about / contact** — condensed funnel sections (M2d); unchanged Contact terminal CTA.
 
-### Strip UI (keep simple — reuse existing tokens/badges)
+### Teaser UI
 
 - Eyebrow: `</ APPS >`.
 - One short supporting sentence (section has one job).
-- Compact rows or a thin list (not a card grid): **name**, one-line blurb, status badge, outbound link (and optional “See all → `/apps`” if the list grows).
-- Same entry data as `/apps` (`lib/portfolio-data.ts`) — one SSOT; strip may show a shorter blurb field if needed.
-- Live apps get real `href`s (chess, budget, packages, etc. as already on `/apps`).
+- **Two** higher-presence cards only: Chess, then Budget — each with a static screenshot (`public/apps/`), name, short blurb, outbound live link.
+- Same entry data as `/apps` (`lib/portfolio-data.ts`) — one SSOT; optional `blurb` / preview fields for the teaser.
+- Clear `See all apps → /apps` CTA.
+- Card surfaces match `/apps` (slightly lighter surface + visible border vs pure-black canvas).
 
 ### Non-goals (M2b)
 
-- Duplicating the full `/apps` card layout on the home page.
+- Four-row text strip (superseded; do not merge `feature/apps-strip-m2b`).
+- Duplicating the full `/apps` four-card grid on the home page.
+- Mini-app embeds, iframes, or remote screenshot services.
 - Recently shipped / changelog UI (roadmap P1 #7 — after this milestone).
-- New visual language, stats strips, or dashboard chrome.
 - Hero redesign or WebGL (M5).
 
 ### Done when
 
-- Home page renders the Apps strip after Hero and before Experience.
+- Home page renders the two-project Apps teaser after Hero and before Experience.
 - Entries stay in sync with `/apps` via shared data.
 - Nav **Apps** still goes to `/apps` for the full page.
+
+## M2c — Experience depth page
+
+Tracks P1 **[feature] #8** (first slice). Full employment history moves off the landing scroll.
+
+### Intent
+
+| Surface | Role |
+|---------|------|
+| Landing `#work` | Two highlights only (current + one standout) + `Full experience → /experience` (M2d) |
+| `/experience` | Full four-role history + category filters |
+
+### Deliverables
+
+- Extract reusable experience card + thin client filter list (landing `Experience` is currently a single `"use client"` module with a private card).
+- `app/experience/page.tsx` hub shell (mirror `/apps`): metadata, `SiteNav`, filters, full cards, `Footer`.
+- Optional `experienceStub` header copy in `lib/portfolio-data.ts`.
+- Sitemap entry for `/experience`.
+- Keep primary nav `Work` → `#work` on home; **no** extra top-level Experience nav item.
+- Experience-only page for v1 (Skills stay condensed on landing).
+
+### Non-goals (M2c)
+
+- Condensing the landing Experience section (that is **M2d**).
+- Changing `/apps` or Case Studies.
+- JSON-LD `WorkExperience` schema (optional later).
+
+### Done when
+
+- `/experience` shows all roles with working filters.
+- Shared job data remains SSOT in `lib/portfolio-data.ts`.
+- Lint + build pass; sitemap includes `/experience`.
+
+## M2d — Fast landing funnel
+
+Tracks P1 **[feature] #8** (second slice) and closes **P0 #5 / M2b** Apps teaser in the same pass (or immediately after).
+
+### Landing composition (top → bottom)
+
+1. **Hero** — unchanged structure; refresh stale “apps coming soon” eyebrow copy.
+2. **Apps teaser** — M2b (Chess + Budget screenshots).
+3. **Experience highlights** — current Sedgwick role + Southeastern Azure migration; no filter tabs; `Full experience → /experience`.
+4. **Skills** — curated 10–15 chips (compact companion, not a full-height block); full taxonomy stays in data.
+5. **About** — 2–3 sentence landing summary; keep case-study callout card.
+6. **Contact** — unchanged terminal CTA.
+
+### Design principles
+
+- Mono headings / badges; sans body — no regression.
+- Trimmed-section body text: nudge contrast up where `--text-secondary` feels washed out.
+- Every depth section ends with a clear link to its full page (`/apps`, `/experience`).
+
+### Non-goals (M2d)
+
+- Changes to `/apps` card layout or Case Studies pages.
+- Framer Motion (M4) or WebGL (M5).
+- Analytics experimentation UI.
+
+### Done when
+
+- Landing scan length is materially shorter; depth CTAs work.
+- M2b teaser Done criteria met.
+- P1 #8 and P0 #5 can be marked Done when both M2c and M2d (incl. M2b) have shipped.
 
 ## After M2b — Recently shipped
 
@@ -175,7 +245,9 @@ Two tiers only:
 |---|-----------|--------|--------------|
 | M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
-| M2b | Apps strip on landing | Planned | Compact `</ APPS >` strip after hero; shared data with `/apps`; not a card-grid duplicate (P0 #5) — [spec](#m2b--apps-strip-on-landing) |
+| M2b | Apps teaser on landing | Planned | Two-project screenshot teaser (Chess + Budget); shared data with `/apps` (P0 #5) — [spec](#m2b--apps-teaser-on-landing); ships with M2d |
+| M2c | Experience depth page | Planned | `/experience` full history + filters; extract reusable cards (P1 #8) — [spec](#m2c--experience-depth-page) |
+| M2d | Fast landing funnel | Planned | Condense Experience/Skills/About; depth CTAs; include M2b teaser (P1 #8) — [spec](#m2d--fast-landing-funnel) |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion |
@@ -185,7 +257,7 @@ Two tiers only:
 
 ## M3 — Deploy nsoto.dev
 
-Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (static landing; Apps hub is M2b / P0 #5).
+Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (static landing; Apps teaser is M2b / P0 #5).
 
 ### Shipped
 
