@@ -18,6 +18,8 @@ export type AppsStubEntry = {
   status: string;
   description?: string;
   href?: string;
+  /** Extra outbound links shown beside the primary domain (e.g. sibling npm packages). */
+  links?: { label: string; href: string }[];
   repo?: string;
 };
 
@@ -172,7 +174,30 @@ export const portfolioData = {
           "This site — Next.js hub for nsoto.dev: landing, case studies, and shared design-system consumption across public apps.",
         href: "https://github.com/nsoto-development/web-portfolio",
       },
-      { name: "Budget", domain: "budget.nsoto.dev", status: "Coming soon" },
+      {
+        name: "Budget",
+        domain: "budget.nsoto.dev",
+        status: "Live",
+        description:
+          "Cash flow scheduler — recurring income and bills, calendar-accurate projection, and deficit visualization. Framework-agnostic scheduling engine with a SvelteKit UI on @nsoto/portfolio-tokens.",
+        href: "https://budget.nsoto.dev",
+        repo: "https://github.com/nsoto-development/ns-budget",
+      },
+      {
+        name: "Design System",
+        domain: "@nsoto/portfolio-tokens",
+        status: "Live",
+        description:
+          "Dark-only, code-forward foundations for nsoto.dev — CSS tokens and brand assets plus React primitives, shared by the hub and subdomain apps.",
+        href: "https://www.npmjs.com/package/@nsoto/portfolio-tokens",
+        links: [
+          {
+            label: "@nsoto/portfolio-ui",
+            href: "https://www.npmjs.com/package/@nsoto/portfolio-ui",
+          },
+        ],
+        repo: "https://github.com/nsoto-development/design-system",
+      },
     ] satisfies AppsStubEntry[],
   },
   // Future hook: live apps list for M2b Apps hub section
