@@ -8,7 +8,7 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done). **Next:** funnel **M2c** (`/experience`), then **M2d** (condense landing) + **M2b** Apps teaser (P0 #5). WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md). After M2b: roadmap P1 **Recently shipped**.
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` Done. **Next:** **M2d** (condense landing) + **M2b** Apps teaser (P0 #5). WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md). After M2b: roadmap P1 **Recently shipped**.
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stays **unmerged**; M2b is the 2-project screenshot teaser instead.
 
@@ -67,11 +67,12 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 | App | `app/` (`layout.tsx`, `page.tsx`, `globals.css`) |
 | Landing sections | `components/landing/` — Hero, Nav, **Apps teaser (M2b)**, Experience highlights, Skills, About, Contact, Footer |
 | Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/experience`, `/case-studies/*` |
-| Experience depth | `app/experience/page.tsx` (M2c) — full history + filters; landing keeps `#work` highlights + CTA |
+| Experience depth | `app/experience/page.tsx` (M2c Done) — full history + filters |
+| Experience shared UI | `components/experience/` — `ExperienceCard`, `ExperienceList` (client filters) |
 | Apps detail page | `app/apps/page.tsx` — full cards (case-studies M3); SSOT entries shared with M2b teaser |
 | App preview assets | `public/apps/` — static screenshots for M2b teaser (`next/image`) |
 | Shared UI | `components/ui/` — `"use client"` re-exports / wrappers from `@nsoto/portfolio-ui`; Next `NavLink` adapter |
-| Content | `lib/portfolio-data.ts` (`appsStub` / app entries) |
+| Content | `lib/portfolio-data.ts` (`appsStub` / `experienceStub` / app + job entries) |
 | Contact delivery | `components/landing/Contact.tsx` → Web3Forms; env `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) |
 | Hero shell + tier gate (M5) | `components/hero/` |
 | R3F scene (M5) | `components/hero/webgl/` |
@@ -131,7 +132,7 @@ Tracks P0 **[feature] #5**. Apps are first-class on this portfolio hub: the home
 
 ## M2c — Experience depth page
 
-Tracks P1 **[feature] #8** (first slice). Full employment history moves off the landing scroll.
+Tracks P1 **[feature] #8** (first slice). **Done** — full employment history is available at `/experience`; landing still shows the full list until **M2d**.
 
 ### Intent
 
@@ -246,7 +247,7 @@ Two tiers only:
 | M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
 | M2b | Apps teaser on landing | Planned | Two-project screenshot teaser (Chess + Budget); shared data with `/apps` (P0 #5) — [spec](#m2b--apps-teaser-on-landing); ships with M2d |
-| M2c | Experience depth page | Planned | `/experience` full history + filters; extract reusable cards (P1 #8) — [spec](#m2c--experience-depth-page) |
+| M2c | Experience depth page | **Done** | `/experience` full history + filters; extract reusable cards (P1 #8) — [spec](#m2c--experience-depth-page) |
 | M2d | Fast landing funnel | Planned | Condense Experience/Skills/About; depth CTAs; include M2b teaser (P1 #8) — [spec](#m2d--fast-landing-funnel) |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
@@ -280,7 +281,7 @@ Tracks P0 **[chore] #4**. **Done** — [nsoto.dev](https://nsoto.dev) is live (s
 
 - Sitemap lists `/`, `/apps`, `/case-studies`, and each entry in `publishedCaseStudies` (`lib/case-studies/registry.ts`). Hash anchors (`#work`, etc.) are not separate URLs.
 - Case studies may set optional `updatedAt` in `lib/portfolio-data.ts` for accurate `lastModified` in the sitemap.
-- New routes: add page `metadata`, ensure the URL is in the sitemap source (registry or static list), then re-submit in Search Console after deploy.
+- New routes: add page `metadata`, ensure the URL is in the sitemap source (registry or static list), then re-submit in Search Console after deploy. `/experience` is listed in `app/sitemap.ts` (M2c).
 
 **Manual ops (post-deploy):**
 

@@ -70,6 +70,11 @@ export const portfolioData = {
     headline: "I modernize legacy systems and keep mission-critical integrations running.",
     sub: "Senior software engineer in Jacksonville, FL — 20 years across C#, JavaScript, and SQL Server. Cloud migrations, enterprise integrations, and the inherited codebases teams still depend on.",
   },
+  experienceStub: {
+    eyebrow: "</ EXPERIENCE >",
+    headline: "Work history",
+    sub: "Roles across cloud migrations, enterprise integrations, and data platforms — filter by focus area.",
+  },
   experience: [
     {
       id: "sedgwick",
