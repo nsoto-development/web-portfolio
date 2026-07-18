@@ -16,7 +16,12 @@ export type AppsStubEntry = {
   name: string;
   domain: string;
   status: string;
+  /** Full copy for `/apps` cards. */
   description?: string;
+  /** One-line copy for the landing Apps teaser (M2b). Falls back to description when omitted. */
+  blurb?: string;
+  /** Static preview for landing teaser cards (`public/apps/…`). */
+  preview?: { src: string; alt: string; width: number; height: number };
   href?: string;
   /** Extra outbound links shown beside the primary domain (e.g. sibling npm packages). */
   links?: { label: string; href: string }[];
@@ -39,6 +44,12 @@ export type SkillGroup = {
   label: string;
   items: string[];
 };
+
+/** Landing teaser order: Chess first, Budget second (P0 #5 / M2b). */
+export const LANDING_APP_TEASER_IDS = ["chess.nsoto.dev", "budget.nsoto.dev"] as const;
+
+/** Landing experience highlights (M2d) — full list stays on `/experience`. */
+export const LANDING_EXPERIENCE_IDS = ["sedgwick", "southeastern"] as const;
 
 export const portfolioData = {
   name: "Nelson Soto",
@@ -66,7 +77,7 @@ export const portfolioData = {
     email: "nsoto.development@gmail.com",
   },
   hero: {
-    eyebrow: "</ APPS COMING SOON. STAY TUNED >",
+    eyebrow: "</ BUILDING ON NSOTO.DEV >",
     headline: "I modernize legacy systems and keep mission-critical integrations running.",
     sub: "Senior software engineer in Jacksonville, FL — 20 years across C#, JavaScript, and SQL Server. Cloud migrations, enterprise integrations, and the inherited codebases teams still depend on.",
   },
@@ -126,6 +137,21 @@ export const portfolioData = {
     },
   ] satisfies ExperienceJob[],
   skills: {
+    /** Curated chips for the landing funnel (M2d). Full taxonomy remains in `groups`. */
+    landing: [
+      "C#",
+      ".NET",
+      "ASP.NET",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "SQL Server",
+      "Azure",
+      "AWS",
+      "Node.js",
+      "Salesforce",
+      "Docker",
+    ],
     groups: [
       {
         label: "Languages / Frameworks",
@@ -147,6 +173,9 @@ export const portfolioData = {
     ] satisfies SkillGroup[],
   },
   about: {
+    /** Short landing copy (M2d). Longer narrative retained as `paragraph` for future reuse. */
+    landing:
+      "Senior engineer focused on legacy modernization, cloud migrations, and the integrations operations still run on. I care about systems teams can maintain — and I ship side projects on nsoto.dev to keep building in public.",
     paragraph:
       "I've built centralized cloud platforms, federal data-visualization tools, and the ERP/CRM pipelines that keep operations stable. At Sedgwick I maintain .NET ingestion between XactAnalysis, Cotality, and Salesforce, and configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect retired. Before that I led an Azure migration that cut hosting costs 15–20% and improved performance. I mentor when I can and care about software teams can actually maintain.",
     caseStudyCallout: {
@@ -160,14 +189,21 @@ export const portfolioData = {
   appsStub: {
     eyebrow: "</ APPS >",
     headline: "Side projects",
-    sub: "Each app ships on its own domain and stack. Open what's live — more are on the way.",
+    sub: "Live apps on their own domains — open what’s shipping, then see the full catalog.",
     entries: [
       {
         name: "Chess",
         domain: "chess.nsoto.dev",
         status: "Live",
+        blurb: "Browser chess with click-to-move and full rules.",
         description:
           "Browser chess with a hand-built board — click-to-move, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen; Stockfish opponent planned.",
+        preview: {
+          src: "/apps/chess-preview.png",
+          alt: "ns-chess board and move panel on a dark canvas",
+          width: 1280,
+          height: 800,
+        },
         href: "https://chess.nsoto.dev",
         repo: "https://github.com/nsoto-development/ns-chess",
       },
@@ -175,6 +211,7 @@ export const portfolioData = {
         name: "Portfolio",
         domain: "github.com/nsoto-development/web-portfolio",
         status: "Live",
+        blurb: "This hub — landing, case studies, shared design system.",
         description:
           "This site — Next.js hub for nsoto.dev: landing, case studies, and shared design-system consumption across public apps.",
         href: "https://github.com/nsoto-development/web-portfolio",
@@ -183,8 +220,15 @@ export const portfolioData = {
         name: "Budget",
         domain: "budget.nsoto.dev",
         status: "Live",
+        blurb: "Cash flow scheduler with calendar-accurate projection.",
         description:
           "Cash flow scheduler — recurring income and bills, calendar-accurate projection, and deficit visualization. Framework-agnostic scheduling engine with a SvelteKit UI on @nsoto/portfolio-tokens.",
+        preview: {
+          src: "/apps/budget-preview.png",
+          alt: "ns-budget cash flow scheduler with running balance chart",
+          width: 1280,
+          height: 800,
+        },
         href: "https://budget.nsoto.dev",
         repo: "https://github.com/nsoto-development/ns-budget",
       },
@@ -192,6 +236,7 @@ export const portfolioData = {
         name: "Design System",
         domain: "@nsoto/portfolio-tokens",
         status: "Live",
+        blurb: "Tokens and React primitives for nsoto.dev apps.",
         description:
           "Dark-only, code-forward foundations for nsoto.dev — CSS tokens and brand assets plus React primitives, shared by the hub and subdomain apps.",
         href: "https://www.npmjs.com/package/@nsoto/portfolio-tokens",
@@ -205,6 +250,20 @@ export const portfolioData = {
       },
     ] satisfies AppsStubEntry[],
   },
-  // Future hook: live apps list for M2b Apps hub section
-  apps: [] as { name: string; href: string; status: string }[],
 };
+
+export function landingAppTeasers(): AppsStubEntry[] {
+  const byDomain = new Map(portfolioData.appsStub.entries.map((e) => [e.domain, e]));
+  return LANDING_APP_TEASER_IDS.flatMap((domain) => {
+    const entry = byDomain.get(domain);
+    return entry ? [entry] : [];
+  });
+}
+
+export function landingExperienceHighlights(): ExperienceJob[] {
+  const byId = new Map(portfolioData.experience.map((j) => [j.id, j]));
+  return LANDING_EXPERIENCE_IDS.flatMap((id) => {
+    const job = byId.get(id);
+    return job ? [job] : [];
+  });
+}

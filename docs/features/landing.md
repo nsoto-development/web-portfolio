@@ -8,9 +8,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` Done. **Next:** **M2d** (condense landing) + **M2b** Apps teaser (P0 #5). WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md). After M2b: roadmap P1 **Recently shipped**.
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**. **Next:** roadmap P1 **Recently shipped**, or M4 polish / M5. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
-**Branch note:** `feature/apps-strip-m2b` (four-row strip) stays **unmerged**; M2b is the 2-project screenshot teaser instead.
+**Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
 **Milestone naming:** **M3 = deploy**; graphical WebGL enhancement = **M5** (not M3).
 
@@ -92,7 +92,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 
 ## M2b — Apps teaser on landing
 
-Tracks P0 **[feature] #5**. Apps are first-class on this portfolio hub: the home page should prove capability quickly, then hand off to `/apps`. Ships with funnel **M2d** (same implementation pass is fine).
+Tracks P0 **[feature] #5**. **Done** — apps are first-class on this portfolio hub: the home page proves capability quickly, then hands off to `/apps`. Shipped with funnel **M2d**.
 
 ### Intent
 
@@ -164,7 +164,7 @@ Tracks P1 **[feature] #8** (first slice). **Done** — full employment history i
 
 ## M2d — Fast landing funnel
 
-Tracks P1 **[feature] #8** (second slice) and closes **P0 #5 / M2b** Apps teaser in the same pass (or immediately after).
+Tracks P1 **[feature] #8** (second slice) and closes **P0 #5 / M2b** Apps teaser. **Done**.
 
 ### Landing composition (top → bottom)
 
@@ -246,9 +246,9 @@ Two tiers only:
 |---|-----------|--------|--------------|
 | M1 | Static hero shell | Done | Scaffold + hero; token imports in `globals.css`; `public/logo/` |
 | M2 | Portfolio sections | Done | Nav, work, skills, about, contact (Web3Forms), footer |
-| M2b | Apps teaser on landing | Planned | Two-project screenshot teaser (Chess + Budget); shared data with `/apps` (P0 #5) — [spec](#m2b--apps-teaser-on-landing); ships with M2d |
+| M2b | Apps teaser on landing | **Done** | Two-project screenshot teaser (Chess + Budget); shared data with `/apps` (P0 #5) — [spec](#m2b--apps-teaser-on-landing); shipped with M2d |
 | M2c | Experience depth page | **Done** | `/experience` full history + filters; extract reusable cards (P1 #8) — [spec](#m2c--experience-depth-page) |
-| M2d | Fast landing funnel | Planned | Condense Experience/Skills/About; depth CTAs; include M2b teaser (P1 #8) — [spec](#m2d--fast-landing-funnel) |
+| M2d | Fast landing funnel | **Done** | Condense Experience/Skills/About; depth CTAs; include M2b teaser (P1 #8) — [spec](#m2d--fast-landing-funnel) |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
 | M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion |

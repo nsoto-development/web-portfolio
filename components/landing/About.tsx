@@ -5,7 +5,7 @@ import { portfolioData } from "@/lib/portfolio-data";
 import { Card } from "@/components/ui/Card";
 
 export function About() {
-  const { paragraph, caseStudyCallout } = portfolioData.about;
+  const { landing, caseStudyCallout } = portfolioData.about;
 
   return (
     <section
@@ -55,19 +55,17 @@ export function About() {
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: "var(--text-md)",
-              color: "var(--text-secondary)",
+              color: "var(--text-primary)",
               lineHeight: "var(--leading-relaxed)",
               maxWidth: "640px",
               margin: 0,
+              opacity: 0.88,
             }}
           >
-            {paragraph}
+            {landing}
           </p>
           <Link href={caseStudyCallout.href} style={{ textDecoration: "none", display: "block" }}>
-            <Card
-              interactive
-              style={{ marginTop: "var(--space-8)", maxWidth: "640px" }}
-            >
+            <Card interactive style={{ marginTop: "var(--space-8)", maxWidth: "640px" }}>
               <p
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -93,9 +91,10 @@ export function About() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontSize: "var(--text-sm)",
-                  color: "var(--text-secondary)",
+                  color: "var(--text-primary)",
                   lineHeight: "var(--leading-normal)",
                   margin: "0 0 var(--space-4)",
+                  opacity: 0.85,
                 }}
               >
                 {caseStudyCallout.description}
