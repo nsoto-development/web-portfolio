@@ -5,6 +5,9 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* Always reserve the vertical scrollbar so page width stays constant
+     between short pages (no scroll) and the tall landing page. */
+  overflow-y: scroll;
 }
 
 html,
@@ -94,13 +97,6 @@ a:hover {
   gap: var(--space-4);
 }
 
-.landing-about-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-10);
-  align-items: flex-start;
-}
-
 .landing-section-sub {
   font-family: var(--font-sans);
   font-size: var(--text-md);
@@ -132,15 +128,42 @@ a:hover {
 }
 
 .landing-apps-preview {
-  aspect-ratio: 16 / 10;
+  height: clamp(120px, 14vw, 170px);
   overflow: hidden;
   background: var(--bg-elevated, #0a0a0a);
   border-bottom: 1px solid var(--border-subtle);
 }
 
+.landing-about-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: var(--space-16);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
 @media (max-width: 768px) {
   .landing-apps-teaser-grid {
     grid-template-columns: 1fr;
+  }
+
+  .landing-apps-preview {
+    height: 140px;
+  }
+
+  .landing-about-contact-grid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .landing-about-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: var(--content-narrow);
   }
 }
 
@@ -217,13 +240,6 @@ a:hover {
 
   .landing-hero-ctas > button {
     width: 100%;
-  }
-
-  .landing-about-grid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    gap: var(--space-6);
   }
 
   .landing-contact-fields {

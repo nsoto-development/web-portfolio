@@ -19,8 +19,10 @@ export default function Home() {
         <Apps />
         <Experience />
         <Skills />
-        <About />
-        <Contact />
+        <div className="landing-about-contact-grid">
+          <About />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>

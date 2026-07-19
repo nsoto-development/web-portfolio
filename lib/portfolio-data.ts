@@ -54,12 +54,10 @@ export const LANDING_EXPERIENCE_IDS = ["sedgwick", "southeastern"] as const;
 export const portfolioData = {
   name: "Nelson Soto",
   nav: [
-    { label: "Work", href: "#work" },
-    { label: "Skills", href: "#skills" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
-    { label: "Case Studies", href: "/case-studies" },
     { label: "Apps", href: "/apps" },
+    { label: "Work", href: "#work" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Contact", href: "#contact" },
   ] satisfies NavItem[],
   caseStudies: [
     {

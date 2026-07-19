@@ -99,9 +99,7 @@ export function Contact() {
       id="contact"
       className="landing-contact"
       style={{
-        maxWidth: "var(--content-narrow)",
-        margin: "0 auto",
-        padding: "var(--space-16) var(--space-6) var(--space-24)",
+        padding: "var(--space-16) 0 var(--space-24)",
       }}
     >
       <h2
