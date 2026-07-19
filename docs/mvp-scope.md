@@ -58,11 +58,11 @@
 
 3. **Hero** — logo mark, `nsoto.dev`, terminal eyebrow, headline + subcopy; static-first (WebGL may follow in M5).
 
-4. **Portfolio content** — landing is a **fast funnel**: hero, Apps teaser, condensed experience/skills/about, contact. Full employment history lives on `/experience` (landing **M2c**); contact form delivers via [Web3Forms](https://web3forms.com) (`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`).
+4. **Portfolio content** — landing is a **fast funnel**: hero, Apps teaser, condensed experience/skills/about, contact. Full employment history lives on `/experience` (landing **M2c** Done); contact form delivers via [Web3Forms](https://web3forms.com) (`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`).
 
-5. **Apps hub** — `/apps` detail page **shipped** (live cards + nav). Landing still needs the **2-project Apps teaser** early on the home page (P0 #5 / landing **M2b**) — apps are first-class; not a four-row text strip or a second full card grid. Spec: [`landing.md`](features/landing.md#m2b--apps-teaser-on-landing).
+5. **Apps hub** — `/apps` detail page **shipped**; landing **2-project Apps teaser** **shipped** (P0 #5 / landing **M2b** Done) — apps are first-class; not a four-row text strip or a second full card grid. Spec: [`landing.md`](features/landing.md#m2b--apps-teaser-on-landing).
 
-6. **Subdomain hub** — live outbound links from `/apps` and the landing Apps teaser when it ships; child apps may use separate stacks/deploys.
+6. **Subdomain hub** — live outbound links from `/apps` and the landing Apps teaser; child apps may use separate stacks/deploys.
 
 7. **Motion / accessibility** — `prefers-reduced-motion` honored; CSS motion OK for first static ship; no motion-only critical content.
 

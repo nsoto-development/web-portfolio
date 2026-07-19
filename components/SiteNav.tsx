@@ -5,10 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useLayoutEffect, useState, type MouseEvent } from "react";
 import { portfolioData } from "@/lib/portfolio-data";
 import { IconButton } from "@/components/ui/IconButton";
 import { NavLink } from "@/components/ui/NavLink";
+
+// Run before paint on the client so deep-linked (`/#section`) loads never
+// flash a transparent nav; fall back to a normal effect during SSR.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 function resolveNavHref(href: string, onHome: boolean): string {
   if (href.startsWith("#")) {
@@ -19,6 +24,9 @@ function resolveNavHref(href: string, onHome: boolean): string {
 
 function isNavItemActive(href: string, pathname: string, activeHash: string): boolean {
   if (href.startsWith("#")) {
+    if (href === "#work" && pathname === "/experience") {
+      return true;
+    }
     return pathname === "/" && activeHash === href;
   }
   if (href === "/case-studies") {
@@ -30,14 +38,26 @@ function isNavItemActive(href: string, pathname: string, activeHash: string): bo
 export function SiteNav() {
   const pathname = usePathname();
   const onHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
+  // Default to the opaque bar so the first paint (SSR/hard refresh) is always
+  // solid — the transparent hero treatment is opt-in only once JS confirms we
+  // are actually parked at the very top of the home page. This prevents the
+  // page content from flashing through a transparent nav on refresh-while-
+  // scrolled or when deep-linking to a `/#section` anchor.
+  const [atHeroTop, setAtHeroTop] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useIsomorphicLayoutEffect(() => {
+    if (!onHome) {
+      setAtHeroTop(false);
+      return;
+    }
+    setAtHeroTop(window.scrollY <= 8);
+  }, [onHome]);
+
   useEffect(() => {
     if (!onHome) return;
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
+    const onScroll = () => setAtHeroTop(window.scrollY <= 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [onHome]);
@@ -84,12 +104,12 @@ export function SiteNav() {
       <header
         className="landing-nav"
         style={{
-          background: scrolled || menuOpen || !onHome ? "rgba(0,0,0,0.75)" : "transparent",
-          backdropFilter: scrolled || menuOpen || !onHome ? "blur(12px)" : "none",
+          background: atHeroTop && !menuOpen ? "transparent" : "rgba(0,0,0,0.75)",
+          backdropFilter: atHeroTop && !menuOpen ? "none" : "blur(12px)",
           borderBottom:
-            scrolled || menuOpen || !onHome
-              ? "1px solid var(--border-subtle)"
-              : "1px solid transparent",
+            atHeroTop && !menuOpen
+              ? "1px solid transparent"
+              : "1px solid var(--border-subtle)",
           transition: "var(--transition-default)",
         }}
       >

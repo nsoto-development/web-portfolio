@@ -1,4 +1,5 @@
 import { About } from "@/components/landing/About";
+import { Apps } from "@/components/landing/Apps";
 import { Contact } from "@/components/landing/Contact";
 import { Experience } from "@/components/landing/Experience";
 import { Footer } from "@/components/landing/Footer";
@@ -15,10 +16,13 @@ export default function Home() {
       <Nav />
       <main className="landing-main">
         <Hero />
+        <Apps />
         <Experience />
         <Skills />
-        <About />
-        <Contact />
+        <div className="landing-about-contact-grid">
+          <About />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
