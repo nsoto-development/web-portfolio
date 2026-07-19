@@ -193,9 +193,9 @@ export const portfolioData = {
         name: "Chess",
         domain: "chess.nsoto.dev",
         status: "Live",
-        blurb: "Browser chess with click-to-move and full rules.",
+        blurb: "Browser chess with a hand-built board and full rules.",
         description:
-          "Browser chess with a hand-built board — click-to-move, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen; Stockfish opponent planned.",
+          "Browser chess with a hand-built board — drag pieces, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen; Stockfish opponent planned.",
         preview: {
           src: "/apps/chess-preview.png",
           alt: "ns-chess board and move panel on a dark canvas",
