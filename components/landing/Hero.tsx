@@ -26,6 +26,7 @@ export function Hero() {
           alt=""
           width={120}
           height={120}
+          priority
           style={{
             width: "100%",
             height: "auto",
