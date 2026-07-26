@@ -12,7 +12,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **Current focus:** P1 #7 **Recently shipped** (after M2b) — or P1 polish (M4 / M5). Spec pointer: [`landing.md`](features/landing.md#after-m2b--recently-shipped).
+- **Current focus:** P1 #9 **LG TV case study + /apps** (case-studies M4/M5) — or P1 #7 **Recently shipped** / polish (landing M4 / M5). Spec: [`case-studies.md`](features/case-studies.md#second-study--lg-tv-display-wake).
 
 - **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2/M3 + **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser
 
@@ -65,6 +65,8 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 7. `[feature]` **Recently shipped** — curated milestone outcomes (date + product + one line); surface on `/apps` (and optional reuse later). **After** P0 #5 M2b. No GitHub API / commit charts. → feature doc at implement ([`landing.md` future hook](features/landing.md#after-m2b--recently-shipped))
 
 8. ~~`[feature]` **Landing funnel restructure**~~ — **Done** — `/experience` depth + condensed landing + Apps teaser. → landing **M2c** + **M2d** / **M2b** ([`landing.md`](features/landing.md#m2d--fast-landing-funnel))
+
+9. `[feature]` **Case study + /apps — LG TV display wake** — narrative at `/case-studies/lgtv-display-wake` (WoL PR → capture pivot → TLS stall → purpose-built tool); repo-linked `/apps` card. Not landing teaser. → case-studies **M4** / **M5** ([`case-studies.md`](features/case-studies.md#second-study--lg-tv-display-wake))
 
 **Post-v1 polish (landing milestones):** M4 a11y + Framer Motion; M5 WebGL.
 

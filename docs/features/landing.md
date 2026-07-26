@@ -38,7 +38,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by the canonical DS portfolio ui-kit (reference only).
 - **Apps on landing (M2b / P0 #5):** 2-project visual **teaser** early on the home page (after hero; Chess + Budget + screenshots). Apps are first-class; employment history supports the story. See [M2b spec](#m2b--apps-teaser-on-landing).
 - **Landing funnel (M2c / M2d / P1 #8):** `/experience` holds full work history; landing shows highlights + condensed skills/about with clear depth CTAs. See [M2c](#m2c--experience-depth-page) / [M2d](#m2d--fast-landing-funnel).
-- **`/apps` detail hub:** case-studies **M3** shipped top-level **Apps** → `/apps` with live cards. That page stays the full catalog; M2b does **not** duplicate it as a four-card grid.
+- **`/apps` detail hub:** case-studies **M3** shipped top-level **Apps** → `/apps` with live cards. That page stays the full catalog; M2b does **not** duplicate it as a four-card grid. Catalog may include **repo-only** utilities (no live subdomain) — e.g. P1 #9 LG TV Sync — without adding them to the landing teaser.
 - **Contact:** ui-kit form UI; submissions delivered via [Web3Forms](https://web3forms.com) (`POST https://api.web3forms.com/submit`) using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (client-side; key aliases inbox email).
 - **Content SSOT:** resume-sourced copy in `lib/portfolio-data.ts`; app entries shared between `/apps` and the M2b landing teaser.
 - **Tokens:** `@import '@nsoto/portfolio-tokens/styles.css'` in app global CSS; Tailwind theme extends CSS variables (see [Stack](#stack)).
@@ -56,6 +56,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 ## Future hooks
 
 - R3F cursor-reactive background (M5).
+- Repo-only `/apps` entries (GitHub primary link; optional case-study `links[]`) — P1 #9 / case-studies **M4**.
 - Per-subdomain cards with OG previews on `/apps`.
 - Blog or writing section (P2).
 - [Recently shipped](#after-m2b--recently-shipped) (roadmap P1 #7) after M2b.
