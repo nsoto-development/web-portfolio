@@ -2,11 +2,12 @@
 
 ## Purpose
 
-Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivers the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption across public repos). The page is a **living document**: lifecycle is **`implemented`** — both apps consume `@nsoto/portfolio-*@0.1.0`; vendored trees removed (see [Follow-on updates](#follow-on-updates)).
+Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivered the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption). A **second study** is planned: **When the display wakes but the TV does not** (LG TV / VPN / WoL → purpose-built sync utility) — see [Second study](#second-study--lg-tv-display-wake). The first page remains a **living document**: lifecycle **`implemented`** — both apps consume `@nsoto/portfolio-*@0.1.0`; vendored trees removed (see [Follow-on updates](#follow-on-updates)).
 
 ## Roadmap
 
-Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 **[debt] #4** (design-system harvest) — the case study documents the crossroads; harvest owns implementation. Migration how/when: design-system repo `guidelines/migration-to-portfolio-packages.md`.
+- **First study (v1):** P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Related: P1 **[debt] #4** (design-system harvest). Migration how/when: design-system repo `guidelines/migration-to-portfolio-packages.md`.
+- **Second study + /apps card:** P1 **[feature] #9** — `/case-studies/lgtv-display-wake` + repo-linked `/apps` entry. **Not** landing Apps teaser. → **M4** / **M5** below.
 
 **Tone:** portfolio value — not "hiring" / "recruiter" language in public copy, titles, or eyebrows.
 
@@ -33,15 +34,16 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 
 - ~~DS consumption migration implementation (P1 #4)~~ — **Done** (cutover in web-portfolio + ns-chess).
 - MDX / blog engine / CMS.
-- Additional case studies beyond design-system consumption.
-- **Landing** Apps strip (P0 #5 / M2b) — compact home-page discovery; `/apps` remains the full card catalog.
+- ~~Additional case studies beyond design-system consumption~~ — superseded by P1 #9 (second study).
+- **Landing** Apps strip (P0 #5 / M2b) — compact home-page discovery; `/apps` remains the full card catalog. Second study’s app is **catalog-only** (no teaser).
 - Publishing or restructuring the design-system repo.
+- Changing `lgtv-display-sync` or ColorControl source from this hub work.
 
 ## Future hooks
 
-- More case studies under `app/case-studies/<slug>/`.
-- Lifecycle content passes when migration moves to `planned` → `in-progress` → `implemented`.
-- Optional P1 chore: **Case study — consumption migration update** per lifecycle transition.
+- ~~More case studies under `app/case-studies/<slug>/`~~ — **In progress** via P1 #9 / [M4–M5](#milestones).
+- Lifecycle content passes when migration moves to `planned` → `in-progress` → `implemented` (first study — Done).
+- Optional P1 chore: **Case study — consumption migration update** per lifecycle transition (first study — Done).
 
 ## Code paths
 
@@ -50,8 +52,10 @@ Tracks P1 **[feature] #6** on [`docs/roadmap.md`](../roadmap.md). Relates to P1 
 | Feature SSOT | `docs/features/case-studies.md` |
 | Content types | `lib/case-studies/types.ts` |
 | First story content | `lib/case-studies/design-system-consumption.ts` |
+| Second story content (M5) | `lib/case-studies/lgtv-display-wake.ts` |
 | Layout + sections | `components/case-studies/CaseStudyLayout.tsx`, `CaseStudySection.tsx`, `OptionsTable.tsx`, `CaseStudyStatus.tsx` |
-| Route | `app/case-studies/design-system-consumption/page.tsx` |
+| Route (first) | `app/case-studies/design-system-consumption/page.tsx` |
+| Route (second, M5) | `app/case-studies/lgtv-display-wake/page.tsx` |
 | Prose styles | `app/globals.css` (`.case-study-prose`) |
 | Site nav (M3) | `lib/portfolio-data.ts` (`nav`, `caseStudies`); `components/SiteNav.tsx` (re-exported as `components/landing/Nav.tsx` on landing) |
 | Case studies registry (M3) | `lib/case-studies/registry.ts` |
@@ -83,6 +87,21 @@ Living document tied to P1 #4 consumption migration.
 
 Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in `design-system-consumption.ts`. No new routes required per transition.
 
+## Second study — LG TV display wake
+
+Tracks P1 **[feature] #9**. Subject repos (read-only from this hub): [`lgtv-display-sync`](https://github.com/nsoto-development/lgtv-display-sync); upstream [ColorControl PR #597](https://github.com/Maassoft/ColorControl/pull/597). Narrative facts: utility README + plan cold-start skeleton (WoL PR → capture pivot → TLS stall → purpose-built tool). **Two bugs, one symptom** — do not claim the WoL PR fixed daily mouse-wake.
+
+| Field | Value |
+|-------|--------|
+| Slug | `lgtv-display-wake` |
+| Title | When the display wakes but the TV does not |
+| Subtitle | A real WoL bug, a capture that changed the question, and a purpose-built sync tool |
+| Lifecycle (ship) | `implemented` |
+| `/apps` card | Repo-linked **LG TV Sync** — not in `LANDING_APP_TEASER_IDS` |
+
+**M4 done when:** `/apps` shows the card; landing teaser unchanged; lint/build pass.  
+**M5 done when:** `/case-studies/lgtv-display-wake` live; index + apps `links` cross-link; lint/build pass; P1 #9 marked Done.
+
 ## Milestones
 
 | # | Milestone | Status | Deliverables |
@@ -90,6 +109,8 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 | M1 | Docs + roadmap | **Done** | This feature doc; P1 #6 on roadmap; copy appendix for M2 |
 | M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
 | M3 | Discovery + nav | **Done** | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
+| M4 | LG TV `/apps` catalog | Planned | `appsStub` entry (GitHub href); refresh `/apps` metadata; **no** landing teaser. P1 #9 |
+| M5 | LG TV case study page | Planned | `lgtv-display-wake.ts` + route; `portfolioData.caseStudies`; apps ↔ study cross-links; mark P1 #9 Done |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
 
@@ -98,6 +119,8 @@ Update `lifecycle`, `lastUpdated`, status callout copy, and relevant sections in
 - `npm run lint` and `npm run build` pass after M2.
 - Manual: `/case-studies/design-system-consumption` readable at mobile width; status callout visible; external links work.
 - Manual (M3): Case Studies and Apps visible in header on `/`, `/case-studies/*`, `/apps`; mobile nav includes both; callout on landing links to first case study.
+- Manual (M4): `/apps` shows LG TV Sync → GitHub; landing teaser still Chess + Budget only.
+- Manual (M5): `/case-studies/lgtv-display-wake` readable at mobile width; index lists both studies; apps card links to study.
 
 ---
 
