@@ -124,18 +124,20 @@ function AppCard({ app }: { app: AppsStubEntry }) {
             {app.domain}
           </span>
         )}
-        {app.links?.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target="_blank"
-            rel="noreferrer"
-            style={externalLinkStyle}
-          >
-            {link.label}
-            <ArrowUpRight size={14} aria-hidden />
-          </a>
-        ))}
+        {app.links?.map((link) => {
+          const external = /^https?:\/\//.test(link.href);
+          return (
+            <a
+              key={link.href}
+              href={link.href}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              style={externalLinkStyle}
+            >
+              {link.label}
+              <ArrowUpRight size={14} aria-hidden />
+            </a>
+          );
+        })}
         {app.repo && (
           <a
             href={app.repo}
