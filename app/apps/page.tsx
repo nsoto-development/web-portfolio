@@ -11,11 +11,11 @@ import { SITE_URL } from "@/lib/seo/site";
 export const metadata: Metadata = {
   title: "Side Projects",
   description:
-    "Side projects on nsoto.dev — chess and budget apps, plus published @nsoto design-system packages.",
+    "Side projects on nsoto.dev — chess and budget apps, LG TV Sync, and published @nsoto design-system packages.",
   openGraph: {
     title: "Side Projects",
     description:
-      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, and @nsoto npm packages.",
+      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
     url: `${SITE_URL}/apps`,
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Side Projects",
     description:
-      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, and @nsoto npm packages.",
+      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };
