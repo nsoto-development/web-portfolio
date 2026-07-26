@@ -28,10 +28,10 @@ function AppTeaserCard({ app }: { app: AppsStubEntry }) {
           <Image
             src={app.preview.src}
             alt={app.preview.alt}
-            width={app.preview.width}
-            height={app.preview.height}
+            fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+            priority
+            style={{ objectFit: "cover", objectPosition: "top" }}
           />
         </div>
       )}
