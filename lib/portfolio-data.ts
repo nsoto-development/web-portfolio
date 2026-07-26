@@ -246,6 +246,14 @@ export const portfolioData = {
         ],
         repo: "https://github.com/nsoto-development/design-system",
       },
+      {
+        name: "LG TV Sync",
+        domain: "github.com/nsoto-development/lgtv-display-sync",
+        status: "Open source",
+        description:
+          "Windows/.NET utility that syncs an LG webOS TV’s power to Windows display sleep — built after waking failed under VPN on a sole-display, isolated-Ethernet setup. Open-source investigation + tool.",
+        href: "https://github.com/nsoto-development/lgtv-display-sync",
+      },
     ] satisfies AppsStubEntry[],
   },
 };

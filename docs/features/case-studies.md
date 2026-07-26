@@ -109,7 +109,7 @@ Tracks P1 **[feature] #9**. Subject repos (read-only from this hub): [`lgtv-disp
 | M1 | Docs + roadmap | **Done** | This feature doc; P1 #6 on roadmap; copy appendix for M2 |
 | M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
 | M3 | Discovery + nav | **Done** | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
-| M4 | LG TV `/apps` catalog | Planned | `appsStub` entry (GitHub href); refresh `/apps` metadata; **no** landing teaser. P1 #9 |
+| M4 | LG TV `/apps` catalog | **Done** | `appsStub` entry (GitHub href); refresh `/apps` metadata; **no** landing teaser. P1 #9 |
 | M5 | LG TV case study page | Planned | `lgtv-display-wake.ts` + route; `portfolioData.caseStudies`; apps ↔ study cross-links; mark P1 #9 Done |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
