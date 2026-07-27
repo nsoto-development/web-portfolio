@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivered the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption). A **second study** is planned: **When the display wakes but the TV does not** (LG TV / VPN / WoL → purpose-built sync utility) — see [Second study](#second-study--lg-tv-display-wake). The first page remains a **living document**: lifecycle **`implemented`** — both apps consume `@nsoto/portfolio-*@0.1.0`; vendored trees removed (see [Follow-on updates](#follow-on-updates)).
+Host **engineering case studies** on nsoto.dev — long-form narratives that show systems thinking, shipped work, and architectural judgment beyond the landing page. v1 delivered the case-studies capability and the first story: **Architecture at a crossroads** (design system consumption). A **second study** is live: **When the display wakes but the TV does not** (LG TV / VPN / WoL → purpose-built sync utility) — see [Second study](#second-study--lg-tv-display-wake). The first page remains a **living document**: lifecycle **`implemented`** — both apps consume `@nsoto/portfolio-*@0.1.0`; vendored trees removed (see [Follow-on updates](#follow-on-updates)).
 
 ## Roadmap
 
@@ -41,7 +41,7 @@ Host **engineering case studies** on nsoto.dev — long-form narratives that sho
 
 ## Future hooks
 
-- ~~More case studies under `app/case-studies/<slug>/`~~ — **In progress** via P1 #9 / [M4–M5](#milestones).
+- ~~More case studies under `app/case-studies/<slug>/`~~ — **Done** via P1 #9 / [M4–M5](#milestones).
 - Lifecycle content passes when migration moves to `planned` → `in-progress` → `implemented` (first study — Done).
 - Optional P1 chore: **Case study — consumption migration update** per lifecycle transition (first study — Done).
 
@@ -110,7 +110,7 @@ Tracks P1 **[feature] #9**. Subject repos (read-only from this hub): [`lgtv-disp
 | M2 | Case study page | **Done** | `lib/`, `components/case-studies/`, route, prose CSS, OG metadata |
 | M3 | Discovery + nav | **Done** | Top-level **Case Studies** + **Apps** nav; `/case-studies` index; `/apps` stub; landing callout; `portfolio-data`; README blurb; shared header on hub routes |
 | M4 | LG TV `/apps` catalog | **Done** | `appsStub` entry (GitHub href); refresh `/apps` metadata; **no** landing teaser. P1 #9 |
-| M5 | LG TV case study page | Planned | `lgtv-display-wake.ts` + route; `portfolioData.caseStudies`; apps ↔ study cross-links; mark P1 #9 Done |
+| M5 | LG TV case study page | **Done** | `lgtv-display-wake.ts` + route; `portfolioData.caseStudies`; apps ↔ study cross-links; mark P1 #9 Done |
 
 **Quick gate:** one milestone per `/nudl-start-milestone` pass.
 

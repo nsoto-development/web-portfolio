@@ -68,6 +68,14 @@ export const portfolioData = {
       lifecycle: "architecture",
       updatedAt: "2026-03-01",
     },
+    {
+      slug: "lgtv-display-wake",
+      title: "When the display wakes but the TV does not",
+      subtitle: "A real WoL bug, a capture that changed the question, and a purpose-built sync tool",
+      href: "/case-studies/lgtv-display-wake",
+      lifecycle: "implemented",
+      updatedAt: "2026-07-27",
+    },
   ] satisfies CaseStudyIndexEntry[],
   links: {
     github: "https://github.com/nsoto-development",
@@ -251,8 +259,15 @@ export const portfolioData = {
         domain: "github.com/nsoto-development/lgtv-display-sync",
         status: "Open source",
         description:
-          "Windows/.NET utility that syncs an LG webOS TV’s power to Windows display sleep — built after waking failed under VPN on a sole-display, isolated-Ethernet setup. Open-source investigation + tool.",
+          "Windows/.NET utility that syncs an LG webOS TV’s power to Windows display sleep — built after waking failed under VPN. Open-source investigation + tool; v0.1.0 ships a self-contained service + tray zip.",
         href: "https://github.com/nsoto-development/lgtv-display-sync",
+        links: [
+          { label: "Case study", href: "/case-studies/lgtv-display-wake" },
+          {
+            label: "v0.1.0",
+            href: "https://github.com/nsoto-development/lgtv-display-sync/releases/tag/v0.1.0",
+          },
+        ],
       },
     ] satisfies AppsStubEntry[],
   },
