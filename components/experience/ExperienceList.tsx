@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useLayoutEffect, useState, type ReactNode } from "react";
 import {
   experienceFilterItems,
   jobMatchesExperienceFilter,
@@ -17,6 +17,11 @@ type ExperienceListProps = {
   showFilters?: boolean;
 };
 
+function readJobHash(): string {
+  if (typeof window === "undefined") return "";
+  return window.location.hash.replace(/^#/, "");
+}
+
 export function ExperienceList({
   jobs,
   heading,
@@ -30,6 +35,26 @@ export function ExperienceList({
     : jobs;
   const effectiveOpenId =
     openId !== null && visible.some((j) => j.id === openId) ? openId : null;
+
+  useLayoutEffect(() => {
+    const syncFromHash = () => {
+      const id = readJobHash();
+      if (!id) return;
+      const job = jobs.find((j) => j.id === id);
+      if (!job) return;
+
+      if (showFilters) setFilter("all");
+      if (job.bullets?.length) setOpenId(job.id);
+
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, [jobs, showFilters]);
 
   return (
     <div>

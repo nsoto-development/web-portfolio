@@ -71,7 +71,8 @@ export function ExperienceCard({
   const bullets = job.bullets;
 
   return (
-    <Card style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+    <div id={job.id} className="experience-card-anchor">
+      <Card style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
       <div
         style={{
           display: "flex",
@@ -201,6 +202,7 @@ export function ExperienceCard({
           ))}
         </div>
       )}
-    </Card>
+      </Card>
+    </div>
   );
 }
