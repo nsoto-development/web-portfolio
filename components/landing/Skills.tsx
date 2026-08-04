@@ -1,11 +1,12 @@
 import { portfolioData } from "@/lib/portfolio-data";
 import { Tag } from "@/components/ui/Tag";
+import { SectionReveal } from "@/components/landing/motion";
 
 export function Skills() {
   const { landing } = portfolioData.skills;
 
   return (
-    <section
+    <SectionReveal
       id="skills"
       className="landing-section landing-skills-compact"
       style={{
@@ -29,6 +30,6 @@ export function Skills() {
           <Tag key={s}>{s}</Tag>
         ))}
       </div>
-    </section>
+    </SectionReveal>
   );
 }

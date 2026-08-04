@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Toast } from "@/components/ui/Toast";
+import { SectionReveal } from "@/components/landing/motion";
 
 type ToastState = {
   tone: "success" | "danger";
@@ -95,7 +96,7 @@ export function Contact() {
   }
 
   return (
-    <section
+    <SectionReveal
       id="contact"
       className="landing-contact"
       style={{
@@ -179,6 +180,6 @@ export function Contact() {
           />
         )}
       </div>
-    </section>
+    </SectionReveal>
   );
 }

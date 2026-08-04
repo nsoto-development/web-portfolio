@@ -2,12 +2,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { landingExperienceHighlights } from "@/lib/portfolio-data";
+import { SectionReveal } from "@/components/landing/motion";
 
 export function Experience() {
   const jobs = landingExperienceHighlights();
 
   return (
-    <section
+    <SectionReveal
       id="work"
       className="landing-section"
       style={{
@@ -49,6 +50,6 @@ export function Experience() {
           <ExperienceCard key={j.id} job={j} />
         ))}
       </div>
-    </section>
+    </SectionReveal>
   );
 }

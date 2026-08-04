@@ -6,9 +6,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4**.
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done).
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**. **Next:** roadmap P1 **Recently shipped**, or M4 polish / M5. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**. **Next:** roadmap P1 **Recently shipped**, or M5 WebGL if M4 still feels thin. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
@@ -23,7 +23,7 @@ Hub repo only — subdomain apps (e.g. `chess.nsoto.dev`) are separate repos; do
 | Framework | **Next.js** (App Router) | Deploy, routing, OG/meta, future subdomain linking |
 | Styling | **Tailwind CSS** | `@import '@nsoto/portfolio-tokens/styles.css'` in `app/globals.css`; Tailwind extends semantic CSS vars |
 | UI primitives | **`@nsoto/portfolio-ui`** | Via thin `"use client"` wrappers in `components/ui/` (Next adapters stay here) |
-| UI motion | **CSS** (M1–M2) | Static baseline; **Framer Motion** at M4 — not WebGL |
+| UI motion | **Framer Motion** (M4 Done) | Home: hero stagger, section `whileInView`, card/CTA hover; CSS cursor blink remains; **not** WebGL |
 | 3D / hero motion | **React Three Fiber + drei** | **M5 only** — post-v1; after static baseline ships |
 | Icons | **Lucide** (`lucide-react`) | Per kit iconography |
 
@@ -67,6 +67,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 |------|----------|
 | App | `app/` (`layout.tsx`, `page.tsx`, `globals.css`) |
 | Landing sections | `components/landing/` — Hero, Nav, **Apps teaser (M2b)**, Experience highlights, Skills, About, Contact, Footer |
+| Landing motion (M4) | `components/landing/motion/` — `FadeIn`, `SectionReveal`, `HoverLift` (`useReducedMotion`) |
 | Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/experience`, `/case-studies/*` |
 | Experience depth | `app/experience/page.tsx` (M2c Done) — full history + tech filters + expandable resume bullets |
 | Experience shared UI | `components/experience/` — `ExperienceCard`, `ExperienceList` (client filters) |
@@ -90,6 +91,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - **Brand assets in app:** `public/logo/nsoto-mark-cyan.png` (accent lockup).
 - **Prototype:** DS repo `ui_kits/portfolio/` — layout/copy guide, not production source. Ui-kit has **no Apps section** — Apps is net-new at M2b.
 - **M1–M2:** static; CSS-only motion (blinking cursor, hovers per DS tokens).
+- **M4 (home `/` only):** three intentional Framer motions — (1) hero entrance stagger (`FadeIn`), (2) section scroll presence once (`SectionReveal` / `whileInView`), (3) subtle hover lift on Apps teaser cards + hero CTAs (`HoverLift`). Helpers honor `useReducedMotion()` (no enter/hover transforms). CSS `.dc-cursor` blink + kit CSS hovers remain. Nav/Footer and other routes: no Framer in M4.
 
 ## M2b — Apps teaser on landing
 
@@ -252,7 +254,7 @@ Two tiers only:
 | M2d | Fast landing funnel | **Done** | Condense Experience/Skills/About; depth CTAs; include M2b teaser (P1 #8) — [spec](#m2d--fast-landing-funnel) |
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
-| M4 | Polish + a11y pass | Planned | Focus/contrast sweep; Framer Motion |
+| M4 | Polish + Framer Motion | **Done** | Home Framer: hero stagger, section presence, card/CTA hover; `prefers-reduced-motion` via `useReducedMotion` (focus/contrast sweep deferred) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
 **Quick gate:** each implementation thread names **one milestone** only. M5 does not pull M4 polish.

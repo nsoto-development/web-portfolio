@@ -239,7 +239,11 @@ a:hover {
     align-items: stretch;
   }
 
-  .landing-hero-ctas > button {
+  .landing-hero-ctas > * {
+    width: 100%;
+  }
+
+  .landing-hero-ctas button {
     width: 100%;
   }
 
