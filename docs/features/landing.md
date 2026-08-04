@@ -6,9 +6,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done); experience copy hierarchy → **M4c** (Done).
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done); experience copy hierarchy → **M4c** (Done); experience deep-link cards → **M4d** (Planned).
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**; **M4c** experience copy **Done**. **Next:** roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**; **M4c** experience copy **Done**. **Next:** landing **M4d** (experience deep-links), roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
@@ -60,6 +60,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - Per-subdomain cards with OG previews on `/apps`.
 - Blog or writing section (P2).
 - [Recently shipped](#after-m2b--recently-shipped) (roadmap P1 #7) after M2b.
+- Landing experience cards → `/experience` deep-link + open accordion ([M4d](#m4d--experience-deep-link-cards)).
 
 ## Code paths
 
@@ -166,6 +167,7 @@ Post-M4b polish (no new roadmap P-tier line). **Done** — experience `detail` h
 ### Non-goals (M4c)
 
 - Accordion motion changes (M4b Done).
+- Landing card deep-links to `/experience` (that is **M4d**).
 - Filter UX, new roles, skills/about rewrite.
 - Resume PDF sync automation.
 - WebGL (M5) or Recently shipped (P1 #7).
@@ -174,6 +176,35 @@ Post-M4b polish (no new roadmap P-tier line). **Done** — experience `detail` h
 
 - Hooks match the agreed table; expand bullets no longer restate the visible summary.
 - Career note uses “family matters” (no health wording).
+- Lint + build pass; `landing.md` status → Done.
+
+## M4d — Experience deep-link cards
+
+Post-M4c polish (no new roadmap P-tier line). **Planned** — landing `#work` highlight cards link into the matching role on `/experience`.
+
+### Intent
+
+| Surface | Role |
+|---------|------|
+| Landing `#work` cards | Clickable → `/experience#<job-id>` (or equivalent); still summary-only (no expand on landing) |
+| `/experience` | Stable `id` per job card; on hash load, scroll into view and open that accordion when expandable |
+
+### Deliverables
+
+- Add durable anchors on experience cards (`id={job.id}` or wrapper).
+- Wrap landing highlight cards in `Link` (or card-level hit target) to `/experience#…`.
+- On `/experience`, honor hash: set open accordion to that job when it has bullets; scroll to the card.
+- Keep **Full experience → /experience** section CTA.
+
+### Non-goals (M4d)
+
+- Expanding details on the landing itself.
+- Filter query-string sync.
+- Deep-links from nav or sitemap (hash URLs stay secondary).
+
+### Done when
+
+- Clicking a landing highlight lands on the matching `/experience` card with details open when available.
 - Lint + build pass; `landing.md` status → Done.
 
 ## M2b — Apps teaser on landing
@@ -340,9 +371,10 @@ Two tiers only:
 | M4 | Polish + Framer Motion | **Done** | Home Framer: hero stagger, section presence, card/CTA hover; `prefers-reduced-motion` via `useReducedMotion` (focus/contrast sweep deferred) |
 | M4b | Experience accordion motion | **Done** | Framer expand/collapse for `/experience` resume bullets; `useReducedMotion` — [spec](#m4b--experience-accordion-motion) |
 | M4c | Experience copy hierarchy | **Done** | Short `detail` hooks + deduped bullets; career-note family matters — [spec](#m4c--experience-copy-hierarchy) |
+| M4d | Experience deep-link cards | Planned | Landing `#work` → `/experience#job-id` + open accordion — [spec](#m4d--experience-deep-link-cards) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
-**Quick gate:** each implementation thread names **one milestone** only. M4c does not pull M5; M5 does not pull M4 polish.
+**Quick gate:** each implementation thread names **one milestone** only. M4d does not pull M5; M5 does not pull M4 polish.
 
 ## M3 — Deploy nsoto.dev
 
