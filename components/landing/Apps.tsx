@@ -8,6 +8,7 @@ import {
 } from "@/lib/portfolio-data";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import { HoverLift, SectionReveal } from "@/components/landing/motion";
 
 function teaserLine(app: AppsStubEntry): string {
   return app.blurb ?? app.description ?? app.domain;
@@ -100,17 +101,25 @@ function AppTeaserCard({ app }: { app: AppsStubEntry }) {
     </Card>
   );
 
-  if (!app.href) return body;
+  if (!app.href) {
+    return (
+      <HoverLift disabled style={{ height: "100%" }}>
+        {body}
+      </HoverLift>
+    );
+  }
 
   return (
-    <a
-      href={app.href}
-      target="_blank"
-      rel="noreferrer"
-      style={{ textDecoration: "none", color: "inherit", display: "block", height: "100%" }}
-    >
-      {body}
-    </a>
+    <HoverLift style={{ height: "100%" }}>
+      <a
+        href={app.href}
+        target="_blank"
+        rel="noreferrer"
+        style={{ textDecoration: "none", color: "inherit", display: "block", height: "100%" }}
+      >
+        {body}
+      </a>
+    </HoverLift>
   );
 }
 
@@ -119,7 +128,7 @@ export function Apps() {
   const { eyebrow, headline, sub } = portfolioData.appsStub;
 
   return (
-    <section
+    <SectionReveal
       id="apps"
       className="landing-section"
       style={{
@@ -160,6 +169,6 @@ export function Apps() {
           <AppTeaserCard key={app.domain} app={app} />
         ))}
       </div>
-    </section>
+    </SectionReveal>
   );
 }

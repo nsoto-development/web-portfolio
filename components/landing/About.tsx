@@ -1,10 +1,11 @@
 import { portfolioData } from "@/lib/portfolio-data";
+import { SectionReveal } from "@/components/landing/motion";
 
 export function About() {
   const { landing } = portfolioData.about;
 
   return (
-    <section
+    <SectionReveal
       id="about"
       className="landing-section"
       style={{
@@ -35,6 +36,6 @@ export function About() {
           {landing}
         </p>
       </div>
-    </section>
+    </SectionReveal>
   );
 }
