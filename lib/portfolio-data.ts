@@ -34,7 +34,10 @@ export type ExperienceJob = {
   role: string;
   dates: string;
   location: string;
+  /** Scannable one-liner always visible on the card. */
   detail: string;
+  /** Resume highlights shown when expanded on `/experience`. */
+  bullets?: string[];
   /** Tech chips on the card; also drives curated `/experience` filters via aliases. */
   stack: string[];
   status: string;
@@ -131,7 +134,13 @@ export const portfolioData = {
       dates: "Feb 2026 – Current",
       location: "Jacksonville, FL",
       detail:
-        "Maintain .NET data ingestion pipelines between XactAnalysis, Cotality, and Salesforce over HTTP/SFTP. Configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect's retirement, and authored a phased VSS-to-Git migration plan.",
+        "Maintain mission-critical .NET ingestion pipelines between XactAnalysis, Cotality, and Salesforce.",
+      bullets: [
+        "Maintain .NET data ingestion pipelines between XactAnalysis, Cotality, and Salesforce over HTTP/SFTP for performance and stability.",
+        "Maintain client-facing ASP.NET websites and ship feature enhancements.",
+        "Configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect retired; authored living engineer-ready context for AI-assisted work across 20+ inherited microservice projects.",
+        "Authored a phased VSS-to-Git (Azure DevOps) migration plan now in organizational review; the same workspace accelerates feature work and custom log-parsing workflows.",
+      ],
       stack: ["C#", ".NET", "Salesforce", "SFTP", "AI-assisted workflows"],
       status: "Current",
     },
@@ -142,7 +151,14 @@ export const portfolioData = {
       dates: "Sept 2024 – Aug 2025",
       location: "Jacksonville, FL",
       detail:
-        "Led an Azure migration from legacy server hosting — 15–20% lower hosting cost, ~10% better performance. Reverse-engineered Syspro ERP integrations, directed a WordPress redesign, and built ETL processes against the ERP schema.",
+        "Led an Azure migration that cut hosting cost 15–20% and improved performance ~10%.",
+      bullets: [
+        "Led migration from legacy server hosting to Azure — 15–20% lower hosting cost, ~10% better performance and stability.",
+        "Reverse-engineered and maintained Syspro ERP integrations with customer portals, barcode scanning, and legacy .NET (C#), Razor, and VB6 apps.",
+        "Directed a company website redesign (Figma wireframes/mockups; WordPress on Docker), mentoring a graphic design intern.",
+        "Designed ETL for data imports/exports, pricing updates, and sales reports against Syspro schemas.",
+        "Built and maintained SQL Server views, functions, and stored procedures for internal ERP integrations.",
+      ],
       stack: ["Azure", "Syspro ERP", "C#", ".NET", "VB6", "SQL Server"],
       status: "Cloud",
     },
@@ -153,7 +169,15 @@ export const portfolioData = {
       dates: "Sept 2022 – Jun 2024",
       location: "Rome, NY",
       detail:
-        "Built WebCV, a no/low-code data visualization platform for the Air Force Research Laboratory — custom JS UI libraries, Cytoscape.js network graphs, and a graph-traversal algorithm tuned for AFRL path-finding constraints. Backed the platform with Node-RED ETL and custom nodes for data access, transforms, and server-side JavaScript.",
+        "Built WebCV, a no/low-code data visualization platform for the Air Force Research Laboratory.",
+      bullets: [
+        "Developed WebCV for AFRL — no/low-code web platform for data visualization and analysis.",
+        "Shipped JavaScript UI libraries (tables, charts, 3D graphs, GIS renderers) with a strong UX focus.",
+        "Integrated Cytoscape.js for network graph visualization over large relationship datasets.",
+        "Implemented a custom graph-traversal algorithm with AFRL path-finding constraints (max iterations, depth, and related limits).",
+        "Customized Node-RED as the WebCV ETL back end, including custom nodes for CSV/SQL/Postgres/SPARQL access, transforms, and server-side JavaScript.",
+        "Mentored junior developers through a formal mentorship program.",
+      ],
       stack: ["JavaScript", "Node.js", "Node-RED", "Cytoscape.js", "GIS"],
       status: "Federal",
     },
@@ -164,7 +188,11 @@ export const portfolioData = {
       dates: "March 2022 – Aug 2022",
       location: "Boston, MA",
       detail:
-        "Supported prior ProVerde ownership through an acquisition with tech modernization — infrastructure, vendors, and software choices. Enhanced the company website for online booking and CMS-managed content.",
+        "Supported ProVerde ownership through an acquisition with tech modernization and website work.",
+      bullets: [
+        "Advised on infrastructure, vendors, and software choices during acquisition-related tech modernization.",
+        "Enhanced the company website for online booking and CMS-managed content.",
+      ],
       stack: ["CMS", "Web"],
       status: "Consulting",
     },
@@ -197,7 +225,15 @@ export const portfolioData = {
       dates: "Nov 2013 – Jul 2019",
       location: "Milford, MA",
       detail:
-        "Led architecture for ProVerde's centralized cloud platform — ASP.NET Web API over Amazon RDS MySQL sample tracking, an AngularJS customer ordering portal, Razor/jQuery internal tools, and integrations for BlueSnap, USAePay, FedEx Ship, and Sage 50.",
+        "Led architecture for ProVerde’s centralized cloud platform — API, portals, and payment/shipping integrations.",
+      bullets: [
+        "Partnered with ownership to define MVP roadmap and overall architecture for the centralized cloud platform.",
+        "Built sample tracking on Amazon RDS MySQL with an ASP.NET Web API (C#) for secure operations and integrations.",
+        "Shipped an AngularJS customer ordering portal and Razor/jQuery internal tracking against the same API.",
+        "Integrated BlueSnap and USAePay payments plus FedEx Ship for automated PDF shipping labels.",
+        "Integrated Sage 50 for automated bookkeeping and reconciliation from configured service charge codes.",
+        "Owned ongoing operations support across laboratory, sales, and support teams.",
+      ],
       stack: ["C#", "ASP.NET", "AngularJS", "MySQL", "AWS RDS"],
       status: "Architecture",
     },
@@ -208,7 +244,14 @@ export const portfolioData = {
       dates: "Oct 2010 – Nov 2013",
       location: "Franklin, MA",
       detail:
-        "Helped the Product Development Manager run delivery — project timelines, tasking, and unblocking a team of five developers. Worked with clients on requirements and coordinated with sales, support, and marketing so features matched technical and business needs.",
+        "Helped run delivery for a five-developer product team — timelines, unblocking, and client requirements.",
+      bullets: [
+        "Supported the Product Development Manager on timelines, tasking, and resolving delivery bottlenecks.",
+        "Assisted managing a team of five developers with quality and schedule accountability.",
+        "Mentored teammates on design and troubleshooting blockers.",
+        "Worked with clients on requirements spanning technical specs and business needs.",
+        "Coordinated with ownership, sales, support, and marketing so features matched expectations and industry trends.",
+      ],
       stack: ["Product", "Mentorship", "Client delivery"],
       status: "Leadership",
     },
@@ -219,7 +262,11 @@ export const portfolioData = {
       dates: "Oct 2008 – Oct 2010",
       location: "Franklin, MA",
       detail:
-        "Built and improved product features from customer feedback and industry changes while collaborating across ownership, sales, and support.",
+        "Built and improved product features from customer feedback and industry changes.",
+      bullets: [
+        "Delivered product enhancements driven by customer feedback and industry shifts.",
+        "Collaborated across ownership, sales, and support to keep features aligned with client expectations.",
+      ],
       stack: ["Software delivery"],
       status: "Product",
     },
@@ -230,7 +277,13 @@ export const portfolioData = {
       dates: "Oct 2007 – Oct 2008",
       location: "Franklin, MA",
       detail:
-        "Brought ASC systems online during an acquisition, migrated customer data into the internal project-management system, converted that system from Access 2003 to MySQL, and replaced a VBScript/Access 97 site with ASP.NET 3.5/MySQL.",
+        "Stood up acquired ASC systems and modernized internal tools and the company website.",
+      bullets: [
+        "Brought legacy ASC systems online in the Des Lauriers production environment during acquisition.",
+        "Migrated ASC legacy and customer data into the internal project-management system.",
+        "Converted the internal project-management database from Access 2003 to MySQL.",
+        "Replaced a VBScript/Access 97 website with ASP.NET 3.5/MySQL.",
+      ],
       stack: ["ASP.NET", "MySQL", "Access", "Migration"],
       status: "Migration",
     },

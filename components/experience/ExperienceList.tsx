@@ -23,10 +23,13 @@ export function ExperienceList({
   showFilters = true,
 }: ExperienceListProps) {
   const [filter, setFilter] = useState("all");
+  const [openId, setOpenId] = useState<string | null>("sedgwick");
   const filterItems = experienceFilterItems(jobs);
   const visible = showFilters
     ? jobs.filter((j) => jobMatchesExperienceFilter(j, filter))
     : jobs;
+  const effectiveOpenId =
+    openId !== null && visible.some((j) => j.id === openId) ? openId : null;
 
   return (
     <div>
@@ -53,9 +56,20 @@ export function ExperienceList({
         </div>
       )}
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
-        {visible.map((j) => (
-          <ExperienceCard key={j.id} job={j} />
-        ))}
+        {visible.map((j) => {
+          const expandable = Boolean(j.bullets?.length);
+          return (
+            <ExperienceCard
+              key={j.id}
+              job={j}
+              expandable={expandable}
+              expanded={effectiveOpenId === j.id}
+              onToggle={() =>
+                setOpenId((current) => (current === j.id ? null : j.id))
+              }
+            />
+          );
+        })}
       </div>
     </div>
   );
