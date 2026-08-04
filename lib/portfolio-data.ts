@@ -134,7 +134,7 @@ export const portfolioData = {
       dates: "Feb 2026 – Current",
       location: "Jacksonville, FL",
       detail:
-        "Maintain mission-critical .NET ingestion pipelines between XactAnalysis, Cotality, and Salesforce.",
+        "Mission-critical .NET data ingestion between XactAnalysis, Cotality, and Salesforce over HTTP and SFTP.",
       bullets: [
         "Maintain .NET data ingestion pipelines between XactAnalysis, Cotality, and Salesforce over HTTP/SFTP for performance and stability.",
         "Maintain client-facing ASP.NET websites and ship feature enhancements.",
@@ -151,9 +151,9 @@ export const portfolioData = {
       dates: "Sept 2024 – Aug 2025",
       location: "Jacksonville, FL",
       detail:
-        "Led an Azure migration that cut hosting cost 15–20% and improved performance ~10%.",
+        "Led an Azure migration — 15–20% lower hosting cost, ~10% better performance and stability.",
       bullets: [
-        "Led migration from legacy server hosting to Azure — 15–20% lower hosting cost, ~10% better performance and stability.",
+        "Led migration from legacy server hosting to Azure for improved cost, performance, and stability.",
         "Reverse-engineered and maintained Syspro ERP integrations with customer portals, barcode scanning, and legacy .NET (C#), Razor, and VB6 apps.",
         "Directed a company website redesign (Figma wireframes/mockups; WordPress on Docker), mentoring a graphic design intern.",
         "Designed ETL for data imports/exports, pricing updates, and sales reports against Syspro schemas.",
@@ -169,9 +169,9 @@ export const portfolioData = {
       dates: "Sept 2022 – Jun 2024",
       location: "Rome, NY",
       detail:
-        "Built WebCV, a no/low-code data visualization platform for the Air Force Research Laboratory.",
+        "WebCV for AFRL — no/low-code viz, Cytoscape graphs, and a Node-RED ETL back end.",
       bullets: [
-        "Developed WebCV for AFRL — no/low-code web platform for data visualization and analysis.",
+        "Delivered WebCV so AFRL analysts could compose visualizations and analysis flows without deep custom application code.",
         "Shipped JavaScript UI libraries (tables, charts, 3D graphs, GIS renderers) with a strong UX focus.",
         "Integrated Cytoscape.js for network graph visualization over large relationship datasets.",
         "Implemented a custom graph-traversal algorithm with AFRL path-finding constraints (max iterations, depth, and related limits).",
@@ -188,7 +188,7 @@ export const portfolioData = {
       dates: "March 2022 – Aug 2022",
       location: "Boston, MA",
       detail:
-        "Supported ProVerde ownership through an acquisition with tech modernization and website work.",
+        "Acquisition-side tech advising and CMS booking for a new venture with prior ProVerde ownership.",
       bullets: [
         "Advised on infrastructure, vendors, and software choices during acquisition-related tech modernization.",
         "Enhanced the company website for online booking and CMS-managed content.",
@@ -203,7 +203,7 @@ export const portfolioData = {
       dates: "Nov 2019 – Mar 2022",
       location: "Massachusetts → Florida",
       detail:
-        "Relocated from Massachusetts to Florida and prioritized a family health matter before returning to full-time work.",
+        "Relocated from Massachusetts to Florida and prioritized family matters before returning to full-time work.",
       stack: [],
       status: "Note",
     },
@@ -214,7 +214,7 @@ export const portfolioData = {
       dates: "Sept 2019 – Nov 2019",
       location: "Jacksonville, FL",
       detail:
-        "Short-term contract on an Angular project — organization and bug fixes to support parallel development.",
+        "Short Angular contract — organization and fixes so the team could ship in parallel.",
       stack: ["Angular"],
       status: "Contract",
     },
@@ -225,7 +225,7 @@ export const portfolioData = {
       dates: "Nov 2013 – Jul 2019",
       location: "Milford, MA",
       detail:
-        "Led architecture for ProVerde’s centralized cloud platform — API, portals, and payment/shipping integrations.",
+        "Architected ProVerde’s cloud sample platform — API, portals, payments, shipping, and Sage.",
       bullets: [
         "Partnered with ownership to define MVP roadmap and overall architecture for the centralized cloud platform.",
         "Built sample tracking on Amazon RDS MySQL with an ASP.NET Web API (C#) for secure operations and integrations.",
@@ -243,8 +243,7 @@ export const portfolioData = {
       role: "Assistant Product Development Manager",
       dates: "Oct 2010 – Nov 2013",
       location: "Franklin, MA",
-      detail:
-        "Helped run delivery for a five-developer product team — timelines, unblocking, and client requirements.",
+      detail: "Day-to-day delivery lead for a five-developer municipal product team.",
       bullets: [
         "Supported the Product Development Manager on timelines, tasking, and resolving delivery bottlenecks.",
         "Assisted managing a team of five developers with quality and schedule accountability.",
@@ -261,10 +260,9 @@ export const portfolioData = {
       role: "Software Developer",
       dates: "Oct 2008 – Oct 2010",
       location: "Franklin, MA",
-      detail:
-        "Built and improved product features from customer feedback and industry changes.",
+      detail: "Municipal product features driven by customer feedback and industry shifts.",
       bullets: [
-        "Delivered product enhancements driven by customer feedback and industry shifts.",
+        "Contributed software improvements and feature upgrades based on customer feedback and industry changes.",
         "Collaborated across ownership, sales, and support to keep features aligned with client expectations.",
       ],
       stack: ["Software delivery"],
@@ -277,7 +275,7 @@ export const portfolioData = {
       dates: "Oct 2007 – Oct 2008",
       location: "Franklin, MA",
       detail:
-        "Stood up acquired ASC systems and modernized internal tools and the company website.",
+        "Acquisition cutover: ASC live, data migrated, Access→MySQL, site rewritten in ASP.NET.",
       bullets: [
         "Brought legacy ASC systems online in the Des Lauriers production environment during acquisition.",
         "Migrated ASC legacy and customer data into the internal project-management system.",
