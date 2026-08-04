@@ -8,10 +8,12 @@ type HoverLiftProps = {
   className?: string;
   style?: CSSProperties;
   disabled?: boolean;
+  /** Pixels to lift on hover (default 2). */
+  y?: number;
 };
 
 /** Subtle translateY on hover/tap for cards and CTAs. */
-export function HoverLift({ children, className, style, disabled }: HoverLiftProps) {
+export function HoverLift({ children, className, style, disabled, y = 2 }: HoverLiftProps) {
   const reduce = useReducedMotion();
 
   if (reduce || disabled) {
@@ -26,7 +28,7 @@ export function HoverLift({ children, className, style, disabled }: HoverLiftPro
     <motion.div
       className={className}
       style={style}
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -y }}
       whileTap={{ y: 0 }}
       transition={{ duration: 0.15, ease: "easeOut" }}
     >

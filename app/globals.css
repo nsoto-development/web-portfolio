@@ -564,6 +564,9 @@ a:hover {
   border-radius: var(--radius-md, 8px);
   color: inherit;
   text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
 }
 
 a.experience-card-link:hover,
@@ -572,6 +575,11 @@ a.experience-card-link:visited,
 a.experience-card-link:active {
   color: inherit;
   text-decoration: none;
+}
+
+a.experience-card-link:hover {
+  background-color: var(--brand-wash);
+  box-shadow: 0 0 0 1px var(--brand);
 }
 
 .experience-card-link:focus-visible {

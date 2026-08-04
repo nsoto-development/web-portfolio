@@ -47,7 +47,7 @@ export function Experience() {
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
         {jobs.map((j) => (
-          <HoverLift key={j.id}>
+          <HoverLift key={j.id} y={6}>
             <Link
               href={`/experience#${j.id}`}
               className="experience-card-link"
