@@ -12,7 +12,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 - **Live:** [nsoto.dev](https://nsoto.dev) — static landing deployed (M3 Done)
 
-- **Current focus:** P1 #7 **Recently shipped**, or landing **M5** WebGL if M4 still feels thin. **M4** Framer Motion **Done**.
+- **Current focus:** P1 #7 **Recently shipped**, or landing **M5** WebGL. **M4** / **M4b** Framer Motion **Done**.
 
 - **Shipped:** M1+M2 static landing + M3 deploy + case-studies M2/M3 + **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser + case-studies **M4/M5** (LG TV Sync /apps + study)
 
@@ -68,7 +68,7 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 9. ~~`[feature]` **Case study + /apps — LG TV display wake**~~ — **Done** — narrative at `/case-studies/lgtv-display-wake` (WoL PR → capture pivot → TLS stall → purpose-built tool); repo-linked `/apps` card. Not landing teaser. → case-studies **M4** / **M5** ([`case-studies.md`](features/case-studies.md#second-study--lg-tv-display-wake))
 
-**Post-v1 polish (landing milestones):** ~~M4 Framer Motion~~ **Done** (focus/contrast sweep deferred); M5 WebGL.
+**Post-v1 polish (landing milestones):** ~~M4 Framer Motion~~ **Done** (focus/contrast sweep deferred); ~~**M4b** experience accordion Framer~~ **Done** ([`landing.md`](features/landing.md#m4b--experience-accordion-motion)); M5 WebGL.
 
 ---
 

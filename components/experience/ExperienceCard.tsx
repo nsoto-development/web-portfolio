@@ -1,4 +1,7 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ExperienceJob } from "@/lib/portfolio-data";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
@@ -12,13 +15,39 @@ type ExperienceCardProps = {
   onToggle?: () => void;
 };
 
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
+const bulletListStyle = {
+  margin: 0,
+  paddingLeft: "var(--space-5)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-2)",
+  fontFamily: "var(--font-sans)",
+  fontSize: "var(--text-sm)",
+  color: "var(--text-secondary)",
+  lineHeight: "var(--leading-normal)",
+} as const;
+
+function BulletList({ bullets }: { bullets: string[] }) {
+  return (
+    <ul style={bulletListStyle}>
+      {bullets.map((bullet) => (
+        <li key={bullet}>{bullet}</li>
+      ))}
+    </ul>
+  );
+}
+
 export function ExperienceCard({
   job,
   expandable = false,
   expanded = false,
   onToggle,
 }: ExperienceCardProps) {
+  const reduce = useReducedMotion();
   const canExpand = expandable && Boolean(job.bullets?.length);
+  const bullets = job.bullets;
 
   return (
     <Card style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
@@ -84,54 +113,65 @@ export function ExperienceCard({
       >
         {job.detail}
       </p>
-      {canExpand && expanded && job.bullets && (
-        <ul
-          style={{
-            margin: 0,
-            paddingLeft: "var(--space-5)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "var(--space-2)",
-            fontFamily: "var(--font-sans)",
-            fontSize: "var(--text-sm)",
-            color: "var(--text-secondary)",
-            lineHeight: "var(--leading-normal)",
-          }}
-        >
-          {job.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
-      )}
-      {canExpand && (
-        <button
-          type="button"
-          onClick={onToggle}
-          aria-expanded={expanded}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "var(--space-1)",
-            alignSelf: "flex-start",
-            padding: 0,
-            border: "none",
-            background: "none",
-            cursor: "pointer",
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-sm)",
-            color: "var(--brand)",
-          }}
-        >
-          {expanded ? "Hide details" : "Show details"}
-          <ChevronDown
-            size={14}
-            aria-hidden
+      {canExpand && bullets && (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {reduce ? (
+            expanded ? (
+              <div style={{ marginBottom: "var(--space-3)" }}>
+                <BulletList bullets={bullets} />
+              </div>
+            ) : null
+          ) : (
+            <motion.div
+              initial={false}
+              animate={{
+                gridTemplateRows: expanded ? "1fr" : "0fr",
+                opacity: expanded ? 1 : 0,
+              }}
+              transition={{
+                gridTemplateRows: { duration: 0.35, ease: easeOut },
+                opacity: { duration: 0.2, ease: easeOut },
+              }}
+              style={{ display: "grid" }}
+              aria-hidden={!expanded}
+            >
+              {/* Spacing lives inside the clip so collapsed height stays 0 (no flex-gap jump). */}
+              <div style={{ overflow: "hidden", minHeight: 0 }}>
+                <div style={{ paddingBottom: "var(--space-3)" }}>
+                  <BulletList bullets={bullets} />
+                </div>
+              </div>
+            </motion.div>
+          )}
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={expanded}
             style={{
-              transform: expanded ? "rotate(180deg)" : "none",
-              transition: "transform 150ms ease",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+              alignSelf: "flex-start",
+              padding: 0,
+              border: "none",
+              background: "none",
+              cursor: "pointer",
+              fontFamily: "var(--font-mono)",
+              fontSize: "var(--text-sm)",
+              color: "var(--brand)",
             }}
-          />
-        </button>
+          >
+            {expanded ? "Hide details" : "Show details"}
+            <ChevronDown
+              size={14}
+              aria-hidden
+              style={{
+                transform: expanded ? "rotate(180deg)" : "none",
+                transition: reduce ? undefined : "transform 150ms ease",
+              }}
+            />
+          </button>
+        </div>
       )}
       {job.stack.length > 0 && (
         <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
