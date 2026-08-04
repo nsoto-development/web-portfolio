@@ -68,7 +68,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 | App | `app/` (`layout.tsx`, `page.tsx`, `globals.css`) |
 | Landing sections | `components/landing/` — Hero, Nav, **Apps teaser (M2b)**, Experience highlights, Skills, About, Contact, Footer |
 | Site nav | `lib/portfolio-data.ts` `nav`; shared header on `/`, `/apps`, `/experience`, `/case-studies/*` |
-| Experience depth | `app/experience/page.tsx` (M2c Done) — full history + filters |
+| Experience depth | `app/experience/page.tsx` (M2c Done) — full history + tech filters + expandable resume bullets |
 | Experience shared UI | `components/experience/` — `ExperienceCard`, `ExperienceList` (client filters) |
 | Apps detail page | `app/apps/page.tsx` — full cards (case-studies M3); SSOT entries shared with M2b teaser |
 | App preview assets | `public/apps/` — static screenshots for M2b teaser (`next/image`) |
@@ -140,7 +140,7 @@ Tracks P1 **[feature] #8** (first slice). **Done** — full employment history i
 | Surface | Role |
 |---------|------|
 | Landing `#work` | Two highlights only (current + one standout) + `Full experience → /experience` (M2d) |
-| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce) |
+| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce); accordion “Show details” expands curated resume bullets (Current open by default). Landing cards stay summary-only. |
 
 ### Deliverables
 
