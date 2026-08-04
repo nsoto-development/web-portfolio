@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Side Projects",
     description:
-      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
+      "Side projects on nsoto.dev — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
     url: `${SITE_URL}/apps`,
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Side Projects",
     description:
-      "Side projects linked from the nsoto.dev hub — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
+      "Side projects on nsoto.dev — chess.nsoto.dev, budget.nsoto.dev, LG TV Sync, and @nsoto npm packages.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };

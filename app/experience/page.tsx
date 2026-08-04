@@ -8,11 +8,11 @@ import { SITE_URL } from "@/lib/seo/site";
 export const metadata: Metadata = {
   title: "Experience",
   description:
-    "Work history for Nelson Soto — cloud migrations, enterprise integrations, and data platforms.",
+    "Work history for Nelson Soto — integrations, cloud, and data platforms.",
   openGraph: {
     title: "Experience",
     description:
-      "Work history for Nelson Soto — cloud migrations, enterprise integrations, and data platforms.",
+      "Work history for Nelson Soto — integrations, cloud, and data platforms.",
     url: `${SITE_URL}/experience`,
     siteName: "nsoto.dev",
     locale: "en_US",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Experience",
     description:
-      "Work history for Nelson Soto — cloud migrations, enterprise integrations, and data platforms.",
+      "Work history for Nelson Soto — integrations, cloud, and data platforms.",
     images: ["/og/nsoto-dev-og.png"],
   },
 };

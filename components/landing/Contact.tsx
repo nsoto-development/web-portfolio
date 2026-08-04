@@ -119,8 +119,7 @@ export function Contact() {
           margin: "0 0 var(--space-8)",
         }}
       >
-        Have a project in mind, or just want to say hi? I read everything myself — or reach me
-        directly at{" "}
+        Have a project in mind, or just want to say hi? Reach me directly at{" "}
         <a href={`mailto:${portfolioData.links.email}`}>{portfolioData.links.email}</a>.
       </p>
       <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>

@@ -83,14 +83,14 @@ export const portfolioData = {
     email: "nsoto.development@gmail.com",
   },
   hero: {
-    eyebrow: "</ BUILDING ON NSOTO.DEV >",
-    headline: "I modernize legacy systems and keep mission-critical integrations running.",
-    sub: "Senior software engineer in Jacksonville, FL — 20 years across C#, JavaScript, and SQL Server. Cloud migrations, enterprise integrations, and the inherited codebases teams still depend on.",
+    eyebrow: "</ SENIOR SOFTWARE ENGINEER >",
+    headline: "I build full-stack systems, integrations, and cloud platforms teams can rely on.",
+    sub: "Senior software engineer in Jacksonville, FL — 20 years across C#, JavaScript, and SQL Server. Enterprise integrations, cloud migrations, and products from data pipelines to customer-facing apps.",
   },
   experienceStub: {
     eyebrow: "</ EXPERIENCE >",
     headline: "Work history",
-    sub: "Roles across cloud migrations, enterprise integrations, and data platforms — filter by focus area.",
+    sub: "Roles across integrations, cloud, and data platforms.",
   },
   experience: [
     {
@@ -101,7 +101,7 @@ export const portfolioData = {
       location: "Jacksonville, FL",
       detail:
         "Maintain .NET data ingestion pipelines between XactAnalysis, Cotality, and Salesforce over HTTP/SFTP. Configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect's retirement, and authored a phased VSS-to-Git migration plan.",
-      stack: ["C#", ".NET", "Salesforce", "SFTP", "Cursor / AI-assisted dev"],
+      stack: ["C#", ".NET", "Salesforce", "SFTP", "AI-assisted workflows"],
       status: "Current",
       category: "integration",
     },
@@ -181,9 +181,9 @@ export const portfolioData = {
   about: {
     /** Short landing copy (M2d). Longer narrative retained as `paragraph` for future reuse. */
     landing:
-      "Senior engineer focused on legacy modernization, cloud migrations, and the integrations operations still run on. I care about systems teams can maintain — and I ship side projects on nsoto.dev to keep building in public.",
+      "Senior engineer with 20 years in full-stack development, systems integration, and cloud infrastructure. I focus on practical architecture — systems that stay efficient and maintainable.",
     paragraph:
-      "I've built centralized cloud platforms, federal data-visualization tools, and the ERP/CRM pipelines that keep operations stable. At Sedgwick I maintain .NET ingestion between XactAnalysis, Cotality, and Salesforce, and configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect retired. Before that I led an Azure migration that cut hosting costs 15–20% and improved performance. I mentor when I can and care about software teams can actually maintain.",
+      "I've built centralized cloud platforms, federal data-visualization tools, and ERP/CRM pipelines that keep operations stable. Recent work includes .NET integrations at Sedgwick and an Azure migration that cut hosting costs 15–20% with better performance. I mentor when I can and focus on systems that stay efficient and maintainable.",
     caseStudyCallout: {
       eyebrow: "</ CASE STUDY >",
       title: "Architecture at a crossroads",
@@ -195,7 +195,7 @@ export const portfolioData = {
   appsStub: {
     eyebrow: "</ APPS >",
     headline: "Side projects",
-    sub: "Live apps on their own domains — open what’s shipping, then see the full catalog.",
+    sub: "Live apps on their own domains — chess, budget, and more.",
     entries: [
       {
         name: "Chess",
@@ -203,7 +203,7 @@ export const portfolioData = {
         status: "Live",
         blurb: "Browser chess with a hand-built board and full rules.",
         description:
-          "Browser chess with a hand-built board — drag pieces, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen; Stockfish opponent planned.",
+          "Browser chess with a hand-built board — drag pieces, legal-move highlighting, and full rule logic through a thin chess.js wrapper. Local two-player hot-seat on one screen.",
         preview: {
           src: "/apps/chess-preview.png",
           alt: "ns-chess board and move panel on a dark canvas",
@@ -217,9 +217,9 @@ export const portfolioData = {
         name: "Portfolio",
         domain: "github.com/nsoto-development/web-portfolio",
         status: "Live",
-        blurb: "This hub — landing, case studies, shared design system.",
+        blurb: "Personal site and hub for nsoto.dev apps.",
         description:
-          "This site — Next.js hub for nsoto.dev: landing, case studies, and shared design-system consumption across public apps.",
+          "The nsoto.dev site — landing, experience, case studies, and shared design-system packages used across public apps.",
         href: "https://github.com/nsoto-development/web-portfolio",
       },
       {
@@ -228,7 +228,7 @@ export const portfolioData = {
         status: "Live",
         blurb: "Cash flow scheduler with calendar-accurate projection.",
         description:
-          "Cash flow scheduler — recurring income and bills, calendar-accurate projection, and deficit visualization. Framework-agnostic scheduling engine with a SvelteKit UI on @nsoto/portfolio-tokens.",
+          "Cash flow scheduler — recurring income and bills, calendar-accurate projection, and deficit visualization. Built around a reusable scheduling engine with a SvelteKit UI.",
         preview: {
           src: "/apps/budget-preview.png",
           alt: "ns-budget cash flow scheduler with running balance chart",
@@ -244,7 +244,7 @@ export const portfolioData = {
         status: "Live",
         blurb: "Tokens and React primitives for nsoto.dev apps.",
         description:
-          "Dark-only, code-forward foundations for nsoto.dev — CSS tokens and brand assets plus React primitives, shared by the hub and subdomain apps.",
+          "Shared foundations for nsoto.dev — CSS tokens, brand assets, and React primitives used by the hub and subdomain apps.",
         href: "https://www.npmjs.com/package/@nsoto/portfolio-tokens",
         links: [
           {
@@ -259,7 +259,7 @@ export const portfolioData = {
         domain: "github.com/nsoto-development/lgtv-display-sync",
         status: "Open source",
         description:
-          "Windows/.NET utility that syncs an LG webOS TV’s power to Windows display sleep — built after waking failed under VPN. Open-source investigation + tool; v0.1.0 ships a self-contained service + tray zip.",
+          "Windows/.NET utility that syncs an LG webOS TV’s power to Windows display sleep — built after waking failed under VPN. Open-source investigation and tool; v0.1.0 ships a self-contained service and tray zip.",
         href: "https://github.com/nsoto-development/lgtv-display-sync",
         links: [
           { label: "Case study", href: "/case-studies/lgtv-display-wake" },
