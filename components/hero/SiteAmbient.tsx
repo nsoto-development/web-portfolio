@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import {
   AMBIENT_STYLE_OPTIONS,
   AMBIENT_UNMASKED_STYLES,
@@ -72,6 +73,23 @@ function AmbientChip({
   );
 }
 
+function AmbientLayer({ style }: { style: Exclude<AmbientStyle, "off"> }) {
+  const [revealed, setRevealed] = useState(false);
+  const layerClass = [
+    "site-ambient-layer",
+    AMBIENT_UNMASKED_STYLES.has(style) ? "is-unmasked" : "",
+    revealed ? "is-ready" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <div className={layerClass} aria-hidden="true">
+      <AmbientCanvas style={style} onReady={() => setRevealed(true)} />
+    </div>
+  );
+}
+
 /** Site ambient veil — desktop only; fog by default when capability gate passes. */
 export function SiteAmbient() {
   const { styleParam, lab } = useHeroPreviewParams();
@@ -79,17 +97,10 @@ export function SiteAmbient() {
   const tier = useAmbientCapability(desktop === true);
   const style = resolveStyle(styleParam, tier);
   const enabled = desktop === true && style !== "off";
-  const layerClass = AMBIENT_UNMASKED_STYLES.has(style)
-    ? "site-ambient-layer is-unmasked"
-    : "site-ambient-layer";
 
   return (
     <>
-      {enabled ? (
-        <div className={layerClass} aria-hidden="true">
-          <AmbientCanvas style={style} />
-        </div>
-      ) : null}
+      {enabled ? <AmbientLayer key={style} style={style} /> : null}
       <AmbientChip
         style={style}
         styleParam={styleParam}
