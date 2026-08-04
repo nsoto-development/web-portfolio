@@ -561,15 +561,15 @@ a:hover {
 
 .experience-card-link {
   display: block;
+  border-radius: var(--radius-md, 8px);
   color: inherit;
   text-decoration: none;
-  border-radius: var(--radius-md, 8px);
 }
 
-.experience-card-link:hover,
-.experience-card-link:focus,
-.experience-card-link:visited,
-.experience-card-link:active {
+a.experience-card-link:hover,
+a.experience-card-link:focus,
+a.experience-card-link:visited,
+a.experience-card-link:active {
   color: inherit;
   text-decoration: none;
 }

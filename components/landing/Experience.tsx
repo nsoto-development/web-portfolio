@@ -48,7 +48,11 @@ export function Experience() {
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
         {jobs.map((j) => (
           <HoverLift key={j.id}>
-            <Link href={`/experience#${j.id}`} className="experience-card-link">
+            <Link
+              href={`/experience#${j.id}`}
+              className="experience-card-link"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               <ExperienceCard job={j} />
             </Link>
           </HoverLift>
