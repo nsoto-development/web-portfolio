@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { SiteAmbient } from "@/components/hero/SiteAmbient";
 import { SITE_URL } from "@/lib/seo/site";
 import "./globals.css";
 
@@ -62,6 +64,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Suspense fallback={null}>
+          <SiteAmbient />
+        </Suspense>
         {children}
         <GoogleAnalytics />
         <Analytics />
