@@ -42,7 +42,7 @@ export function Experience() {
         </Link>
       </div>
       <p className="landing-section-sub">
-        Current role and a standout past migration — full history with filters on the experience page.
+        Selected roles across integrations, cloud, and data platforms.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
         {jobs.map((j) => (

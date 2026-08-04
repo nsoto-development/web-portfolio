@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { landingAppTeasers, type AppsStubEntry } from "@/lib/portfolio-data";
+import {
+  landingAppTeasers,
+  portfolioData,
+  type AppsStubEntry,
+} from "@/lib/portfolio-data";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 
@@ -112,6 +116,7 @@ function AppTeaserCard({ app }: { app: AppsStubEntry }) {
 
 export function Apps() {
   const teasers = landingAppTeasers();
+  const { eyebrow, headline, sub } = portfolioData.appsStub;
 
   return (
     <section
@@ -123,7 +128,7 @@ export function Apps() {
         padding: "var(--space-16) var(--space-6)",
       }}
     >
-      <p className="case-study-eyebrow">{"</ APPS >"}</p>
+      <p className="case-study-eyebrow">{eyebrow}</p>
       <div
         style={{
           display: "flex",
@@ -142,16 +147,14 @@ export function Apps() {
             margin: 0,
           }}
         >
-          Side projects
+          {headline}
         </h2>
         <Link href="/apps" className="landing-section-cta">
           See all apps
           <ArrowRight size={14} aria-hidden />
         </Link>
       </div>
-      <p className="landing-section-sub">
-        Live apps on their own domains — prove the work quickly, then open the full catalog.
-      </p>
+      <p className="landing-section-sub">{sub}</p>
       <div className="landing-apps-teaser-grid">
         {teasers.map((app) => (
           <AppTeaserCard key={app.domain} app={app} />

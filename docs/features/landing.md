@@ -34,7 +34,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 ## v1 scope (agreed)
 
 - Dark-only landing matching `@nsoto/portfolio-tokens` and [`docs/mvp-scope.md`](../mvp-scope.md) visual baseline.
-- Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy. **Copy:** keep ui-kit draft (`</ COMING SOON. STAY TUNED >`) until post-M1 side-by-side with brand lockup, then refine.
+- Hero: logo mark, `nsoto.dev` wordmark, terminal eyebrow (`</ … >`), primary headline and subcopy from `lib/portfolio-data.ts` (e.g. `</ SENIOR SOFTWARE ENGINEER >`).
 - Sections (M1+M2 epic): sticky nav, work/experience, skills, about, contact, footer — layout informed by the canonical DS portfolio ui-kit (reference only).
 - **Apps on landing (M2b / P0 #5):** 2-project visual **teaser** early on the home page (after hero; Chess + Budget + screenshots). Apps are first-class; employment history supports the story. See [M2b spec](#m2b--apps-teaser-on-landing).
 - **Landing funnel (M2c / M2d / P1 #8):** `/experience` holds full work history; landing shows highlights + condensed skills/about with clear depth CTAs. See [M2c](#m2c--experience-depth-page) / [M2d](#m2d--fast-landing-funnel).
@@ -140,7 +140,7 @@ Tracks P1 **[feature] #8** (first slice). **Done** — full employment history i
 | Surface | Role |
 |---------|------|
 | Landing `#work` | Two highlights only (current + one standout) + `Full experience → /experience` (M2d) |
-| `/experience` | Full four-role history + category filters |
+| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce) |
 
 ### Deliverables
 
@@ -169,9 +169,9 @@ Tracks P1 **[feature] #8** (second slice) and closes **P0 #5 / M2b** Apps teaser
 
 ### Landing composition (top → bottom)
 
-1. **Hero** — unchanged structure; refresh stale “apps coming soon” eyebrow copy.
+1. **Hero** — unchanged structure; eyebrow/headline/sub live in `lib/portfolio-data.ts`.
 2. **Apps teaser** — M2b (Chess + Budget screenshots).
-3. **Experience highlights** — current Sedgwick role + Southeastern Azure migration; no filter tabs; `Full experience → /experience`.
+3. **Experience highlights** — Sedgwick (current), Southeastern Azure migration, and CACI/AFRL WebCV; no filter tabs; `Full experience → /experience`.
 4. **Skills** — curated 10–15 chips (compact companion, not a full-height block); full taxonomy stays in data.
 5. **About** — 2–3 sentence landing summary; keep case-study callout card.
 6. **Contact** — unchanged terminal CTA.

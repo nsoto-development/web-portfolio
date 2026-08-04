@@ -68,11 +68,13 @@ export function ExperienceCard({ job }: { job: ExperienceJob }) {
       >
         {job.detail}
       </p>
-      <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
-        {job.stack.map((s) => (
-          <Tag key={s}>{s}</Tag>
-        ))}
-      </div>
+      {job.stack.length > 0 && (
+        <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
+          {job.stack.map((s) => (
+            <Tag key={s}>{s}</Tag>
+          ))}
+        </div>
+      )}
     </Card>
   );
 }
