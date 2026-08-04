@@ -1,4 +1,7 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ExperienceJob } from "@/lib/portfolio-data";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
@@ -12,13 +15,38 @@ type ExperienceCardProps = {
   onToggle?: () => void;
 };
 
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
+const bulletListStyle = {
+  margin: 0,
+  paddingLeft: "var(--space-5)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-2)",
+  fontFamily: "var(--font-sans)",
+  fontSize: "var(--text-sm)",
+  color: "var(--text-secondary)",
+  lineHeight: "var(--leading-normal)",
+} as const;
+
 export function ExperienceCard({
   job,
   expandable = false,
   expanded = false,
   onToggle,
 }: ExperienceCardProps) {
+  const reduce = useReducedMotion();
   const canExpand = expandable && Boolean(job.bullets?.length);
+  const bullets = job.bullets;
+
+  const bulletList =
+    canExpand && expanded && bullets ? (
+      <ul style={bulletListStyle}>
+        {bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+    ) : null;
 
   return (
     <Card style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
@@ -84,24 +112,27 @@ export function ExperienceCard({
       >
         {job.detail}
       </p>
-      {canExpand && expanded && job.bullets && (
-        <ul
-          style={{
-            margin: 0,
-            paddingLeft: "var(--space-5)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "var(--space-2)",
-            fontFamily: "var(--font-sans)",
-            fontSize: "var(--text-sm)",
-            color: "var(--text-secondary)",
-            lineHeight: "var(--leading-normal)",
-          }}
-        >
-          {job.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
+      {reduce ? (
+        bulletList
+      ) : (
+        <AnimatePresence initial={false}>
+          {canExpand && expanded && bullets && (
+            <motion.div
+              key="details"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: easeOut }}
+              style={{ overflow: "hidden" }}
+            >
+              <ul style={bulletListStyle}>
+                {bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       )}
       {canExpand && (
         <button
@@ -128,7 +159,7 @@ export function ExperienceCard({
             aria-hidden
             style={{
               transform: expanded ? "rotate(180deg)" : "none",
-              transition: "transform 150ms ease",
+              transition: reduce ? undefined : "transform 150ms ease",
             }}
           />
         </button>

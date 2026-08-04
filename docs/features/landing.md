@@ -6,9 +6,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Planned).
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done).
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**. **Next:** landing **M4b** (experience accordion Framer), roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**. **Next:** roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
@@ -23,7 +23,7 @@ Hub repo only — subdomain apps (e.g. `chess.nsoto.dev`) are separate repos; do
 | Framework | **Next.js** (App Router) | Deploy, routing, OG/meta, future subdomain linking |
 | Styling | **Tailwind CSS** | `@import '@nsoto/portfolio-tokens/styles.css'` in `app/globals.css`; Tailwind extends semantic CSS vars |
 | UI primitives | **`@nsoto/portfolio-ui`** | Via thin `"use client"` wrappers in `components/ui/` (Next adapters stay here) |
-| UI motion | **Framer Motion** (M4 Done; M4b Planned) | Home: hero stagger, section `whileInView`, card/CTA hover; `/experience` accordion height/opacity (M4b); CSS cursor blink remains; **not** WebGL |
+| UI motion | **Framer Motion** (M4 + M4b Done) | Home: hero stagger, section `whileInView`, card/CTA hover; `/experience` accordion height/opacity (M4b); CSS cursor blink remains; **not** WebGL |
 | 3D / hero motion | **React Three Fiber + drei** | **M5 only** — post-v1; after static baseline ships |
 | Icons | **Lucide** (`lucide-react`) | Per kit iconography |
 
@@ -96,7 +96,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 
 ## M4b — Experience accordion motion
 
-Post-M4 polish (no new roadmap P-tier line). **Planned** — animate `/experience` accordion open/close with Framer Motion.
+Post-M4 polish (no new roadmap P-tier line). **Done** — `/experience` accordion open/close uses Framer Motion height/opacity.
 
 ### Intent
 
@@ -288,7 +288,7 @@ Two tiers only:
 | M3 | Deploy `nsoto.dev` | Done | Live at [nsoto.dev](https://nsoto.dev) — Vercel, HTTPS, favicon, OG, Web3Forms env (P0 #4) |
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
 | M4 | Polish + Framer Motion | **Done** | Home Framer: hero stagger, section presence, card/CTA hover; `prefers-reduced-motion` via `useReducedMotion` (focus/contrast sweep deferred) |
-| M4b | Experience accordion motion | Planned | Framer expand/collapse for `/experience` resume bullets; `useReducedMotion` — [spec](#m4b--experience-accordion-motion) |
+| M4b | Experience accordion motion | **Done** | Framer expand/collapse for `/experience` resume bullets; `useReducedMotion` — [spec](#m4b--experience-accordion-motion) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
 **Quick gate:** each implementation thread names **one milestone** only. M4b does not pull M5; M5 does not pull M4 polish.
