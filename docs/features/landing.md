@@ -6,9 +6,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done); experience copy hierarchy → **M4c** (Planned).
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done); experience copy hierarchy → **M4c** (Done).
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**. **Next:** landing **M4c** (experience hooks), roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**; **M4c** experience copy **Done**. **Next:** roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
@@ -129,7 +129,7 @@ Post-M4 polish (no new roadmap P-tier line). **Done** — `/experience` accordio
 
 ## M4c — Experience copy hierarchy
 
-Post-M4b polish (no new roadmap P-tier line). **Planned** — rewrite experience `detail` hooks so expand bullets are not indented restatements of the summary. Resume SSOT: Nelson Soto Resume 7-12-26.
+Post-M4b polish (no new roadmap P-tier line). **Done** — experience `detail` hooks are short scannable frames; fuller resume lines live in `bullets` without restating the summary.
 
 ### Intent
 
@@ -339,7 +339,7 @@ Two tiers only:
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
 | M4 | Polish + Framer Motion | **Done** | Home Framer: hero stagger, section presence, card/CTA hover; `prefers-reduced-motion` via `useReducedMotion` (focus/contrast sweep deferred) |
 | M4b | Experience accordion motion | **Done** | Framer expand/collapse for `/experience` resume bullets; `useReducedMotion` — [spec](#m4b--experience-accordion-motion) |
-| M4c | Experience copy hierarchy | Planned | Short `detail` hooks + deduped bullets; career-note family matters — [spec](#m4c--experience-copy-hierarchy) |
+| M4c | Experience copy hierarchy | **Done** | Short `detail` hooks + deduped bullets; career-note family matters — [spec](#m4c--experience-copy-hierarchy) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
 **Quick gate:** each implementation thread names **one milestone** only. M4c does not pull M5; M5 does not pull M4 polish.

@@ -19,7 +19,7 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const bulletListStyle = {
   margin: 0,
-  paddingLeft: "var(--space-5)",
+  paddingLeft: "1.25em",
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-2)",
