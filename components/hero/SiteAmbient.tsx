@@ -13,6 +13,7 @@ import {
   useAmbientCapability,
   type AmbientTierState,
 } from "@/lib/hero-tier/useAmbientCapability";
+import { useDesktopViewport } from "@/lib/hero-tier/useDesktopViewport";
 
 const AmbientCanvas = dynamic(
   () =>
@@ -33,20 +34,24 @@ function AmbientChip({
   style,
   styleParam,
   lab,
+  desktop,
 }: {
   style: AmbientStyle;
   styleParam: AmbientStyle | null;
   lab: boolean;
+  desktop: boolean | null;
 }) {
   if (!lab) return null;
 
   const label = style === "off" ? "normal" : style;
+  const desktopNote = desktop === false ? " · desktop only" : "";
 
   return (
     <div className="hero-bakeoff-chip" aria-label="Ambient veil style">
       <span className="hero-bakeoff-chip-label">
         ambient · {label}
         {styleParam === null ? " · auto" : ""}
+        {desktopNote}
       </span>
       <div className="hero-bakeoff-chip-links">
         {AMBIENT_STYLE_OPTIONS.map((mode) => (
@@ -67,12 +72,13 @@ function AmbientChip({
   );
 }
 
-/** Site ambient veil — fog by default when the device passes the M5-style gate. */
+/** Site ambient veil — desktop only; fog by default when capability gate passes. */
 export function SiteAmbient() {
   const { styleParam, lab } = useHeroPreviewParams();
-  const tier = useAmbientCapability();
+  const desktop = useDesktopViewport();
+  const tier = useAmbientCapability(desktop === true);
   const style = resolveStyle(styleParam, tier);
-  const enabled = style !== "off";
+  const enabled = desktop === true && style !== "off";
   const layerClass = AMBIENT_UNMASKED_STYLES.has(style)
     ? "site-ambient-layer is-unmasked"
     : "site-ambient-layer";
@@ -84,7 +90,12 @@ export function SiteAmbient() {
           <AmbientCanvas style={style} />
         </div>
       ) : null}
-      <AmbientChip style={style} styleParam={styleParam} lab={lab} />
+      <AmbientChip
+        style={style}
+        styleParam={styleParam}
+        lab={lab}
+        desktop={desktop}
+      />
     </>
   );
 }
