@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { landingExperienceHighlights } from "@/lib/portfolio-data";
-import { SectionReveal } from "@/components/landing/motion";
+import { HoverLift, SectionReveal } from "@/components/landing/motion";
 
 export function Experience() {
   const jobs = landingExperienceHighlights();
@@ -47,7 +47,11 @@ export function Experience() {
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
         {jobs.map((j) => (
-          <ExperienceCard key={j.id} job={j} />
+          <HoverLift key={j.id}>
+            <Link href={`/experience#${j.id}`} className="experience-card-link">
+              <ExperienceCard job={j} />
+            </Link>
+          </HoverLift>
         ))}
       </div>
     </SectionReveal>
