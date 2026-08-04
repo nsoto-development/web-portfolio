@@ -6,9 +6,9 @@ The public face of **nsoto.dev**: introduce the developer, show shipped work and
 
 ## Roadmap
 
-Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done).
+Tracks P0 **[chore] #1** + **[feature] #2** → **M1**; **[feature] #3** → **M2**; **[chore] #4** → **M3** (deploy); **[feature] #5** → **M2b** (Apps teaser). P1 **[feature] #8** funnel → **M2c** / **M2d**; **[feature] #1** WebGL → **M5**; **[debt] #4** package cutover → **M4a** (Done); polish/Framer → **M4** (Done); experience accordion motion → **M4b** (Done); experience copy hierarchy → **M4c** (Planned).
 
-**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**. **Next:** roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
+**v1 launch path:** static landing (M1+M2) deployed at nsoto.dev (M3 Done); **M2c** `/experience` + **M2d** funnel + **M2b** Apps teaser **Done**; **M4** Framer Motion **Done**; **M4b** experience accordion **Done**. **Next:** landing **M4c** (experience hooks), roadmap P1 **Recently shipped**, or M5 WebGL. WebGL (M5) is post-v1 per [`mvp-scope.md`](../mvp-scope.md).
 
 **Branch note:** `feature/apps-strip-m2b` (four-row strip) stayed **unmerged**; M2b shipped as the 2-project screenshot teaser instead.
 
@@ -93,6 +93,7 @@ Deploy target: **Vercel** at [nsoto.dev](https://nsoto.dev) (M3 Done).
 - **M1–M2:** static; CSS-only motion (blinking cursor, hovers per DS tokens).
 - **M4 (home `/` only):** three intentional Framer motions — (1) hero entrance stagger (`FadeIn`), (2) section scroll presence once (`SectionReveal` / `whileInView`), (3) subtle hover lift on Apps teaser cards + hero CTAs (`HoverLift`). Helpers honor `useReducedMotion()` (no enter/hover transforms). CSS `.dc-cursor` blink + kit CSS hovers remain. Nav/Footer and other routes: no Framer in M4.
 - **M4b (`/experience`):** Framer height/opacity expand/collapse for accordion resume bullets; `useReducedMotion` → instant toggle. See [M4b](#m4b--experience-accordion-motion).
+- **M4c:** Experience card copy hierarchy — short `detail` hooks; fuller resume lines only in `bullets`. See [M4c](#m4c--experience-copy-hierarchy).
 
 ## M4b — Experience accordion motion
 
@@ -124,6 +125,55 @@ Post-M4 polish (no new roadmap P-tier line). **Done** — `/experience` accordio
 
 - Expanding/collapsing details on `/experience` animates smoothly when motion is allowed.
 - Reduced-motion users get instant toggle with no layout thrash.
+- Lint + build pass; `landing.md` status → Done.
+
+## M4c — Experience copy hierarchy
+
+Post-M4b polish (no new roadmap P-tier line). **Planned** — rewrite experience `detail` hooks so expand bullets are not indented restatements of the summary. Resume SSOT: Nelson Soto Resume 7-12-26.
+
+### Intent
+
+| Field | Role |
+|-------|------|
+| `detail` | Short scannable hook always visible (landing highlights + collapsed `/experience` cards) |
+| `bullets` | Fuller resume highlights — only on `/experience` expand; must not duplicate the hook |
+
+### Agreed hooks (`detail`)
+
+| Job id | Hook |
+|--------|------|
+| `sedgwick` | Mission-critical .NET data ingestion between XactAnalysis, Cotality, and Salesforce over HTTP and SFTP. |
+| `southeastern` | Led an Azure migration — 15–20% lower hosting cost, ~10% better performance and stability. |
+| `caci` | WebCV for AFRL — no/low-code viz, Cytoscape graphs, and a Node-RED ETL back end. |
+| `chorotega` | Acquisition-side tech advising and CMS booking for a new venture with prior ProVerde ownership. |
+| `career-note` | Relocated from Massachusetts to Florida and prioritized family matters before returning to full-time work. |
+| `interactive-resources` | Short Angular contract — organization and fixes so the team could ship in parallel. |
+| `proverde` | Architected ProVerde’s cloud sample platform — API, portals, payments, shipping, and Sage. |
+| `des-lauriers-municipal` | Day-to-day delivery lead for a five-developer municipal product team. |
+| `des-lauriers-municipal-dev` | Municipal product features driven by customer feedback and industry shifts. |
+| `des-lauriers-associates` | Acquisition cutover: ASC live, data migrated, Access→MySQL, site rewritten in ASP.NET. |
+
+**Sedgwick:** hook is **integrations only**; Cursor / VSS / AI-assisted knowledge preservation stays in bullets.  
+**Southeastern:** keep cost/perf numbers in the hook (landing highlight).  
+**Career note:** keep the gap line; say **family matters** only — no health detail.
+
+### Deliverables
+
+- Update `lib/portfolio-data.ts` `detail` (and dedupe overlapping bullet #1 where needed) per table above.
+- Light list styling: reduce or remove left indent on expandable bullets so they align with the summary plane.
+- Landing `#work` inherits new hooks via shared data (`LANDING_EXPERIENCE_IDS` unchanged: sedgwick, southeastern, caci).
+
+### Non-goals (M4c)
+
+- Accordion motion changes (M4b Done).
+- Filter UX, new roles, skills/about rewrite.
+- Resume PDF sync automation.
+- WebGL (M5) or Recently shipped (P1 #7).
+
+### Done when
+
+- Hooks match the agreed table; expand bullets no longer restate the visible summary.
+- Career note uses “family matters” (no health wording).
 - Lint + build pass; `landing.md` status → Done.
 
 ## M2b — Apps teaser on landing
@@ -289,9 +339,10 @@ Two tiers only:
 | M4a | Package cutover (P1 #4) | **Done** | `@nsoto/portfolio-*` deps; no vendored `design-system/`; case study `implemented` |
 | M4 | Polish + Framer Motion | **Done** | Home Framer: hero stagger, section presence, card/CTA hover; `prefers-reduced-motion` via `useReducedMotion` (focus/contrast sweep deferred) |
 | M4b | Experience accordion motion | **Done** | Framer expand/collapse for `/experience` resume bullets; `useReducedMotion` — [spec](#m4b--experience-accordion-motion) |
+| M4c | Experience copy hierarchy | Planned | Short `detail` hooks + deduped bullets; career-note family matters — [spec](#m4c--experience-copy-hierarchy) |
 | M5 | WebGL hero motion | Planned | Tier gate + R3F `full` tier; `reduced` static/CSS fallback — [M5 spec](#m5--webgl-hero) (P1 #1, post-v1) |
 
-**Quick gate:** each implementation thread names **one milestone** only. M4b does not pull M5; M5 does not pull M4 polish.
+**Quick gate:** each implementation thread names **one milestone** only. M4c does not pull M5; M5 does not pull M4 polish.
 
 ## M3 — Deploy nsoto.dev
 
