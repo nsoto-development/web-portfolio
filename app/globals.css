@@ -93,6 +93,19 @@ a:hover {
   height: 100dvh;
   pointer-events: none;
   overflow: hidden;
+  /* Stay invisible until first WebGL frame — avoids probe/mount pop */
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.site-ambient-layer.is-ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-ambient-layer {
+    transition: none;
+  }
 }
 
 .site-ambient-layer:not(.is-unmasked) {

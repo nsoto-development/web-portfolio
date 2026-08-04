@@ -36,7 +36,8 @@ function writeCachedTier(tier: AmbientTier): void {
 }
 
 /**
- * Hidden off-screen canvas probe (~1s). Resolves `full` if sustained ≥ ~45fps.
+ * Hidden fps probe (~1s). Resolves `full` if sustained ≥ ~45fps.
+ * Uses a detached canvas (not in the DOM) to avoid layout/composite flicker.
  */
 export function probeAmbientFps(): Promise<AmbientTier> {
   return new Promise((resolve) => {
@@ -48,21 +49,19 @@ export function probeAmbientFps(): Promise<AmbientTier> {
     const canvas = document.createElement("canvas");
     canvas.width = 64;
     canvas.height = 64;
-    canvas.style.cssText =
-      "position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none";
-    document.body.appendChild(canvas);
 
     const gl =
       canvas.getContext("webgl", {
         antialias: false,
+        alpha: true,
         powerPreference: "low-power",
       }) ||
       canvas.getContext("experimental-webgl", {
         antialias: false,
+        alpha: true,
       });
 
     if (!gl) {
-      canvas.remove();
       resolve("reduced");
       return;
     }
@@ -74,13 +73,11 @@ export function probeAmbientFps(): Promise<AmbientTier> {
 
     const tick = (now: number) => {
       frames += 1;
-      // Minimal draw so the GPU actually works
-      glCtx.clearColor((frames % 10) / 10, 0.1, 0.2, 1);
+      glCtx.clearColor(0, 0, 0, 0);
       glCtx.clear(glCtx.COLOR_BUFFER_BIT);
 
       if (now - start >= SAMPLE_MS) {
         cancelAnimationFrame(raf);
-        canvas.remove();
         const fps = frames / ((now - start) / 1000);
         resolve(fps >= FPS_THRESHOLD ? "full" : "reduced");
         return;

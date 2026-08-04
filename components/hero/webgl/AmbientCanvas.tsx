@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import type { AmbientStyle } from "@/components/hero/preview/useHeroPreviewParams";
 import { AmbientVeil } from "@/components/hero/webgl/AmbientVeil";
 
@@ -9,11 +9,18 @@ type AmbientCanvasProps = {
   style: Exclude<AmbientStyle, "off">;
 };
 
-function AmbientFrameController() {
+function AmbientFrameController({ onReady }: { onReady?: () => void }) {
   const invalidate = useThree((s) => s.invalidate);
   const scrolling = useRef(false);
   const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pointerRaf = useRef<number | null>(null);
+  const readyOnce = useRef(false);
+
+  useFrame(() => {
+    if (readyOnce.current || !onReady) return;
+    readyOnce.current = true;
+    onReady();
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,7 +61,10 @@ function AmbientFrameController() {
   return null;
 }
 
-export function AmbientCanvas({ style }: AmbientCanvasProps) {
+export function AmbientCanvas({
+  style,
+  onReady,
+}: AmbientCanvasProps & { onReady?: () => void }) {
   return (
     <Canvas
       frameloop="demand"
@@ -79,7 +89,7 @@ export function AmbientCanvas({ style }: AmbientCanvasProps) {
       eventSource={typeof document !== "undefined" ? document.documentElement : undefined}
       eventPrefix="client"
     >
-      <AmbientFrameController />
+      <AmbientFrameController onReady={onReady} />
       <AmbientVeil style={style} />
     </Canvas>
   );
