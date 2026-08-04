@@ -140,7 +140,7 @@ Tracks P1 **[feature] #8** (first slice). **Done** — full employment history i
 | Surface | Role |
 |---------|------|
 | Landing `#work` | Two highlights only (current + one standout) + `Full experience → /experience` (M2d) |
-| `/experience` | Full four-role history + category filters |
+| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce) |
 
 ### Deliverables
 
@@ -171,7 +171,7 @@ Tracks P1 **[feature] #8** (second slice) and closes **P0 #5 / M2b** Apps teaser
 
 1. **Hero** — unchanged structure; eyebrow/headline/sub live in `lib/portfolio-data.ts`.
 2. **Apps teaser** — M2b (Chess + Budget screenshots).
-3. **Experience highlights** — current Sedgwick role + Southeastern Azure migration; no filter tabs; `Full experience → /experience`.
+3. **Experience highlights** — Sedgwick (current), Southeastern Azure migration, and CACI/AFRL WebCV; no filter tabs; `Full experience → /experience`.
 4. **Skills** — curated 10–15 chips (compact companion, not a full-height block); full taxonomy stays in data.
 5. **About** — 2–3 sentence landing summary; keep case-study callout card.
 6. **Contact** — unchanged terminal CTA.

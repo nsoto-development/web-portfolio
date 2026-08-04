@@ -1,22 +1,19 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import type { ExperienceJob } from "@/lib/portfolio-data";
+import {
+  experienceFilterItems,
+  jobMatchesExperienceFilter,
+  type ExperienceJob,
+} from "@/lib/portfolio-data";
 import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { Tabs } from "@/components/ui/Tabs";
-
-export const EXPERIENCE_FILTER_ITEMS = [
-  { label: "All", value: "all" },
-  { label: "Cloud", value: "cloud" },
-  { label: "Integration", value: "integration" },
-  { label: "Data", value: "data" },
-] as const;
 
 type ExperienceListProps = {
   jobs: ExperienceJob[];
   /** Optional left-side heading rendered beside the filter tabs. */
   heading?: ReactNode;
-  /** When false, render the full list without category tabs (M2d highlights). */
+  /** When false, render the full list without tech filters (M2d highlights). */
   showFilters?: boolean;
 };
 
@@ -26,8 +23,9 @@ export function ExperienceList({
   showFilters = true,
 }: ExperienceListProps) {
   const [filter, setFilter] = useState("all");
+  const filterItems = experienceFilterItems(jobs);
   const visible = showFilters
-    ? jobs.filter((j) => filter === "all" || j.category === filter)
+    ? jobs.filter((j) => jobMatchesExperienceFilter(j, filter))
     : jobs;
 
   return (
@@ -49,7 +47,7 @@ export function ExperienceList({
               value={filter}
               onChange={setFilter}
               className="landing-tabs-scroll"
-              items={[...EXPERIENCE_FILTER_ITEMS]}
+              items={filterItems}
             />
           )}
         </div>

@@ -35,10 +35,41 @@ export type ExperienceJob = {
   dates: string;
   location: string;
   detail: string;
+  /** Tech chips on the card; also drives curated `/experience` filters via aliases. */
   stack: string[];
   status: string;
-  category: string;
 };
+
+/**
+ * Recruiter-oriented tech filters for `/experience`.
+ * A job matches when any `stack` chip is in that filter's aliases.
+ */
+export const EXPERIENCE_TECH_FILTERS = [
+  { value: "csharp", label: "C#", aliases: ["C#"] },
+  { value: "dotnet", label: ".NET", aliases: [".NET", "ASP.NET"] },
+  { value: "nodejs", label: "Node.js", aliases: ["Node.js", "Node-RED"] },
+  { value: "azure", label: "Azure", aliases: ["Azure"] },
+  { value: "aws", label: "AWS", aliases: ["AWS", "AWS RDS"] },
+  { value: "sql", label: "SQL", aliases: ["SQL Server", "MySQL", "Access", "Postgres"] },
+  { value: "angular", label: "Angular", aliases: ["Angular", "AngularJS"] },
+  { value: "salesforce", label: "Salesforce", aliases: ["Salesforce"] },
+] as const;
+
+export function experienceFilterItems(jobs: ExperienceJob[]) {
+  return [
+    { label: "All", value: "all" },
+    ...EXPERIENCE_TECH_FILTERS.filter((f) =>
+      jobs.some((j) => j.stack.some((s) => (f.aliases as readonly string[]).includes(s))),
+    ).map((f) => ({ label: f.label, value: f.value })),
+  ];
+}
+
+export function jobMatchesExperienceFilter(job: ExperienceJob, filter: string): boolean {
+  if (filter === "all") return true;
+  const tech = EXPERIENCE_TECH_FILTERS.find((f) => f.value === filter);
+  if (!tech) return false;
+  return job.stack.some((s) => (tech.aliases as readonly string[]).includes(s));
+}
 
 export type SkillGroup = {
   label: string;
@@ -49,7 +80,7 @@ export type SkillGroup = {
 export const LANDING_APP_TEASER_IDS = ["chess.nsoto.dev", "budget.nsoto.dev"] as const;
 
 /** Landing experience highlights (M2d) — full list stays on `/experience`. */
-export const LANDING_EXPERIENCE_IDS = ["sedgwick", "southeastern"] as const;
+export const LANDING_EXPERIENCE_IDS = ["sedgwick", "southeastern", "caci"] as const;
 
 export const portfolioData = {
   name: "Nelson Soto",
@@ -90,7 +121,7 @@ export const portfolioData = {
   experienceStub: {
     eyebrow: "</ EXPERIENCE >",
     headline: "Work history",
-    sub: "Roles across integrations, cloud, and data platforms.",
+    sub: "Full career history — C#, .NET, Node.js, cloud platforms, and more.",
   },
   experience: [
     {
@@ -103,7 +134,6 @@ export const portfolioData = {
         "Maintain .NET data ingestion pipelines between XactAnalysis, Cotality, and Salesforce over HTTP/SFTP. Configured a Cursor workspace against legacy Visual SourceSafe repos to preserve system knowledge after the original architect's retirement, and authored a phased VSS-to-Git migration plan.",
       stack: ["C#", ".NET", "Salesforce", "SFTP", "AI-assisted workflows"],
       status: "Current",
-      category: "integration",
     },
     {
       id: "southeastern",
@@ -113,9 +143,8 @@ export const portfolioData = {
       location: "Jacksonville, FL",
       detail:
         "Led an Azure migration from legacy server hosting — 15–20% lower hosting cost, ~10% better performance. Reverse-engineered Syspro ERP integrations, directed a WordPress redesign, and built ETL processes against the ERP schema.",
-      stack: ["Azure", "Syspro ERP", "C#", "VB6", "SQL Server"],
+      stack: ["Azure", "Syspro ERP", "C#", ".NET", "VB6", "SQL Server"],
       status: "Cloud",
-      category: "cloud",
     },
     {
       id: "caci",
@@ -124,10 +153,42 @@ export const portfolioData = {
       dates: "Sept 2022 – Jun 2024",
       location: "Rome, NY",
       detail:
-        "Built WebCV, a no/low-code data visualization platform for the Air Force Research Laboratory. Integrated Cytoscape.js for network graph visualization and implemented a custom graph-traversal algorithm; built the ETL back end on Node-RED with custom nodes.",
-      stack: ["JavaScript", "Node-RED", "Cytoscape.js", "GIS"],
+        "Built WebCV, a no/low-code data visualization platform for the Air Force Research Laboratory — custom JS UI libraries, Cytoscape.js network graphs, and a graph-traversal algorithm tuned for AFRL path-finding constraints. Backed the platform with Node-RED ETL and custom nodes for data access, transforms, and server-side JavaScript.",
+      stack: ["JavaScript", "Node.js", "Node-RED", "Cytoscape.js", "GIS"],
       status: "Federal",
-      category: "data",
+    },
+    {
+      id: "chorotega",
+      company: "The Chorotega",
+      role: "IT Consulting (Remote)",
+      dates: "March 2022 – Aug 2022",
+      location: "Boston, MA",
+      detail:
+        "Supported prior ProVerde ownership through an acquisition with tech modernization — infrastructure, vendors, and software choices. Enhanced the company website for online booking and CMS-managed content.",
+      stack: ["CMS", "Web"],
+      status: "Consulting",
+    },
+    {
+      id: "career-note",
+      company: "Career note",
+      role: "Relocation · family priority",
+      dates: "Nov 2019 – Mar 2022",
+      location: "Massachusetts → Florida",
+      detail:
+        "Relocated from Massachusetts to Florida and prioritized a family health matter before returning to full-time work.",
+      stack: [],
+      status: "Note",
+    },
+    {
+      id: "interactive-resources",
+      company: "Interactive Resources",
+      role: "Software Developer",
+      dates: "Sept 2019 – Nov 2019",
+      location: "Jacksonville, FL",
+      detail:
+        "Short-term contract on an Angular project — organization and bug fixes to support parallel development.",
+      stack: ["Angular"],
+      status: "Contract",
     },
     {
       id: "proverde",
@@ -136,10 +197,42 @@ export const portfolioData = {
       dates: "Nov 2013 – Jul 2019",
       location: "Milford, MA",
       detail:
-        "Designed the architecture for ProVerde's centralized cloud platform: an ASP.NET Web API over an in-house MySQL sample-tracking database (Amazon RDS), a customer ordering portal in AngularJS, and integrated BlueSnap, USAePay, FedEx Ship API, and Sage 50.",
-      stack: ["ASP.NET", "AngularJS", "MySQL", "AWS RDS"],
+        "Led architecture for ProVerde's centralized cloud platform — ASP.NET Web API over Amazon RDS MySQL sample tracking, an AngularJS customer ordering portal, Razor/jQuery internal tools, and integrations for BlueSnap, USAePay, FedEx Ship, and Sage 50.",
+      stack: ["C#", "ASP.NET", "AngularJS", "MySQL", "AWS RDS"],
       status: "Architecture",
-      category: "cloud",
+    },
+    {
+      id: "des-lauriers-municipal",
+      company: "Des Lauriers Municipal Solutions",
+      role: "Assistant Product Development Manager",
+      dates: "Oct 2010 – Nov 2013",
+      location: "Franklin, MA",
+      detail:
+        "Helped the Product Development Manager run delivery — project timelines, tasking, and unblocking a team of five developers. Worked with clients on requirements and coordinated with sales, support, and marketing so features matched technical and business needs.",
+      stack: ["Product", "Mentorship", "Client delivery"],
+      status: "Leadership",
+    },
+    {
+      id: "des-lauriers-municipal-dev",
+      company: "Des Lauriers Municipal Solutions",
+      role: "Software Developer",
+      dates: "Oct 2008 – Oct 2010",
+      location: "Franklin, MA",
+      detail:
+        "Built and improved product features from customer feedback and industry changes while collaborating across ownership, sales, and support.",
+      stack: ["Software delivery"],
+      status: "Product",
+    },
+    {
+      id: "des-lauriers-associates",
+      company: "Des Lauriers & Associates",
+      role: "Software Developer / Systems Administrator",
+      dates: "Oct 2007 – Oct 2008",
+      location: "Franklin, MA",
+      detail:
+        "Brought ASC systems online during an acquisition, migrated customer data into the internal project-management system, converted that system from Access 2003 to MySQL, and replaced a VBScript/Access 97 site with ASP.NET 3.5/MySQL.",
+      stack: ["ASP.NET", "MySQL", "Access", "Migration"],
+      status: "Migration",
     },
   ] satisfies ExperienceJob[],
   skills: {
