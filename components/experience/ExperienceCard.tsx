@@ -19,7 +19,8 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const bulletListStyle = {
   margin: 0,
-  paddingLeft: "1.25em",
+  padding: 0,
+  listStyle: "none",
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-2)",
@@ -33,7 +34,27 @@ function BulletList({ bullets }: { bullets: string[] }) {
   return (
     <ul style={bulletListStyle}>
       {bullets.map((bullet) => (
-        <li key={bullet}>{bullet}</li>
+        <li
+          key={bullet}
+          style={{
+            display: "flex",
+            gap: "var(--space-2)",
+            alignItems: "flex-start",
+          }}
+        >
+          <span
+            aria-hidden
+            style={{
+              flexShrink: 0,
+              color: "var(--brand)",
+              fontFamily: "var(--font-mono)",
+              lineHeight: "inherit",
+            }}
+          >
+            –
+          </span>
+          <span>{bullet}</span>
+        </li>
       ))}
     </ul>
   );

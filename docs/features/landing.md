@@ -161,7 +161,7 @@ Post-M4b polish (no new roadmap P-tier line). **Done** — experience `detail` h
 ### Deliverables
 
 - Update `lib/portfolio-data.ts` `detail` (and dedupe overlapping bullet #1 where needed) per table above.
-- Light list styling: reduce or remove left indent on expandable bullets so they align with the summary plane.
+- Light list styling: flush with the summary plane (`list-style: none`); brand en-dash markers, not nested `ul` indent.
 - Landing `#work` inherits new hooks via shared data (`LANDING_EXPERIENCE_IDS` unchanged: sedgwick, southeastern, caci).
 
 ### Non-goals (M4c)
