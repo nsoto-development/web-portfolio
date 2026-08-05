@@ -278,6 +278,16 @@ a:hover {
   scrollbar-width: none;
 }
 
+.landing-tabs-scroll button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) {
+  .landing-tabs-scroll button:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
 .landing-tabs-scroll::-webkit-scrollbar {
   display: none;
 }

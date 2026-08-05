@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@nsoto/portfolio-tokens": "^0.1.0",
-    "@nsoto/portfolio-ui": "^0.1.1",
+    "@nsoto/portfolio-ui": "^0.1.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.7.0",
     "@vercel/analytics": "^2.0.1",
