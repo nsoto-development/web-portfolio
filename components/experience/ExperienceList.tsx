@@ -73,7 +73,11 @@ export function ExperienceList({
           {showFilters && (
             <Tabs
               value={filter}
-              onChange={setFilter}
+              onChange={(next) =>
+                setFilter((current) =>
+                  current === next && next !== "all" ? "all" : next,
+                )
+              }
               className="landing-tabs-scroll"
               items={filterItems}
             />

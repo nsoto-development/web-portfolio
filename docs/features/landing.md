@@ -257,7 +257,7 @@ Tracks P1 **[feature] #8** (first slice). **Done** — full employment history i
 | Surface | Role |
 |---------|------|
 | Landing `#work` | Two highlights only (current + one standout) + `Full experience → /experience` (M2d) |
-| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce); accordion “Show details” expands curated resume bullets (Current open by default). Landing cards stay summary-only. |
+| `/experience` | Full resume-aligned work history + curated tech filters (C#, .NET, Node.js, Azure, AWS, SQL, Angular, Salesforce); accordion “Show details” expands curated resume bullets (Current open by default). Landing cards stay summary-only. Re-tapping the active tech filter clears to **All**; kit `@nsoto/portfolio-ui@0.1.2` Tabs clears sticky iOS focus chrome (P1 **[bugfix] #10**). |
 
 ### Deliverables
 

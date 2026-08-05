@@ -68,6 +68,8 @@ Ordered **backlog**: **priority tiers** (P0/P1/P2) group **numbered work items**
 
 9. ~~`[feature]` **Case study + /apps — LG TV display wake**~~ — **Done** — narrative at `/case-studies/lgtv-display-wake` (WoL PR → capture pivot → TLS stall → purpose-built tool); repo-linked `/apps` card. Not landing teaser. → case-studies **M4** / **M5** ([`case-studies.md`](features/case-studies.md#second-study--lg-tv-display-wake))
 
+10. ~~`[bugfix]` **Experience tech filter iOS / re-tap deselect**~~ — **Done** — `@nsoto/portfolio-ui@0.1.2` Tabs focus fix; re-tap active tech chip → All; scroll-strip touch CSS. → [`landing.md`](features/landing.md#m2c--experience-depth-page)
+
 **Post-v1 polish (landing milestones):** ~~M4 Framer Motion~~ **Done** (focus/contrast sweep deferred); ~~**M4b** experience accordion Framer~~ **Done** ([`landing.md`](features/landing.md#m4b--experience-accordion-motion)); ~~**M4c** experience copy hierarchy~~ **Done** ([`landing.md`](features/landing.md#m4c--experience-copy-hierarchy)); ~~**M4d** experience deep-link cards~~ **Done** ([`landing.md`](features/landing.md#m4d--experience-deep-link-cards)); M5 WebGL.
 
 ---
